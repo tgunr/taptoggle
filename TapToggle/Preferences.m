@@ -1,0 +1,194 @@
+//
+//  Created by davec on 01/28/12.
+//
+// To change the template use AppCode | Preferences | File Templates.
+//
+
+
+#import <PreferencePanes/PreferencePanes.h>
+#import "Preferences.h"
+#import "Prefs.h"
+
+@interface Preferences ( )
+
+@property(assign, readwrite) BOOL showStatus;
+@property(assign, readwrite) BOOL checkWeekly;
+@property(assign, readwrite) BOOL anonInfo;
+@property(assign, readwrite) BOOL useHotKey;
+
+// These are defaulted programatically
+@property(assign, readwrite) NSString *prefsVersion;
+@property(assign, readwrite) NSDate   *lastCheck;
+@property(assign, readwrite) BOOL shouldRun;
+@property(assign, readwrite) BOOL checkNow;
+@property(assign, readwrite) KeyCombo keyCombo;
+
+@end
+
+@implementation Preferences
+
+@synthesize showStatus;
+@synthesize checkWeekly;
+@synthesize anonInfo;
+@synthesize useHotKey;
+@synthesize prefsVersion;
+@synthesize lastCheck;
+@synthesize shouldRun;
+@synthesize checkNow;
+@synthesize keyCombo;
+
+//- (void)setHotKey:(KeyCombo)aHotKey {
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setInteger:keyCombo.code forKey:kHotKeyCode];
+//    [defaults setInteger:keyCombo.flags forKey:kHotKeyFlags];
+//}
+//- (void)setKeyCombo:(KeyCombo)aKeyCombo {
+//    keyCombo = aKeyCombo;
+//}
+
+- (void)notify {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kNotifyName object:@"TapToggle"
+                                                                 userInfo:[self dictionary] deliverImmediately:YES];
+}
+
+- (NSString *)loadDefaultsPath:(id)loader {
+    NSString *loaderPath;
+    if ([loader isKindOfClass:[NSApplication class]]) {
+        NSBundle *mb = [NSBundle mainBundle];
+        loaderPath = [mb bundlePath];
+    }
+    else if ([loader isKindOfClass:[NSPreferencePane class]])
+        loaderPath = [[loader bundle] bundlePath];
+    else
+        NSLog(@"Class %@ did not implement loadDefaultsPaths!", [loader class]);
+    return loaderPath;
+}
+
+- (void)loadInitialDefaults:(id)loader {
+    NSDictionary *defaultPrefsDict;
+    NSString     *bPath;
+
+    bPath = [self loadDefaultsPath:loader];
+
+    NSUserDefaults *defaults  = [NSUserDefaults standardUserDefaults];
+    NSString       *plistFile = [bPath
+            stringByAppendingPathComponent:@"Contents/Resources/Preferences.plist"];
+
+    //Get the Preferences Array from the default file
+    defaultPrefsDict = [NSDictionary dictionaryWithContentsOfFile:plistFile];
+    NSMutableDictionary *internalDict = [NSMutableDictionary dictionaryWithCapacity:1];
+    [internalDict addEntriesFromDictionary:defaultPrefsDict];
+
+    // Set the other defaults
+    [internalDict setObject:[NSString stringWithString:PREFS_VERSION] forKey:kPrefsVersion];
+    [internalDict setObject:[NSDate date] forKey:kLastCheck];
+    [internalDict setObject:[NSNumber numberWithBool:YES] forKey:kShouldRun];
+    [internalDict setObject:[NSNumber numberWithBool:NO] forKey:kCheckNow];
+    [defaults registerDefaults:internalDict];
+    [defaults synchronize];
+
+    defaultPrefsDict = [defaults dictionaryRepresentation];
+//    NSLog(@"Prefs: %@", defaultPrefsDict);
+}
+
+- (void)setFromUserDefaults {
+    NSUserDefaults *defaults         = [NSUserDefaults standardUserDefaults];
+//    NSDictionary   *defaultPrefsDict = [defaults dictionaryRepresentation];
+//    NSLog(@"Prefs: %@", defaultPrefsDict);
+
+    showStatus  = [defaults boolForKey:kShowStatus];
+    checkWeekly = [defaults boolForKey:kCheckWeekly];
+    anonInfo    = [defaults boolForKey:kAnonInfo];
+    useHotKey   = [defaults boolForKey:kUseHotKey];
+
+    keyCombo.flags = (NSUInteger) [defaults integerForKey:kHotKeyFlags];
+    keyCombo.code  = [defaults integerForKey:kHotKeyCode];
+
+    prefsVersion = [defaults stringForKey:kPrefsVersion];
+    lastCheck    = [defaults objectForKey:kLastCheck];
+    shouldRun    = [defaults boolForKey:kShouldRun];
+    checkNow     = [defaults boolForKey:kCheckNow];
+
+}
+
+- (Preferences *)initPreferences:(id)sender {
+    NSString *sourcesVersion   = PREFS_VERSION;
+    NSString *currentVersion = nil;
+    BOOL needsUpdate = NO;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    // Check preferences version for change
+    if (defaults)
+        currentVersion = [defaults stringForKey:kPrefsVersion];
+
+    if (currentVersion == nil) {
+        [self loadInitialDefaults:sender];
+    }
+
+    if (!currentVersion || ![sourcesVersion isEqual:currentVersion])
+        needsUpdate = YES;
+
+    if (needsUpdate) {
+        // Remove all old entires
+//        NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+        NSArray       *keys = [NSArray arrayWithObjects:
+                                               kPrefsVersion,
+                                               kShouldRun,
+                                               kStatus,
+                                               kShowStatus,
+                                               kCheckWeekly,
+                                               kAnonInfo,
+                                               kUseHotKey,
+                                               kHotKeyFlags,
+                                               kHotKeyCode,
+                                               kLastCheck,
+                                               kCheckNow,
+                                               nil];
+        for (NSString *key in keys) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+        }
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self loadInitialDefaults:sender];
+        BOOL result = [defaults synchronize];
+        // Do any special changes here
+        if (currentVersion == nil)
+            currentVersion = @"0.0";
+        if (result)
+            NSLog(@"Updated preferences from version %@ to version %@", currentVersion, sourcesVersion);
+        else
+            NSLog(@"Failed to syncronize defaults");
+    }
+
+    [self setFromUserDefaults];
+    return self;
+}
+
+- (void)setWith:(NSDictionary *)prefDictionary {
+    showStatus  = [[prefDictionary objectForKey:kShowStatus] boolValue];
+    checkWeekly = [[prefDictionary objectForKey:kCheckWeekly] boolValue];
+    anonInfo    = [[prefDictionary objectForKey:kAnonInfo] boolValue];
+    useHotKey   = [[prefDictionary objectForKey:kUseHotKey] boolValue];
+    keyCombo.code = [[prefDictionary objectForKey:kHotKeyCode] integerValue];
+    keyCombo.flags = [[prefDictionary objectForKey:kHotKeyFlags] integerValue];
+}
+
+- (NSDictionary *)dictionary {
+    NSDictionary *prefsAsDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                      [NSNumber numberWithBool:showStatus], kShowStatus,
+                                                      [NSNumber numberWithBool:checkWeekly], kCheckWeekly,
+                                                      [NSNumber numberWithBool:anonInfo], kAnonInfo,
+                                                      [NSNumber numberWithBool:useHotKey], kUseHotKey,
+                                                      [NSNumber numberWithInteger:keyCombo.code], kHotKeyCode,
+                                                      [NSNumber numberWithInteger:keyCombo.flags], kHotKeyFlags,
+                                                      prefsVersion, kPrefsVersion,
+                                                      [NSNumber numberWithBool:shouldRun], kShouldRun,
+                                                      [NSNumber numberWithBool:checkNow], kCheckNow,
+                                                      nil];
+    return prefsAsDict;
+}
+
+
+
+@end

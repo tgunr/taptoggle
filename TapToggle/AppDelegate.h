@@ -1,15 +1,20 @@
 //
 //  AppDelegate.h
-//  TapToggle
+//  TrackPadTapMon
 //
-//  Created by Dave Carlton on 01/30/12.
+//  Created by Dave Carlton on 01/28/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
+@class Preferences;
+@class EventMonitor;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property(assign, readonly) Preferences       *prefs;
+@property(assign, readonly) EventMonitor      *monitor;
+@property(assign, readonly) IBOutlet NSWindow *window;
 
 @end
