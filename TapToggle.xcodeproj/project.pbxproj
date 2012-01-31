@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F45414D7AF5E0086171A /* Cocoa.framework */; };
+		75E0F45F14D7AF5F0086171A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F45D14D7AF5F0086171A /* InfoPlist.strings */; };
+		75E0F46114D7AF5F0086171A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F46014D7AF5F0086171A /* main.m */; };
+		75E0F46514D7AF5F0086171A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F46314D7AF5F0086171A /* Credits.rtf */; };
+		75E0F46814D7AF5F0086171A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F46714D7AF5F0086171A /* AppDelegate.m */; };
+		75E0F46B14D7AF5F0086171A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F46914D7AF5F0086171A /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		75E0F45014D7AF5E0086171A /* TapToggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapToggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75E0F45414D7AF5E0086171A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		75E0F45714D7AF5E0086171A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		75E0F45814D7AF5E0086171A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		75E0F45914D7AF5E0086171A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		75E0F45C14D7AF5F0086171A /* TapToggle-Info.plist */ = {isa = PBXFileReference; path = "TapToggle-Info.plist"; sourceTree = "<group>"; };
+		75E0F45E14D7AF5F0086171A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		75E0F46014D7AF5F0086171A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		75E0F46214D7AF5F0086171A /* TapToggle-Prefix.pch */ = {isa = PBXFileReference; path = "TapToggle-Prefix.pch"; sourceTree = "<group>"; };
+		75E0F46414D7AF5F0086171A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		75E0F46614D7AF5F0086171A /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		75E0F46714D7AF5F0086171A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		75E0F46A14D7AF5F0086171A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		75E0F44D14D7AF5E0086171A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		75E0F44514D7AF5E0086171A = {
+			isa = PBXGroup;
+			children = (
+				75E0F45A14D7AF5E0086171A /* TapToggle */,
+				75E0F45314D7AF5E0086171A /* Frameworks */,
+				75E0F45114D7AF5E0086171A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		75E0F45114D7AF5E0086171A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75E0F45014D7AF5E0086171A /* TapToggle.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75E0F45314D7AF5E0086171A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75E0F45414D7AF5E0086171A /* Cocoa.framework */,
+				75E0F45614D7AF5E0086171A /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75E0F45614D7AF5E0086171A /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75E0F45714D7AF5E0086171A /* AppKit.framework */,
+				75E0F45814D7AF5E0086171A /* CoreData.framework */,
+				75E0F45914D7AF5E0086171A /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		75E0F45A14D7AF5E0086171A /* TapToggle */ = {
+			isa = PBXGroup;
+			children = (
+				75E0F46614D7AF5F0086171A /* AppDelegate.h */,
+				75E0F46714D7AF5F0086171A /* AppDelegate.m */,
+				75E0F46914D7AF5F0086171A /* MainMenu.xib */,
+				75E0F45B14D7AF5F0086171A /* Supporting Files */,
+			);
+			path = TapToggle;
+			sourceTree = "<group>";
+		};
+		75E0F45B14D7AF5F0086171A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75E0F45C14D7AF5F0086171A /* TapToggle-Info.plist */,
+				75E0F45D14D7AF5F0086171A /* InfoPlist.strings */,
+				75E0F46014D7AF5F0086171A /* main.m */,
+				75E0F46214D7AF5F0086171A /* TapToggle-Prefix.pch */,
+				75E0F46314D7AF5F0086171A /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		75E0F44F14D7AF5E0086171A /* TapToggle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75E0F46E14D7AF5F0086171A /* Build configuration list for PBXNativeTarget "TapToggle" */;
+			buildPhases = (
+				75E0F44C14D7AF5E0086171A /* Sources */,
+				75E0F44D14D7AF5E0086171A /* Frameworks */,
+				75E0F44E14D7AF5E0086171A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TapToggle;
+			productName = TapToggle;
+			productReference = 75E0F45014D7AF5E0086171A /* TapToggle.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		75E0F44714D7AF5E0086171A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 75E0F44A14D7AF5E0086171A /* Build configuration list for PBXProject "TapToggle" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 75E0F44514D7AF5E0086171A;
+			productRefGroup = 75E0F45114D7AF5E0086171A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				75E0F44F14D7AF5E0086171A /* TapToggle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75E0F44E14D7AF5E0086171A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E0F45F14D7AF5F0086171A /* InfoPlist.strings in Resources */,
+				75E0F46514D7AF5F0086171A /* Credits.rtf in Resources */,
+				75E0F46B14D7AF5F0086171A /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		75E0F44C14D7AF5E0086171A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E0F46114D7AF5F0086171A /* main.m in Sources */,
+				75E0F46814D7AF5F0086171A /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		75E0F45D14D7AF5F0086171A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75E0F45E14D7AF5F0086171A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		75E0F46314D7AF5F0086171A /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75E0F46414D7AF5F0086171A /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		75E0F46914D7AF5F0086171A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75E0F46A14D7AF5F0086171A /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		75E0F46C14D7AF5F0086171A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		75E0F46D14D7AF5F0086171A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		75E0F46F14D7AF5F0086171A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
+				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		75E0F47014D7AF5F0086171A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
+				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		75E0F44A14D7AF5E0086171A /* Build configuration list for PBXProject "TapToggle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75E0F46C14D7AF5F0086171A /* Debug */,
+				75E0F46D14D7AF5F0086171A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75E0F46E14D7AF5F0086171A /* Build configuration list for PBXNativeTarget "TapToggle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75E0F46F14D7AF5F0086171A /* Debug */,
+				75E0F47014D7AF5F0086171A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 75E0F44714D7AF5E0086171A /* Project object */;
+}
