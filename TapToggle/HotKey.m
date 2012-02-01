@@ -7,7 +7,6 @@
 
 #import "HotKey.h"
 
-
 @implementation HotKey
 
 @synthesize hotKeyCombo;

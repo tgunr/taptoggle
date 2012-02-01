@@ -27,6 +27,7 @@
 		75E0F4B014D7BE3B0086171A /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4A514D7BE130086171A /* ShortcutRecorder.framework */; };
 		75E0F4B214D7D0DA0086171A /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4B114D7D0D90086171A /* ServiceManagement.framework */; };
 		75E0F4B414D7D6050086171A /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4B314D7D6040086171A /* PreferencePanes.framework */; };
+		75F56D6414D8A60C0022D215 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75E0F4A514D7BE130086171A /* ShortcutRecorder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,19 @@
 			remoteInfo = ShortcutRecorder.framework;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		75F56D6314D8A5DF0022D215 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				75F56D6414D8A60C0022D215 /* ShortcutRecorder.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		75E0F45014D7AF5E0086171A /* TapToggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapToggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,7 +182,6 @@
 		75E0F45A14D7AF5E0086171A /* TapToggle */ = {
 			isa = PBXGroup;
 			children = (
-				75E0F49614D7BB6C0086171A /* TapToggle.entitlements */,
 				75E0F49214D7B3510086171A /* TapToggle.xib */,
 				75E0F48C14D7B1AF0086171A /* TapToggle.h */,
 				75E0F48D14D7B1AF0086171A /* TapToggle.m */,
@@ -190,6 +203,7 @@
 		75E0F45B14D7AF5F0086171A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				75E0F49614D7BB6C0086171A /* TapToggle.entitlements */,
 				75E0F45C14D7AF5F0086171A /* TapToggle-Info.plist */,
 				75E0F45D14D7AF5F0086171A /* InfoPlist.strings */,
 				75E0F46014D7AF5F0086171A /* main.m */,
@@ -236,6 +250,7 @@
 				75E0F44C14D7AF5E0086171A /* Sources */,
 				75E0F44D14D7AF5E0086171A /* Frameworks */,
 				75E0F44E14D7AF5E0086171A /* Resources */,
+				75F56D6314D8A5DF0022D215 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -444,7 +459,6 @@
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AA84E266-C023-473A-97BB-EB55F58F2037";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -456,7 +470,6 @@
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AA84E266-C023-473A-97BB-EB55F58F2037";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -480,6 +493,7 @@
 				75E0F47014D7AF5F0086171A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

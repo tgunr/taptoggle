@@ -15,7 +15,7 @@
 
 // Bump version for any changes below
 
-#define PREFS_VERSION @"0.9"
+#define PREFS_VERSION @"0.10"
 
 // Preferences binding keys
 #define kPrefsVersion @"com.polymicrosystems.TapToggle.prefsVersion"

@@ -12,40 +12,32 @@
 #import "Preferences.h"
 #import "Prefs.h"
 
-@interface AppDelegate ()
+@implementation AppDelegate {
+}
 
-@property(assign, readwrite) Preferences       *prefs;
-@property(assign, readwrite) EventMonitor      *monitor;
-@property(assign, readwrite) IBOutlet NSWindow *window;
+@synthesize window = _window;
+@synthesize monitor = _monitor;
+@synthesize prefs = _prefs;
 
-@end
-
-@implementation AppDelegate
-
-@synthesize window;
-@synthesize prefs;
-@synthesize monitor;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    
-    NSApplication *app = [NSApplication sharedApplication];
-    
-    prefs   = [[Preferences alloc] initPreferences:app];
-    monitor = [[EventMonitor alloc] initWithPreference:prefs];
-    [monitor setupUsingPrefs];
-    
+    _prefs   = [[Preferences alloc] initPreferences:NSApp];
+    _monitor = [[EventMonitor alloc] initWithPreferences:_prefs];
+    [_monitor setupUsingPrefs];
+
+
     [[NSDistributedNotificationCenter defaultCenter]
-     addObserver:monitor selector:@selector(observeNotification:) name:kNotifyName
-     object:nil];
-    
+                                      addObserver:_monitor selector:@selector(observeNotification:) name:kNotifyName
+                                           object:nil];
+
     [NSEvent addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
         processEvent(event);
     }];
-    
+
     NSBundle *myBundle = [NSBundle mainBundle];
-    NSURL *myURL = [myBundle bundleURL];
-    LSRegisterURL((__bridge CFURLRef)myURL, TRUE);
-    SMLoginItemSetEnabled((CFStringRef)tptmenuextra, true);
+    NSURL    *myURL    = [myBundle bundleURL];
+    LSRegisterURL((__bridge CFURLRef) myURL, TRUE);
+    SMLoginItemSetEnabled((CFStringRef) tptmenuextra, true);
 }
 
 @end

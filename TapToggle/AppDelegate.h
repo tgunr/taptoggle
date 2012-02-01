@@ -3,7 +3,7 @@
 //  TrackPadTapMon
 //
 //  Created by Dave Carlton on 01/28/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 PolyMicro Systems. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -13,8 +13,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property(assign, readonly) Preferences       *prefs;
-@property(assign, readonly) EventMonitor      *monitor;
-@property(assign, readonly) IBOutlet NSWindow *window;
+@property (nonatomic, retain) Preferences       *prefs;
+@property (nonatomic, retain) EventMonitor      *monitor;
+@property (nonatomic, retain) IBOutlet NSWindow *window;
 
 @end

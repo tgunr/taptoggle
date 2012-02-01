@@ -6,14 +6,6 @@
 //  Copyright (c) 2012 PolyMicro Systems. All rights reserved.
 //
 
-//
-//  TapToggle.h
-//  TapToggle
-//
-//  Created by Dave Carlton on 01/22/12.
-//  Copyright (c) 2012 PolyMicro Systems. All rights reserved.
-//
-
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
 @class SRRecorderControl;
@@ -21,8 +13,8 @@
 
 @interface TapToggle : NSViewController
 
-@property (assign) Preferences              *prefs;
-@property (weak) IBOutlet NSView            *prefView;
+@property (retain) Preferences              *prefs;
+@property (weak) IBOutlet NSView            *mainView;
 @property (weak) IBOutlet NSTextField       *statusTextField;
 @property (weak) IBOutlet NSButton          *showStatusCheckBox;
 @property (weak) IBOutlet NSButton          *startButton;
@@ -46,7 +38,6 @@
 - (IBAction)moreInfoClicked:(id)sender;
 - (IBAction)installClicked:(id)sender;
 - (IBAction)websiteClicked:(id)sender;
-- (IBAction)testClick:(id)sender;
 - (IBAction)infoDoneClicked:(id)sender;
 - (IBAction)useHotkeyClicked:(id)sender;
 - (IBAction)anonInfoClicked:(id)sender;

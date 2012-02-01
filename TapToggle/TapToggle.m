@@ -9,24 +9,15 @@
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import "TapToggle.h"
 #import "Prefs.h"
-#import "HotKey.h"
 #import "Preferences.h"
 
 #define TapToggle_VERSION @"1.0"
-
-@interface TapToggle ()
-
-- (void)mainViewDidLoad;
-- (void)setMonitorStatus:(BOOL)run;
-- (BOOL)monitorIsRunning;
-- (void)checkMonitor;
-@end
 
 @implementation TapToggle
 
 @synthesize hotKeyControl;
 @synthesize infoPanel;
-@synthesize prefView;
+@synthesize mainView;
 @synthesize statusTextField;
 @synthesize showStatusCheckBox;
 @synthesize startButton;
@@ -43,10 +34,10 @@
 @synthesize prefs;
 
 #pragma mark - Startup
-- (void)mainViewDidLoad {
+
+- (void)awakeFromNib {
     NSInteger prefState;
     prefs = [[Preferences alloc] initPreferences:self];
-    [self setMonitorStatus:[self monitorIsRunning]];
     [versionTextField setStringValue:TapToggle_VERSION];
     prefState = [prefs showStatus] ? NSOnState : NSOffState;
     [showStatusCheckBox setState:prefState];
@@ -62,9 +53,6 @@
     prefState = [prefs useHotKey] ? NSOnState : NSOffState;
     [useHotkeyCheckbox setState:prefState];
     [hotKeyControl setKeyCombo:[prefs keyCombo]];
-
-    monitorCheck = [NSTimer
-            scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkMonitor) userInfo:nil repeats:YES];
 }
 
 - (IBAction)startClicked:(id)sender {
@@ -77,29 +65,30 @@
     }
 }
 
-- (void)checkMonitor {
-    [self setMonitorStatus:[self monitorIsRunning]];
-}
-
 #pragma mark - Monitor effect methods
 - (IBAction)showStatus:(id)sender {
     BOOL use = [showStatusCheckBox state] == NSOnState ? YES : NO;
+    [prefs setShowStatus:use];
 }
 
 - (IBAction)useHotkeyClicked:(id)sender {
     BOOL use = [useHotkeyCheckbox state] == NSOnState ? YES : NO;
+    [prefs setUseHotKey:use];
 }
 
 - (IBAction)checkNowClicked:(id)sender {
     BOOL use = [checkNowButton state] == NSOnState ? YES : NO;
+    // TODO: make checkin code
 }
 
 - (IBAction)anonInfoClicked:(id)sender {
     BOOL use = [anonInfoCheckBox state] == NSOnState ? YES : NO;
+    [prefs setAnonInfo:use];
 }
 
 - (IBAction)checkWeeklyClicked:(id)sender {
     BOOL use = [weeklyCheckBox state] == NSOnState ? YES : NO;
+    [prefs setCheckWeekly:use];
 }
 
 #pragma mark - Update code

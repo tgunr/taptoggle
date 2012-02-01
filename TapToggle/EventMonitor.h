@@ -9,7 +9,7 @@
 @property (assign, readonly) NSMenuItem   *tapClickItem;
 @property (assign, readonly) NSMenuItem   *tapQuitItem;
 
-- (EventMonitor *)initWithPreference:(Preferences *)preferences;
+- (id)initWithPreferences:(__unsafe_unretained Preferences *)preferences;
 - (NSImage *)getClickingImage:(BOOL)clicking;
 - (void)observeNotification:(NSNotification *)note;
 - (void)checkForUpdate;

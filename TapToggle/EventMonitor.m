@@ -12,14 +12,16 @@
 @property (assign, readwrite) NSMenuItem   *tapQuitItem;
 @end
 
-@implementation EventMonitor
+@implementation EventMonitor {
+    __unsafe_unretained Preferences *prefs;
+}
 
 @synthesize prefs;
 @synthesize statusItem;
 @synthesize tapClickItem;
 @synthesize tapQuitItem;
 
-- (EventMonitor *)initWithPreference:(Preferences *)preferences {
+- (id)initWithPreferences:(__unsafe_unretained Preferences *)preferences {
     self = [super init];
     if (self) {
         prefs = preferences;
@@ -184,6 +186,7 @@
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 
     BOOL value = [ud boolForKey:kShowStatus];
+    value = [prefs showStatus];
     if (value)
         [self activateStatusMenu];
     else
@@ -200,7 +203,7 @@ void processEvent(NSEvent *event) {
         AppDelegate   *appD        = (AppDelegate *) [app delegate];
         EventMonitor  *monitor     = [appD monitor];
         Preferences   *preferences = [monitor prefs];
-        KeyCombo      combo        = [preferences keyCombo];
+        KeyCombo combo = [preferences keyCombo];
 
         if ([preferences useHotKey]) {
             if (keycode == combo.code) if (modifiers == combo.flags)

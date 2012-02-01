@@ -10,7 +10,8 @@
 
 @interface HotKey : NSObject
 
-@property(assign) KeyCombo hotKeyCombo;
+@property (assign) KeyCombo hotKeyCombo;
+
 - (id)initWithCombo:(KeyCombo)combo;
 - (NSInteger)keyCode;
 - (NSInteger)keyFlags;
