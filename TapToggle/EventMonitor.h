@@ -5,9 +5,9 @@
 @interface EventMonitor : NSObject
 
 @property (assign, readonly) Preferences  *prefs;
-@property (assign, readonly) NSStatusItem *statusItem;
-@property (assign, readonly) NSMenuItem   *tapClickItem;
-@property (assign, readonly) NSMenuItem   *tapQuitItem;
+@property (retain, readonly) NSStatusItem *statusItem;
+@property (retain, readonly) NSMenuItem   *tapClickItem;
+@property (retain, readonly) NSMenuItem   *tapQuitItem;
 
 - (id)initWithPreferences:(__unsafe_unretained Preferences *)preferences;
 - (NSImage *)getClickingImage:(BOOL)clicking;

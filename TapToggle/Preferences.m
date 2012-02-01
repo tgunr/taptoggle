@@ -11,29 +11,19 @@
 
 @interface Preferences ()
 
-@property (assign, readwrite) BOOL checkWeekly;
-@property (assign, readwrite) BOOL anonInfo;
-@property (assign, readwrite) BOOL useHotKey;
-
-// These are defaulted programatically
-@property (assign, readwrite) NSString *prefsVersion;
-@property (assign, readwrite) NSDate   *lastCheck;
-@property (assign, readwrite) BOOL     shouldRun;
-@property (assign, readwrite) BOOL     checkNow;
-@property (assign, readwrite) KeyCombo keyCombo;
-
 - (void)setFromUserDefaults;
 - (void)setUserDefaultsWithDictionry:(NSDictionary *)defaultDict;
 @end
 
 @implementation Preferences
 
+//@synthesize showStatus;
 @synthesize prefsVersion;
 @synthesize lastCheck;
 @synthesize shouldRun;
 @synthesize checkNow;
 @synthesize keyCombo;
-@synthesize userDefaults = _userDefaults;
+@synthesize userDefaults;
 
 - (NSString *)loadDefaultsPath:(id)loader {
     NSString *loaderPath;
@@ -43,8 +33,11 @@
     }
     else if ([loader isKindOfClass:[NSPreferencePane class]])
         loaderPath = [[loader bundle] bundlePath];
-    else
-        NSLog(@"Class %@ did not implement loadDefaultsPaths!", [loader class]);
+    else {
+        NSBundle *mb = [NSBundle mainBundle];
+        loaderPath = [mb bundlePath];
+//        NSLog(@"Class %@ did not implement loadDefaultsPaths!", [loader class]);
+    }
     return loaderPath;
 }
 
@@ -72,22 +65,21 @@
 }
 
 - (void)setFromUserDefaults {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSDictionary   *defaultPrefsDict = [defaults dictionaryRepresentation];
-//    NSLog(@"Prefs: %@", defaultPrefsDict);
+    NSDictionary *defaultPrefsDict = [userDefaults dictionaryRepresentation];
+    NSLog(@"Prefs: %@", defaultPrefsDict);
 
-    _showStatus  = [defaults boolForKey:kShowStatus];
-    _checkWeekly = [defaults boolForKey:kCheckWeekly];
-    _anonInfo    = [defaults boolForKey:kAnonInfo];
-    _useHotKey   = [defaults boolForKey:kUseHotKey];
+    showStatus   = [userDefaults boolForKey:kShowStatus];
+    _checkWeekly = [userDefaults boolForKey:kCheckWeekly];
+    _anonInfo    = [userDefaults boolForKey:kAnonInfo];
+    _useHotKey   = [userDefaults boolForKey:kUseHotKey];
 
-    keyCombo.flags = (NSUInteger) [defaults integerForKey:kHotKeyFlags];
-    keyCombo.code  = [defaults integerForKey:kHotKeyCode];
+    keyCombo.flags = (NSUInteger) [userDefaults integerForKey:kHotKeyFlags];
+    keyCombo.code  = [userDefaults integerForKey:kHotKeyCode];
 
-    prefsVersion = [defaults stringForKey:kPrefsVersion];
-    lastCheck    = [defaults objectForKey:kLastCheck];
-    shouldRun    = [defaults boolForKey:kShouldRun];
-    checkNow     = [defaults boolForKey:kCheckNow];
+    prefsVersion = [userDefaults stringForKey:kPrefsVersion];
+    lastCheck    = [userDefaults objectForKey:kLastCheck];
+    shouldRun    = [userDefaults boolForKey:kShouldRun];
+    checkNow     = [userDefaults boolForKey:kCheckNow];
 
 }
 
@@ -95,11 +87,11 @@
 //    NSString *sourcesVersion = PREFS_VERSION;
     NSString *currentVersion = nil;
 //    BOOL needsUpdate = NO;
-    _userDefaults = [NSUserDefaults standardUserDefaults];
+    userDefaults = [NSUserDefaults standardUserDefaults];
 
     // Check preferences version for change
-    if (_userDefaults)
-        currentVersion = [_userDefaults stringForKey:kPrefsVersion];
+    if (userDefaults)
+        currentVersion = [userDefaults stringForKey:kPrefsVersion];
 
     if (currentVersion == nil) {
         [self setUserDefaultsWithDictionry:[self getInitialDefaults:sender]];
@@ -144,13 +136,13 @@
 }
 
 - (void)setUserDefaultsWithDictionry:(NSDictionary *)defaultDict {
-    [_userDefaults registerDefaults:defaultDict];
+    [userDefaults registerDefaults:defaultDict];
 //        [defaults synchronize];
     NSLog(@"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
 - (void)setWith:(NSDictionary *)prefDictionary {
-    _showStatus  = [[prefDictionary objectForKey:kShowStatus] boolValue];
+    showStatus   = [[prefDictionary objectForKey:kShowStatus] boolValue];
     _checkWeekly = [[prefDictionary objectForKey:kCheckWeekly] boolValue];
     _anonInfo    = [[prefDictionary objectForKey:kAnonInfo] boolValue];
     _useHotKey   = [[prefDictionary objectForKey:kUseHotKey] boolValue];
@@ -160,7 +152,7 @@
 
 - (NSDictionary *)dictionary {
     NSDictionary *prefsAsDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                      [NSNumber numberWithBool:_showStatus], kShowStatus,
+                                                      [NSNumber numberWithBool:showStatus], kShowStatus,
                                                       [NSNumber numberWithBool:_checkWeekly], kCheckWeekly,
                                                       [NSNumber numberWithBool:_anonInfo], kAnonInfo,
                                                       [NSNumber numberWithBool:_useHotKey], kUseHotKey,
@@ -175,21 +167,21 @@
 
 - (void)setUseHotKey:(BOOL)anUseHotKey {
     _useHotKey = anUseHotKey;
-    [_userDefaults setBool:anUseHotKey forKey:kUseHotKey];
+    [userDefaults setBool:anUseHotKey forKey:kUseHotKey];
 }
 
 - (void)setAnonInfo:(BOOL)anAnonInfo {
     _anonInfo = anAnonInfo;
-    [_userDefaults setBool:anAnonInfo forKey:kAnonInfo];
+    [userDefaults setBool:anAnonInfo forKey:kAnonInfo];
 }
 
 - (void)setCheckWeekly:(BOOL)aCheckWeekly {
     _checkWeekly = aCheckWeekly;
-    [_userDefaults setBool:aCheckWeekly forKey:kAnonInfo];
+    [userDefaults setBool:aCheckWeekly forKey:kAnonInfo];
 }
 
 - (BOOL)showStatus {
-    return _showStatus;
+    return showStatus;
 }
 
 - (BOOL)checkWeekly {
@@ -205,8 +197,8 @@
 }
 
 - (void)setShowStatus:(BOOL)status {
-    _showStatus = status;
-    [_userDefaults setBool:status forKey:kShowStatus];
+    showStatus = status;
+    [userDefaults setBool:status forKey:kShowStatus];
 }
 
 - (void)notify {

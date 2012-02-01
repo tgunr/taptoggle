@@ -4,14 +4,6 @@
 #import "EventMonitor.h"
 #import "Prefs.h"
 
-@interface EventMonitor ()
-
-@property (assign, readwrite) Preferences  *prefs;
-@property (assign, readwrite) NSStatusItem *statusItem;
-@property (assign, readwrite) NSMenuItem   *tapClickItem;
-@property (assign, readwrite) NSMenuItem   *tapQuitItem;
-@end
-
 @implementation EventMonitor {
     __unsafe_unretained Preferences *prefs;
 }
