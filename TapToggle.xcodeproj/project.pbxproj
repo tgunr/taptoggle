@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		754D525914DA678200D56DFA /* TapToggleMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F47214D7B1190086171A /* TapToggleMenu.m */; };
 		75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F45414D7AF5E0086171A /* Cocoa.framework */; };
 		75E0F45F14D7AF5F0086171A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F45D14D7AF5F0086171A /* InfoPlist.strings */; };
 		75E0F46114D7AF5F0086171A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F46014D7AF5F0086171A /* main.m */; };
 		75E0F46514D7AF5F0086171A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F46314D7AF5F0086171A /* Credits.rtf */; };
 		75E0F46814D7AF5F0086171A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F46714D7AF5F0086171A /* AppDelegate.m */; };
-		75E0F47314D7B1190086171A /* EventMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F47214D7B1190086171A /* EventMonitor.m */; };
 		75E0F48314D7B1840086171A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F47614D7B1840086171A /* Localizable.strings */; };
 		75E0F48414D7B1840086171A /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F47814D7B1840086171A /* Preferences.m */; };
 		75E0F48514D7B1840086171A /* Preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F47914D7B1840086171A /* Preferences.plist */; };
@@ -22,7 +22,7 @@
 		75E0F48914D7B1840086171A /* TapToggle.ico in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F47E14D7B1840086171A /* TapToggle.ico */; };
 		75E0F48A14D7B1840086171A /* TapToggleOff-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F48014D7B1840086171A /* TapToggleOff-24.png */; };
 		75E0F48B14D7B1840086171A /* TapToggleOn-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F48114D7B1840086171A /* TapToggleOn-24.png */; };
-		75E0F48E14D7B1AF0086171A /* TapToggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F48D14D7B1AF0086171A /* TapToggle.m */; };
+		75E0F48E14D7B1AF0086171A /* TapToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F48D14D7B1AF0086171A /* TapToggleViewController.m */; };
 		75E0F49514D7B3510086171A /* TapToggle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F49214D7B3510086171A /* TapToggle.xib */; };
 		75E0F4B014D7BE3B0086171A /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4A514D7BE130086171A /* ShortcutRecorder.framework */; };
 		75E0F4B214D7D0DA0086171A /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4B114D7D0D90086171A /* ServiceManagement.framework */; };
@@ -101,10 +101,8 @@
 		75E0F46414D7AF5F0086171A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		75E0F46614D7AF5F0086171A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		75E0F46714D7AF5F0086171A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		75E0F47114D7B1190086171A /* EventMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMonitor.h; sourceTree = "<group>"; };
-		75E0F47214D7B1190086171A /* EventMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EventMonitor.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		75E0F47414D7B1840086171A /* HotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotKey.h; sourceTree = "<group>"; };
-		75E0F47514D7B1840086171A /* HotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotKey.m; sourceTree = "<group>"; };
+		75E0F47114D7B1190086171A /* TapToggleMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapToggleMenu.h; sourceTree = "<group>"; };
+		75E0F47214D7B1190086171A /* TapToggleMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TapToggleMenu.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		75E0F47614D7B1840086171A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		75E0F47714D7B1840086171A /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		75E0F47814D7B1840086171A /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Preferences.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -116,8 +114,8 @@
 		75E0F47E14D7B1840086171A /* TapToggle.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = TapToggle.ico; sourceTree = "<group>"; };
 		75E0F48014D7B1840086171A /* TapToggleOff-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TapToggleOff-24.png"; sourceTree = "<group>"; };
 		75E0F48114D7B1840086171A /* TapToggleOn-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TapToggleOn-24.png"; sourceTree = "<group>"; };
-		75E0F48C14D7B1AF0086171A /* TapToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TapToggle.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		75E0F48D14D7B1AF0086171A /* TapToggle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TapToggle.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		75E0F48C14D7B1AF0086171A /* TapToggleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TapToggleViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		75E0F48D14D7B1AF0086171A /* TapToggleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TapToggleViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		75E0F49314D7B3510086171A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TapToggle.xib; sourceTree = "<group>"; };
 		75E0F49614D7BB6C0086171A /* TapToggle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TapToggle.entitlements; sourceTree = "<group>"; };
 		75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = ../../Contributed/ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = "<group>"; };
@@ -183,16 +181,14 @@
 			isa = PBXGroup;
 			children = (
 				75E0F49214D7B3510086171A /* TapToggle.xib */,
-				75E0F48C14D7B1AF0086171A /* TapToggle.h */,
-				75E0F48D14D7B1AF0086171A /* TapToggle.m */,
-				75E0F47414D7B1840086171A /* HotKey.h */,
-				75E0F47514D7B1840086171A /* HotKey.m */,
+				75E0F48C14D7B1AF0086171A /* TapToggleViewController.h */,
+				75E0F48D14D7B1AF0086171A /* TapToggleViewController.m */,
 				75E0F48F14D7B2740086171A /* Resources */,
 				75E0F47714D7B1840086171A /* Preferences.h */,
 				75E0F47814D7B1840086171A /* Preferences.m */,
 				75E0F47A14D7B1840086171A /* Prefs.h */,
-				75E0F47114D7B1190086171A /* EventMonitor.h */,
-				75E0F47214D7B1190086171A /* EventMonitor.m */,
+				75E0F47114D7B1190086171A /* TapToggleMenu.h */,
+				75E0F47214D7B1190086171A /* TapToggleMenu.m */,
 				75E0F46614D7AF5F0086171A /* AppDelegate.h */,
 				75E0F46714D7AF5F0086171A /* AppDelegate.m */,
 				75E0F45B14D7AF5F0086171A /* Supporting Files */,
@@ -357,11 +353,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754D525914DA678200D56DFA /* TapToggleMenu.m in Sources */,
 				75E0F46114D7AF5F0086171A /* main.m in Sources */,
 				75E0F46814D7AF5F0086171A /* AppDelegate.m in Sources */,
-				75E0F47314D7B1190086171A /* EventMonitor.m in Sources */,
 				75E0F48414D7B1840086171A /* Preferences.m in Sources */,
-				75E0F48E14D7B1AF0086171A /* TapToggle.m in Sources */,
+				75E0F48E14D7B1AF0086171A /* TapToggleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

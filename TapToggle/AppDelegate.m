@@ -7,32 +7,40 @@
 //
 
 #import <ServiceManagement/ServiceManagement.h>
+#import <CoreServices/CoreServices.h>
 #import "AppDelegate.h"
-#import "EventMonitor.h"
 #import "Preferences.h"
 #import "Prefs.h"
+
+@interface AppDelegate ()
+
+- (void)setPrefs:(Preferences *)preferences;
+
+@end
 
 @implementation AppDelegate {
 }
 
 @synthesize window = _window;
-@synthesize monitor = _monitor;
 @synthesize prefs = _prefs;
 
 
+- (void)setPrefs: (Preferences *)preferences {
+    _prefs = preferences;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    _prefs   = [[Preferences alloc] initPreferences:NSApp];
-    _monitor = [[EventMonitor alloc] initWithPreferences:_prefs];
-    [_monitor setupUsingPrefs];
+//    _monitor = [[TapToggleMenu alloc] initWithPreferences:_prefs];
+//    [_monitor setupUsingPrefs];
 
 
-    [[NSDistributedNotificationCenter defaultCenter]
-                                      addObserver:_monitor selector:@selector(observeNotification:) name:kNotifyName
-                                           object:nil];
+//    [[NSDistributedNotificationCenter defaultCenter]
+//                                      addObserver:_monitor selector:@selector(observeNotification:) name:kNotifyName
+//                                           object:nil];
 
-    [NSEvent addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
-        processEvent(event);
-    }];
+//    [NSEvent addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
+//        processEvent(event);
+//    }];
 
     NSBundle *myBundle = [NSBundle mainBundle];
     NSURL    *myURL    = [myBundle bundleURL];

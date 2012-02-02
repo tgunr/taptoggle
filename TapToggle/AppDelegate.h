@@ -9,12 +9,10 @@
 #import <Cocoa/Cocoa.h>
 
 @class Preferences;
-@class EventMonitor;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (nonatomic, retain) Preferences       *prefs;
-@property (nonatomic, retain) EventMonitor      *monitor;
 @property (nonatomic, retain) IBOutlet NSWindow *window;
 
 @end
