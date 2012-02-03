@@ -11,35 +11,31 @@
 #import "AppDelegate.h"
 #import "Preferences.h"
 #import "Prefs.h"
-#import "TapToggleMenu.h"
+#import "TapMenuController.h"
 
 @interface AppDelegate ()
 
-- (void)setPrefs:(Preferences *)preferences;
 - (void)tapShowPreferences;
-
-
-@property (nonatomic, retain, readwrite) Preferences *prefs;
-
 
 @end
 
 @implementation AppDelegate {
+@private
 }
 
 @synthesize window;
-@synthesize prefs = _prefs;
+@synthesize prefs;
+@synthesize tapMenuController;
 
-
-- (void)setPrefs:(Preferences *)preferences {
-    _prefs = preferences;
-}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    NSBundle *myBundle = [NSBundle mainBundle];
-    NSURL    *myURL    = [myBundle bundleURL];
-    LSRegisterURL((__bridge CFURLRef) myURL, TRUE);
-    SMLoginItemSetEnabled((CFStringRef) tptmenuextra, true);
+    prefs = [Preferences shared];
+    tapMenuController = [TapMenuController instance];
+    
+//    NSBundle *myBundle = [NSBundle mainBundle];
+//    NSURL    *myURL    = [myBundle bundleURL];
+//    LSRegisterURL((__bridge CFURLRef) myURL, TRUE);
+//    SMLoginItemSetEnabled((CFStringRef) tptmenuextra, true);
 }
 
 - (void)checkWeekly:(NSDictionary *)appDict {
@@ -59,7 +55,7 @@
 }
 
 - (void)checkUseHotKey {
-    BOOL value = [_prefs useHotKey];
+    BOOL value = [prefs useHotKey];
     if (value)
         NSLog(@"Hot key enabled");
     else
@@ -74,7 +70,7 @@
 
 - (void)checkForUpdate {
     NSTimeInterval oneWeek = 60 * 60 * 24 * 7;
-    NSDate *checkDate = [NSDate dateWithTimeInterval:oneWeek sinceDate:[_prefs lastCheck]];
+    NSDate *checkDate = [NSDate dateWithTimeInterval:oneWeek sinceDate:[prefs lastCheck]];
     NSDate *today     = [NSDate date];
     NSComparisonResult checkResult = [today compare:checkDate];
     if (checkResult == NSOrderedDescending) {

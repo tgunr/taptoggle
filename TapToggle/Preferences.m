@@ -25,6 +25,15 @@
 @synthesize keyCombo;
 @synthesize userDefaults;
 
++ (id)shared
+{
+    static dispatch_once_t onceQueue;
+    static Preferences *preferences = nil;
+    
+    dispatch_once(&onceQueue, ^{ preferences = [[self alloc] initPreferences]; });
+    return preferences;
+}
+
 - (NSString *)loadDefaultsPath:(id)loader {
     NSString *loaderPath;
     if ([loader isKindOfClass:[NSApplication class]]) {
@@ -41,11 +50,12 @@
     return loaderPath;
 }
 
-- (NSDictionary *)getInitialDefaults:(id)loader {
+- (NSDictionary *)getInitialDefaults {
     NSDictionary *defaultPrefsDict;
     NSString     *bPath;
+    NSBundle *mb = [NSBundle mainBundle];
+    bPath = [mb bundlePath];
 
-    bPath = [self loadDefaultsPath:loader];
     NSString *plistFile = [bPath
             stringByAppendingPathComponent:@"Contents/Resources/Preferences.plist"];
 
@@ -82,55 +92,24 @@
 
 }
 
-- (Preferences *)initPreferences:(id)sender {
-//    NSString *sourcesVersion = PREFS_VERSION;
-    NSString *currentVersion = nil;
-//    BOOL needsUpdate = NO;
-    userDefaults = [NSUserDefaults standardUserDefaults];
-
-    // Check preferences version for change
-    if (userDefaults)
-        currentVersion = [userDefaults stringForKey:kPrefsVersion];
-
-    if (currentVersion == nil) {
-        [self setUserDefaultsWithDictionry:[self getInitialDefaults:sender]];
+- (Preferences *)initPreferences {
+    self = [super init];
+    if (self) {
+        //    NSString *sourcesVersion = PREFS_VERSION;
+        NSString *currentVersion = nil;
+        //    BOOL needsUpdate = NO;
+        userDefaults = [NSUserDefaults standardUserDefaults];
+        
+        // Check preferences version for change
+        if (userDefaults)
+            currentVersion = [userDefaults stringForKey:kPrefsVersion];
+        
+        if (currentVersion == nil) {
+            [self setUserDefaultsWithDictionry:[self getInitialDefaults]];
+        }
+        
+        [self setFromUserDefaults];
     }
-
-//    if (!currentVersion || ![sourcesVersion isEqual:currentVersion])
-//        needsUpdate = YES;
-//
-//    if (needsUpdate) {
-//        // Remove all old entires
-//        NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
-//        NSArray       *keys = [NSArray arrayWithObjects:
-//                                               kPrefsVersion,
-//                                               kShouldRun,
-//                                               kStatus,
-//                                               kShowStatus,
-//                                               kCheckWeekly,
-//                                               kAnonInfo,
-//                                               kUseHotKey,
-//                                               kHotKeyFlags,
-//                                               kHotKeyCode,
-//                                               kLastCheck,
-//                                               kCheckNow,
-//                                               nil];
-//        for (NSString *key in keys) {
-//            [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-//        }
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-//        [self loadInitialDefaults:sender];
-//        BOOL result = [defaults synchronize];
-//        // Do any special changes here
-//        if (currentVersion == nil)
-//            currentVersion = @"0.0";
-//        if (result)
-//            NSLog(@"Updated preferences from version %@ to version %@", currentVersion, sourcesVersion);
-//        else
-//            NSLog(@"Failed to syncronize defaults");
-//    }
-
-    [self setFromUserDefaults];
     return self;
 }
 

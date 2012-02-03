@@ -12,6 +12,7 @@
 #define tptprefpane @"com.polymicrosystems.taptoggle.prefpane"
 #define tptmenuextra @"com.polymicrosystems.taptoggle.menuextra"
 #define kNotifyName @"com.polymicrosystems.taptoggle"
+#define kTrackPadPref @"com.apple.driver.AppleBluetoothMultitouch.trackpad.plist"
 
 // Bump version for any changes below
 

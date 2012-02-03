@@ -27,16 +27,13 @@
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1048">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSCustomObject" id="1021">
-				<string key="NSClassName">TapToggleViewController</string>
+				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSCustomObject" id="1014">
 				<string key="NSClassName">FirstResponder</string>
 			</object>
 			<object class="NSCustomObject" id="1050">
 				<string key="NSClassName">NSApplication</string>
-			</object>
-			<object class="NSCustomObject" id="903638069">
-				<string key="NSClassName">NSFontManager</string>
 			</object>
 			<object class="NSMenu" id="649796088">
 				<string key="NSTitle">Main Menu</string>
@@ -118,17 +115,84 @@
 				</object>
 				<string key="NSName">_NSMainMenu</string>
 			</object>
+			<object class="NSCustomObject" id="649350669">
+				<string key="NSClassName">TapMenuController</string>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">terminate:</string>
-						<reference key="source" ref="1014"/>
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tapMenu</string>
+						<reference key="source" ref="1021"/>
+						<reference key="destination" ref="649796088"/>
+					</object>
+					<int key="connectionID">797</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="649796088"/>
+						<reference key="destination" ref="649350669"/>
+					</object>
+					<int key="connectionID">799</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tapMenu</string>
+						<reference key="source" ref="649350669"/>
+						<reference key="destination" ref="649796088"/>
+					</object>
+					<int key="connectionID">800</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tapToggleItem</string>
+						<reference key="source" ref="649350669"/>
+						<reference key="destination" ref="238522557"/>
+					</object>
+					<int key="connectionID">801</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tapPrefItem</string>
+						<reference key="source" ref="649350669"/>
+						<reference key="destination" ref="609285721"/>
+					</object>
+					<int key="connectionID">802</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tapQuitItem</string>
+						<reference key="source" ref="649350669"/>
 						<reference key="destination" ref="632727374"/>
 					</object>
-					<int key="connectionID">369</int>
+					<int key="connectionID">803</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">tapToggleClick:</string>
+						<reference key="source" ref="649350669"/>
+						<reference key="destination" ref="238522557"/>
+					</object>
+					<int key="connectionID">804</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">tapPrefClick:</string>
+						<reference key="source" ref="649350669"/>
+						<reference key="destination" ref="609285721"/>
+					</object>
+					<int key="connectionID">805</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">tapQuitClick:</string>
+						<reference key="source" ref="649350669"/>
+						<reference key="destination" ref="632727374"/>
+					</object>
+					<int key="connectionID">806</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -217,8 +281,8 @@
 						<reference key="parent" ref="110575045"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">371</int>
-						<reference key="object" ref="903638069"/>
+						<int key="objectID">798</int>
+						<reference key="object" ref="649350669"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</object>
@@ -235,10 +299,10 @@
 					<string>149.IBPluginDependency</string>
 					<string>236.IBPluginDependency</string>
 					<string>29.IBPluginDependency</string>
-					<string>371.IBPluginDependency</string>
 					<string>56.IBPluginDependency</string>
 					<string>57.IBPluginDependency</string>
 					<string>58.IBPluginDependency</string>
+					<string>798.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -268,65 +332,24 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">794</int>
+			<int key="maxID">806</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">SRRecorderControl</string>
-					<string key="superclassName">NSControl</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">delegate</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">delegate</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">delegate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SRRecorderControl.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TapToggleMenu</string>
+					<string key="className">TapMenuController</string>
 					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TapToggleMenu.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TapToggleViewController</string>
-					<string key="superclassName">NSViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>anonInfoClicked:</string>
-							<string>checkNowClicked:</string>
-							<string>checkWeeklyClicked:</string>
-							<string>infoDoneClicked:</string>
-							<string>installClicked:</string>
-							<string>moreInfoClicked:</string>
-							<string>showStatus:</string>
-							<string>startClicked:</string>
-							<string>useHotkeyClicked:</string>
-							<string>websiteClicked:</string>
+							<string>tapPrefClick:</string>
+							<string>tapQuitClick:</string>
+							<string>tapToggleClick:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -336,57 +359,22 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>anonInfoClicked:</string>
-							<string>checkNowClicked:</string>
-							<string>checkWeeklyClicked:</string>
-							<string>infoDoneClicked:</string>
-							<string>installClicked:</string>
-							<string>moreInfoClicked:</string>
-							<string>showStatus:</string>
-							<string>startClicked:</string>
-							<string>useHotkeyClicked:</string>
-							<string>websiteClicked:</string>
+							<string>tapPrefClick:</string>
+							<string>tapQuitClick:</string>
+							<string>tapToggleClick:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
-								<string key="name">anonInfoClicked:</string>
+								<string key="name">tapPrefClick:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">checkNowClicked:</string>
+								<string key="name">tapQuitClick:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">checkWeeklyClicked:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">infoDoneClicked:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">installClicked:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">moreInfoClicked:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">showStatus:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">startClicked:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">useHotkeyClicked:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">websiteClicked:</string>
+								<string key="name">tapToggleClick:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
@@ -395,135 +383,51 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>anonInfoCheckBox</string>
-							<string>checkNowButton</string>
-							<string>hotKeyControl</string>
-							<string>infoPanel</string>
-							<string>installButton</string>
-							<string>licensedToTextField</string>
-							<string>mainView</string>
-							<string>menuExtra</string>
-							<string>moreInfoButton</string>
-							<string>showStatusCheckBox</string>
-							<string>startButton</string>
-							<string>statusTextField</string>
-							<string>useHotkeyCheckbox</string>
-							<string>versionTextField</string>
-							<string>websiteButton</string>
-							<string>weeklyCheckBox</string>
+							<string>tapMenu</string>
+							<string>tapPrefItem</string>
+							<string>tapQuitItem</string>
+							<string>tapToggleItem</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSButton</string>
-							<string>NSButton</string>
-							<string>SRRecorderControl</string>
-							<string>NSPanel</string>
-							<string>NSButton</string>
-							<string>NSTextField</string>
-							<string>NSView</string>
-							<string>TapToggleMenu</string>
-							<string>NSButton</string>
-							<string>NSButton</string>
-							<string>NSButton</string>
-							<string>NSTextField</string>
-							<string>NSButton</string>
-							<string>NSTextField</string>
-							<string>NSButton</string>
-							<string>NSButton</string>
+							<string>NSMenu</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>anonInfoCheckBox</string>
-							<string>checkNowButton</string>
-							<string>hotKeyControl</string>
-							<string>infoPanel</string>
-							<string>installButton</string>
-							<string>licensedToTextField</string>
-							<string>mainView</string>
-							<string>menuExtra</string>
-							<string>moreInfoButton</string>
-							<string>showStatusCheckBox</string>
-							<string>startButton</string>
-							<string>statusTextField</string>
-							<string>useHotkeyCheckbox</string>
-							<string>versionTextField</string>
-							<string>websiteButton</string>
-							<string>weeklyCheckBox</string>
+							<string>tapMenu</string>
+							<string>tapPrefItem</string>
+							<string>tapQuitItem</string>
+							<string>tapToggleItem</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">anonInfoCheckBox</string>
-								<string key="candidateClassName">NSButton</string>
+								<string key="name">tapMenu</string>
+								<string key="candidateClassName">NSMenu</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">checkNowButton</string>
-								<string key="candidateClassName">NSButton</string>
+								<string key="name">tapPrefItem</string>
+								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">hotKeyControl</string>
-								<string key="candidateClassName">SRRecorderControl</string>
+								<string key="name">tapQuitItem</string>
+								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">infoPanel</string>
-								<string key="candidateClassName">NSPanel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">installButton</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">licensedToTextField</string>
-								<string key="candidateClassName">NSTextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">mainView</string>
-								<string key="candidateClassName">NSView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">menuExtra</string>
-								<string key="candidateClassName">TapToggleMenu</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">moreInfoButton</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">showStatusCheckBox</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">startButton</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">statusTextField</string>
-								<string key="candidateClassName">NSTextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">useHotkeyCheckbox</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">versionTextField</string>
-								<string key="candidateClassName">NSTextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">websiteButton</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">weeklyCheckBox</string>
-								<string key="candidateClassName">NSButton</string>
+								<string key="name">tapToggleItem</string>
+								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TapToggleViewController.h</string>
+						<string key="minorKey">./Classes/TapMenuController.h</string>
 					</object>
 				</object>
 			</object>

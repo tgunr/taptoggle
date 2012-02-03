@@ -9,12 +9,13 @@
 #import <Cocoa/Cocoa.h>
 
 @class Preferences;
+@class TapMenuController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (nonatomic, retain, readonly) Preferences *prefs;
+@property (nonatomic, retain) Preferences *prefs;
 @property (nonatomic, retain) IBOutlet NSWindow     *window;
-
+@property (nonatomic, retain) TapMenuController *tapMenuController;
 - (void)tapShowPreferences;
 
 @end

@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18214DC54FB00613F39 /* SysPref.scpt */; };
-		754D525914DA678200D56DFA /* TapToggleMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F47214D7B1190086171A /* TapToggleMenu.m */; };
+		7535D18614DC6C6A00613F39 /* MenuExtra.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18414DC6C6A00613F39 /* MenuExtra.xib */; };
+		7535D18914DC70C600613F39 /* TapMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7535D18814DC70C600613F39 /* TapMenuController.m */; };
 		75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F45414D7AF5E0086171A /* Cocoa.framework */; };
 		75E0F45F14D7AF5F0086171A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F45D14D7AF5F0086171A /* InfoPlist.strings */; };
 		75E0F46114D7AF5F0086171A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F46014D7AF5F0086171A /* main.m */; };
@@ -91,6 +92,9 @@
 
 /* Begin PBXFileReference section */
 		7535D18214DC54FB00613F39 /* SysPref.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = SysPref.scpt; sourceTree = "<group>"; };
+		7535D18514DC6C6A00613F39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MenuExtra.xib; sourceTree = "<group>"; };
+		7535D18714DC70C600613F39 /* TapMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapMenuController.h; sourceTree = "<group>"; };
+		7535D18814DC70C600613F39 /* TapMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapMenuController.m; sourceTree = "<group>"; };
 		75E0F45014D7AF5E0086171A /* TapToggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapToggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E0F45414D7AF5E0086171A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75E0F45714D7AF5E0086171A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -103,8 +107,6 @@
 		75E0F46414D7AF5F0086171A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		75E0F46614D7AF5F0086171A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		75E0F46714D7AF5F0086171A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		75E0F47114D7B1190086171A /* TapToggleMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapToggleMenu.h; sourceTree = "<group>"; };
-		75E0F47214D7B1190086171A /* TapToggleMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TapToggleMenu.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		75E0F47614D7B1840086171A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		75E0F47714D7B1840086171A /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		75E0F47814D7B1840086171A /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Preferences.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -182,6 +184,7 @@
 		75E0F45A14D7AF5E0086171A /* TapToggle */ = {
 			isa = PBXGroup;
 			children = (
+				7535D18414DC6C6A00613F39 /* MenuExtra.xib */,
 				75E0F49214D7B3510086171A /* TapToggle.xib */,
 				75E0F48C14D7B1AF0086171A /* TapToggleViewController.h */,
 				75E0F48D14D7B1AF0086171A /* TapToggleViewController.m */,
@@ -189,8 +192,8 @@
 				75E0F47714D7B1840086171A /* Preferences.h */,
 				75E0F47814D7B1840086171A /* Preferences.m */,
 				75E0F47A14D7B1840086171A /* Prefs.h */,
-				75E0F47114D7B1190086171A /* TapToggleMenu.h */,
-				75E0F47214D7B1190086171A /* TapToggleMenu.m */,
+				7535D18714DC70C600613F39 /* TapMenuController.h */,
+				7535D18814DC70C600613F39 /* TapMenuController.m */,
 				75E0F46614D7AF5F0086171A /* AppDelegate.h */,
 				75E0F46714D7AF5F0086171A /* AppDelegate.m */,
 				75E0F45B14D7AF5F0086171A /* Supporting Files */,
@@ -347,6 +350,7 @@
 				75E0F48B14D7B1840086171A /* TapToggleOn-24.png in Resources */,
 				75E0F49514D7B3510086171A /* TapToggle.xib in Resources */,
 				7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */,
+				7535D18614DC6C6A00613F39 /* MenuExtra.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,11 +361,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				754D525914DA678200D56DFA /* TapToggleMenu.m in Sources */,
 				75E0F46114D7AF5F0086171A /* main.m in Sources */,
 				75E0F46814D7AF5F0086171A /* AppDelegate.m in Sources */,
 				75E0F48414D7B1840086171A /* Preferences.m in Sources */,
 				75E0F48E14D7B1AF0086171A /* TapToggleViewController.m in Sources */,
+				7535D18914DC70C600613F39 /* TapMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +380,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7535D18414DC6C6A00613F39 /* MenuExtra.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7535D18514DC6C6A00613F39 /* en */,
+			);
+			name = MenuExtra.xib;
+			sourceTree = "<group>";
+		};
 		75E0F45D14D7AF5F0086171A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

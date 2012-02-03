@@ -34,8 +34,9 @@
 @property (assign, setter=setshouldRun:, getter=shouldRun) BOOL shouldRun;
 @property (assign, setter=setKeyCombo:, getter=keyCombo) KeyCombo keyCombo;
 
++ (id)shared;
 - (void)notify;
-- (Preferences *)initPreferences:(id)sender;
+- (Preferences *)initPreferences;
 - (void)setWithDictionary:(NSDictionary *)prefDictionary;
 - (NSDictionary *)dictionary;
 - (void)setShowStatus:(BOOL)aShowStatus;

@@ -1,49 +1,58 @@
-#import <ShortcutRecorder/ShortcutRecorder.h>
-#import "AppDelegate.h"
+//
+//  TapMenuController.m
+//  TapToggle
+//
+//  Created by Dave Carlton on 02/03/12.
+//  Copyright (c) 2012 PolyMicro Systems. All rights reserved.
+//
+
+#import "TapMenuController.h"
 #import "Preferences.h"
-#import "TapToggleMenu.h"
+#import "AppDelegate.h"
 #import "Prefs.h"
 
-@interface TapToggleMenu () {
+@implementation TapMenuController {
 @private
-
-}
-
-- (void)setupUsingPrefs;
-@property (retain, readwrite) NSMenuItem *statusItem;
-@property (retain, readwrite) NSMenuItem *tapPrefItem;
-@property (retain, readwrite) NSMenuItem *tapQuitItem;
-
-
-@end
-
-@implementation TapToggleMenu {
-    Preferences *prefs;
-    NSMenuItem  *tapPrefItem;
-@private
-    NSMenuItem *_tapPrefItem;
 }
 
 @synthesize prefs;
 @synthesize statusItem;
+@synthesize tapMenu;
 @synthesize tapClickItem;
+@synthesize tapPrefItem;
 @synthesize tapQuitItem;
-@synthesize tapPrefItem = _tapPrefItem;
 
++ (id)instance {
+    static dispatch_once_t onceQueue;
+    static TapMenuController *tapMenuController = nil;
 
-+ (TapToggleMenu *)instance {
-    static TapToggleMenu *_instance = nil;
-
-    @synchronized (self) {
-        if (_instance == nil) {
-            _instance = [[self alloc] init];
-        }
-    }
-    return _instance;
+    dispatch_once(&onceQueue, ^{
+        tapMenuController = [[self alloc] init];
+    });
+    return tapMenuController;
 }
 
-- (void)initWithPreferences:(__unsafe_unretained Preferences *)preferences {
-    prefs = preferences;
+- (IBAction)tapToggleClick:(id)sender {
+}
+
+- (IBAction)tapPrefClick:(id)sender {
+}
+
+- (IBAction)tapQuitClick:(id)sender {
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        tapMenu = [[NSMenu alloc] init];
+        prefs = [Preferences shared];
+    }
+    return self;
+}
+
+- (void)awakeFromNib {
+    if (![NSBundle loadNibNamed:@"MenuExtra" owner:self])
+        NSLog(@"Failed to load MenuExtra.xib");
 }
 
 - (BOOL)isClicking {
@@ -64,7 +73,7 @@
     NSString *onPath   = [myBundle pathForImageResource:@"TapToggleOn-24.png"];
     NSString *offPath  = [myBundle pathForImageResource:@"TapToggleOff-24.png"];
     NSImage  *tapImage = [[NSImage alloc] initWithContentsOfFile:offPath];
-
+    
     if (clicking) {
         tapImage = [[NSImage alloc] initWithContentsOfFile:onPath];
     }
@@ -77,7 +86,7 @@
     NSURL         *asURL    = [myBundle URLForResource:@"SysPref" withExtension:@"scpt"];
     NSAppleScript *as       = [[NSAppleScript alloc] initWithContentsOfURL:asURL error:&dict];
     [as executeAndReturnError:&dict];
-
+    
     BOOL clicking = [self isClicking];
     NSImage *clickImage = [self getClickingImage:clicking];
     [statusItem setImage:clickImage];
@@ -106,29 +115,8 @@
         NSStatusBar  *bar           = [NSStatusBar systemStatusBar];
         NSStatusItem *newStatusItem = [bar statusItemWithLength:NSVariableStatusItemLength];
         statusItem = newStatusItem;
-//        [self initWithTitle:@"TapToggle"];
-        [self setAutoenablesItems:YES];
-
-        // Build the menu items
-        tapClickItem = [[NSMenuItem alloc]
-                                    initWithTitle:@"Tap Click Off" action:@selector(tapClickOff) keyEquivalent:@""];
-        [tapClickItem setTarget:self];
-        [tapClickItem setEnabled:YES];
-        [self addItem:tapClickItem];
-
-        tapPrefItem = [[NSMenuItem alloc]
-                                   initWithTitle:@"Preferences" action:@selector(tapPreferences) keyEquivalent:@""];
-        [tapPrefItem setTarget:self];
-        [tapPrefItem setEnabled:YES];
-        [self addItem:tapPrefItem];
-
-        tapQuitItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(tapQuit) keyEquivalent:@""];
-        [tapQuitItem setEnabled:YES];
-        [tapQuitItem setTarget:self];
-        [self addItem:tapQuitItem];
-
         // Install the item
-        [statusItem setMenu:self];
+        [statusItem setMenu:tapMenu];
     }
     BOOL clicking = [self isClicking];
     NSImage *theImage = [self getClickingImage:clicking];
@@ -160,7 +148,7 @@
 
 - (void)setupUsingPrefs {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-
+    
     BOOL value = [ud boolForKey:kShowStatus];
     if (value)
         [self activate];
@@ -172,11 +160,11 @@ void processEvent(NSEvent *event) {
     if ([event type] == NSKeyDown) {
         NSUInteger     modifiers = ([event modifierFlags] & NSDeviceIndependentModifierFlagsMask);
         unsigned short keycode   = [event keyCode];
-
-        TapToggleMenu *menu        = [TapToggleMenu instance];
+        
+        TapMenuController *menu        = [TapMenuController instance];
         Preferences   *preferences = [menu prefs];
         KeyCombo combo = [preferences keyCombo];
-
+        
         if ([preferences useHotKey]) {
             if (keycode == combo.code) if (modifiers == combo.flags)
                 [menu toggleClicking];
@@ -192,5 +180,3 @@ void processEvent(NSEvent *event) {
 }
 
 @end
-
-

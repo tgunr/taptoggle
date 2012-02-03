@@ -9,9 +9,9 @@
 
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import "TapToggleViewController.h"
-#import "TapToggleMenu.h"
 #import "Prefs.h"
 #import "Preferences.h"
+#import "TapMenuController.h"
 
 #define TapToggle_VERSION @"1.0"
 
@@ -34,7 +34,6 @@
 @synthesize useHotkeyCheckbox;
 @synthesize monitorCheck;
 @synthesize prefs;
-@synthesize toggleME;
 @synthesize eventMonitor;
 
 #pragma mark - Startup
@@ -58,13 +57,13 @@
             eventMonitor = nil;
         }
     }
-    [[TapToggleMenu instance] checkForChanges];
+    [[TapMenuController instance] 
+     checkForChanges];
 }
 
 - (void)awakeFromNib {
     NSInteger prefState;
-    prefs = [[Preferences alloc] initPreferences:self];
-    [[NSApp delegate] setPrefs:prefs];
+    prefs = [Preferences shared];
     [versionTextField setStringValue:TapToggle_VERSION];
     prefState = [prefs showStatus] ? NSOnState : NSOffState;
     [showStatusCheckBox setState:prefState];
@@ -80,8 +79,8 @@
     prefState = [prefs useHotKey] ? NSOnState : NSOffState;
     [useHotkeyCheckbox setState:prefState];
     [hotKeyControl setKeyCombo:[prefs keyCombo]];
-    toggleME = [TapToggleMenu instance];
-    [toggleME initWithPreferences:prefs];
+//    toggleME = [TapToggleMenu instance];
+//    [toggleME initWithPreferences:prefs];
     [self setState];
 }
 
@@ -94,20 +93,21 @@
         [prefs setShouldRun:NO];
     }
      [self setState];
-     [toggleME checkForChanges];
+     [[TapMenuController instance] 
+      checkForChanges];
 }
 
 #pragma mark - Monitor effect methods
 - (IBAction)showStatus:(id)sender {
     BOOL use = [showStatusCheckBox state] == NSOnState ? YES : NO;
     [prefs setShowStatus:use];
-    [toggleME checkForChanges];
+    [[TapMenuController instance] checkForChanges];
 }
 
 - (IBAction)useHotkeyClicked:(id)sender {
     BOOL use = [useHotkeyCheckbox state] == NSOnState ? YES : NO;
     [prefs setUseHotKey:use];
-    [toggleME checkForChanges];
+    [[TapMenuController instance] checkForChanges];
 }
 
 - (IBAction)anonInfoClicked:(id)sender {

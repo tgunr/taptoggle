@@ -10,7 +10,6 @@
 
 @class SRRecorderControl;
 @class Preferences;
-@class TapToggleMenu;
 
 @interface TapToggleViewController : NSViewController
 
@@ -31,7 +30,6 @@
 @property (weak) IBOutlet SRRecorderControl *hotKeyControl;
 @property (strong) IBOutlet NSPanel         *infoPanel;
 @property (assign) NSTimer                  *monitorCheck;
-@property (retain) TapToggleMenu *toggleME;
 @property (retain) NSEvent *eventMonitor;
 
 - (IBAction)showStatus:(id)sender;
