@@ -32,6 +32,7 @@
 @property (strong) IBOutlet NSPanel         *infoPanel;
 @property (assign) NSTimer                  *monitorCheck;
 @property (retain) TapToggleMenu *toggleME;
+@property (retain) NSEvent *eventMonitor;
 
 - (IBAction)showStatus:(id)sender;
 - (IBAction)startClicked:(id)sender;

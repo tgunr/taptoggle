@@ -4,6 +4,15 @@
 #import "TapToggleMenu.h"
 #import "Prefs.h"
 
+@interface TapToggleMenu () {
+@private
+    
+}
+
+- (void)setupUsingPrefs;
+
+@end
+
 @implementation TapToggleMenu {
     __unsafe_unretained Preferences *prefs;
 }
@@ -13,51 +22,19 @@
 @synthesize tapClickItem;
 @synthesize tapQuitItem;
 
-- (id)initWithPreferences:(__unsafe_unretained Preferences *)preferences {
-    self = [super init];
-    if (self) {
-        prefs = preferences;
-        NSStatusBar *bar = [NSStatusBar systemStatusBar];
-        statusItem = [bar statusItemWithLength:NSVariableStatusItemLength];
-        
-        // Build the menu items
-        NSMenu *newMenu = [[NSMenu alloc] initWithTitle:@"TapToggle"];
-        [newMenu setAutoenablesItems:YES];
-        tapClickItem = [[NSMenuItem alloc]
-                        initWithTitle:@"Tap Click Off" action:@selector(tapClickOff) keyEquivalent:@""];
-        [tapClickItem setTarget:self];
-        [tapClickItem setEnabled:YES];
-        [newMenu addItem:tapClickItem];
-        
-        tapQuitItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(tapQuit) keyEquivalent:@""];
-        [tapQuitItem setEnabled:YES];
-        [tapQuitItem setTarget:self];
-        [newMenu addItem:tapQuitItem];
-        // Install the item
-        [statusItem setMenu:newMenu];
++ (TapToggleMenu *)instance {
+    static TapToggleMenu *_instance = nil;
+
+    @synchronized (self) {
+        if (_instance == nil) {
+            _instance = [[self alloc] init];
+        }
     }
-    return self;
+    return _instance;
 }
 
-- (id)initWithBundle:(NSBundle *)bundle
-{
-//    self = [super initWithBundle:bundle];
-//    if( self == nil )
-//        return nil;
-
-//    // we will create and set the MenuExtraView
-//    theView = [[SampleMenuExtraView alloc] initWithFrame:
-//        [[self view] frame] menuExtra:self];
-//    [self setView:theView];
-//
-//    // prepare "dummy" menu, without any actions
-//    theMenu = [[NSMenu alloc] initWithTitle: @""];
-//    [theMenu setAutoenablesItems: NO];
-//    [theMenu addItemWithTitle: @"1" action: nil keyEquivalent: @""];
-//    [theMenu addItemWithTitle: @"2" action: nil keyEquivalent: @""];
-//    [theMenu addItemWithTitle: @"3" action: nil keyEquivalent: @""];
-
-    return self;
+- (void)initWithPreferences:(__unsafe_unretained Preferences *)preferences {
+    prefs = preferences;
 }
 
 - (BOOL)isClicking {
@@ -99,6 +76,8 @@
         [tapClickItem setTitle:@"Tap Click Off"];
     else
         [tapClickItem setTitle:@"Tap Click On"];
+    NSString * clickState = clicking ? @"ON" : @"OFF" ;
+    NSLog(@"Tap CLick is: %@", clickState);
 }
 
 - (void)tapClickOff {
@@ -110,26 +89,31 @@
 }
 
 - (void)activate {
-    // Setup the status item
     if (!statusItem) {
         NSStatusBar *bar = [NSStatusBar systemStatusBar];
-        statusItem = [bar statusItemWithLength:NSVariableStatusItemLength];
+        NSStatusItem * newStatusItem = [bar statusItemWithLength:NSVariableStatusItemLength];
+//        if (statusItem != newStatusItem) {
+//            if (statusItem) {
+//                [bar removeStatusItem:statusItem];
+//            }
+            statusItem = newStatusItem;
+            // Build the menu items
+            [self initWithTitle:@"TapToggle"];
+            [self setAutoenablesItems:YES];
+            tapClickItem = [[NSMenuItem alloc]
+                            initWithTitle:@"Tap Click Off" action:@selector(tapClickOff) keyEquivalent:@""];
+            [tapClickItem setTarget:self];
+            [tapClickItem setEnabled:YES];
+            [self addItem:tapClickItem];
+            
+            tapQuitItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(tapQuit) keyEquivalent:@""];
+            [tapQuitItem setEnabled:YES];
+            [tapQuitItem setTarget:self];
+            [self addItem:tapQuitItem];
 
-        // Build the menu items
-        NSMenu *newMenu = [[NSMenu alloc] initWithTitle:@"TapToggle"];
-        [newMenu setAutoenablesItems:YES];
-        tapClickItem = [[NSMenuItem alloc]
-                                    initWithTitle:@"Tap Click Off" action:@selector(tapClickOff) keyEquivalent:@""];
-        [tapClickItem setTarget:self];
-        [tapClickItem setEnabled:YES];
-        [newMenu addItem:tapClickItem];
-
-        tapQuitItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(tapQuit) keyEquivalent:@""];
-        [tapQuitItem setEnabled:YES];
-        [tapQuitItem setTarget:self];
-        [newMenu addItem:tapQuitItem];
-        // Install the item
-        [statusItem setMenu:newMenu];
+            // Install the item
+            [statusItem setMenu:self];
+//        }
     }
     BOOL clicking = [self isClicking];
     NSImage *theImage = [self getClickingImage:clicking];
@@ -138,116 +122,60 @@
 
 - (void)deactivate {
     NSStatusBar *bar = [NSStatusBar systemStatusBar];
-    [bar removeStatusItem:statusItem];
+    if (statusItem) {
+        [bar removeStatusItem:statusItem];
+        statusItem = nil;
+    }
 }
 
-- (void)checkShowStatusMenu:(NSDictionary *)appDict {
-    BOOL value = [[appDict objectForKey:kShowStatus] boolValue];
-    if (value)
-        [self activate];
+- (void)checkShowStatusMenu {
+    BOOL show = [prefs showStatus];
+    BOOL run = [prefs shouldRun];
+    if (run)
+        if (show)
+            [self activate];
+        else
+            [self deactivate];
     else
         [self deactivate];
 }
 
-- (void)checkWeekly:(NSDictionary *)appDict {
-    BOOL value = [[appDict objectForKey:kCheckWeekly] boolValue];
-    if (value)
-        NSLog(@"Starting Weekly check timer");
-    else
-        NSLog(@"Stopping Weekly check timer");
-}
-
-- (void)checkAnonInfo:(NSDictionary *)appDict {
-    BOOL value = [[appDict objectForKey:kAnonInfo] boolValue];
-    if (value)
-        NSLog(@"Will inlcude anon info");
-    else
-        NSLog(@"Anon info disabled");
-}
-
-- (void)checkUseHotKey:(NSDictionary *)appDict {
-    BOOL value = [[appDict objectForKey:kUseHotKey] boolValue];
-    if (value)
-        NSLog(@"Hot key enabled");
-    else
-        NSLog(@"Hot key disabled");
-}
-
-- (void)checkHotKey:(NSDictionary *)appDict {
-    NSInteger hkCode  = [[appDict objectForKey:kHotKeyCode] integerValue];
-    NSInteger hkFlags = [[appDict objectForKey:kHotKeyFlags] integerValue];
-    KeyCombo  hotkey  = {(NSUInteger) hkCode, hkFlags};
-}
-
-- (void)checkForChanges:(NSDictionary *)fromApp {
-    if (fromApp) {
-        BOOL value = [[fromApp objectForKey:kShouldRun] boolValue];
-        if (!value) {
-            [self tapQuit];
-        }
-        [self checkShowStatusMenu:fromApp];
-        [self checkWeekly:fromApp];
-        [self checkAnonInfo:fromApp];
-        [self checkUseHotKey:fromApp];
-    }
-    else
-        NSLog(@"No data from app");
-}
-
-- (void)observeNotification:(NSNotification *)note {
-    NSString *name = [note name];
-    if ([name isEqualToString:kNotifyName]) {
-//        NSLog(@"Got: %@", (NSDictionary *) [note userInfo]);
-        [self checkForChanges:(NSDictionary *) [note userInfo]];
-    }
-//    NSLog(@"Got Notification: %@", note);
-}
-
-- (void)checkForUpdate {
-    NSTimeInterval oneWeek = 60 * 60 * 24 * 7;
-    NSDate *checkDate = [NSDate dateWithTimeInterval:oneWeek sinceDate:[prefs lastCheck]];
-    NSDate *today     = [NSDate date];
-    NSComparisonResult checkResult = [today compare:checkDate];
-    if (checkResult == NSOrderedDescending) {
-        // TODO: checkin code
-    }
+- (void)checkForChanges {
+    [self checkShowStatusMenu];
 }
 
 - (void)setupUsingPrefs {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 
     BOOL value = [ud boolForKey:kShowStatus];
-    value = [prefs showStatus];
     if (value)
         [self activate];
     else
         [self deactivate];
-
-    [self checkForUpdate];
 }
 
 void processEvent(NSEvent *event) {
     if ([event type] == NSKeyDown) {
         NSUInteger     modifiers = ([event modifierFlags] & NSDeviceIndependentModifierFlagsMask);
         unsigned short keycode   = [event keyCode];
-        NSApplication *app         = [NSApplication sharedApplication];
-        AppDelegate   *appD        = (AppDelegate *) [app delegate];
-//        TapToggleMenu *menu        = [appD menuMonitor];
-//        Preferences   *preferences = [menu prefs];
-//        KeyCombo combo = [preferences keyCombo];
 
-//        if ([preferences useHotKey]) {
-//            if (keycode == combo.code) if (modifiers == combo.flags)
-//                [menu toggleClicking];
-//            NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
-//            NSLog(@"Looking for: %@", lookingFor);
-//            NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
-//            NSLog(@"Got: %@", results);
-//    }
+        TapToggleMenu *menu        = [TapToggleMenu instance];
+        Preferences   *preferences = [menu prefs];
+        KeyCombo combo = [preferences keyCombo];
+
+        if ([preferences useHotKey]) {
+            if (keycode == combo.code) 
+                if (modifiers == combo.flags)
+                    [menu toggleClicking];
+            NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
+            NSLog(@"Looking for: %@", lookingFor);
+            NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
+            NSLog(@"Got: %@", results);
+    }
         }
-//    if ([event type] == NSLeftMouseUp) {
-//        NSLog(@"click event: %@", NSStringFromPoint([event locationInWindow]));
-//    }
+    if ([event type] == NSLeftMouseUp) {
+        NSLog(@"click event: %@", NSStringFromPoint([event locationInWindow]));
+    }
 }
 
 @end

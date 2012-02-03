@@ -1,3 +1,4 @@
+
 //
 //  TapToggleViewController.m
 //  TapToggle
@@ -34,8 +35,31 @@
 @synthesize monitorCheck;
 @synthesize prefs;
 @synthesize toggleME;
+@synthesize eventMonitor;
 
 #pragma mark - Startup
+
+- (void)setState {
+    BOOL status = [prefs shouldRun];
+    if (status) {
+        [statusTextField setStringValue:@"Running"];
+        [statusTextField setTextColor:[NSColor greenColor]];
+        [startButton setTitle:@"Stop"];
+        eventMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
+            processEvent(event);
+        }];
+    } else {
+        [startButton setTitle:@"Start"];
+        [statusTextField setStringValue:@"Not Running"];
+        [statusTextField setTextColor:[NSColor redColor]];
+//        [prefs setShouldRun:NO];
+        if (eventMonitor) {
+            [NSEvent removeMonitor:eventMonitor];
+            eventMonitor = nil;
+        }
+    }
+    [[TapToggleMenu instance] checkForChanges];
+}
 
 - (void)awakeFromNib {
     NSInteger prefState;
@@ -56,35 +80,34 @@
     prefState = [prefs useHotKey] ? NSOnState : NSOffState;
     [useHotkeyCheckbox setState:prefState];
     [hotKeyControl setKeyCombo:[prefs keyCombo]];
-   toggleME = [[TapToggleMenu alloc]initWithPreferences:prefs];
+    toggleME = [TapToggleMenu instance];
+    [toggleME initWithPreferences:prefs];
+    [self setState];
 }
 
  - (IBAction)startClicked:(id)sender {
     BOOL titleIsStart = [[startButton title] isEqualToString:@"Start"] ? YES : NO;
     if (titleIsStart) {
-        [startButton setTitle:@"Stop"];
-        [toggleME activate];
+        [prefs setShouldRun:YES];
     }
     if (!titleIsStart) {
-        [startButton setTitle:@"Start"];
-        [toggleME deactivate];
+        [prefs setShouldRun:NO];
     }
+     [self setState];
+     [toggleME checkForChanges];
 }
 
 #pragma mark - Monitor effect methods
 - (IBAction)showStatus:(id)sender {
     BOOL use = [showStatusCheckBox state] == NSOnState ? YES : NO;
     [prefs setShowStatus:use];
+    [toggleME checkForChanges];
 }
 
 - (IBAction)useHotkeyClicked:(id)sender {
     BOOL use = [useHotkeyCheckbox state] == NSOnState ? YES : NO;
     [prefs setUseHotKey:use];
-}
-
-- (IBAction)checkNowClicked:(id)sender {
-    BOOL use = [checkNowButton state] == NSOnState ? YES : NO;
-    // TODO: make checkin code
+    [toggleME checkForChanges];
 }
 
 - (IBAction)anonInfoClicked:(id)sender {
@@ -98,6 +121,11 @@
 }
 
 #pragma mark - Update code
+- (IBAction)checkNowClicked:(id)sender {
+    BOOL use = [checkNowButton state] == NSOnState ? YES : NO;
+    // TODO: make checkin code
+}
+
 - (void)didEndinfoPanel:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     [sheet orderOut:self];
 }
@@ -136,7 +164,7 @@
 }
 
 - (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo {
-//    [prefs setKeyCombo:newKeyCombo];
+    [prefs setKeyCombo:newKeyCombo];
 }
 
 @end

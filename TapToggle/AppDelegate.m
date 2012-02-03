@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "Preferences.h"
 #import "Prefs.h"
+#import "TapToggleMenu.h"
 
 @interface AppDelegate ()
 
@@ -30,22 +31,68 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+//    TapToggleMenu *menu = [TapToggleMenu instance];
 //    _monitor = [[TapToggleMenu alloc] initWithPreferences:_prefs];
-//    [_monitor setupUsingPrefs];
 
 
 //    [[NSDistributedNotificationCenter defaultCenter]
 //                                      addObserver:_monitor selector:@selector(observeNotification:) name:kNotifyName
 //                                           object:nil];
 
-//    [NSEvent addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
-//        processEvent(event);
-//    }];
-
     NSBundle *myBundle = [NSBundle mainBundle];
     NSURL    *myURL    = [myBundle bundleURL];
     LSRegisterURL((__bridge CFURLRef) myURL, TRUE);
     SMLoginItemSetEnabled((CFStringRef) tptmenuextra, true);
 }
+
+- (void)checkWeekly:(NSDictionary *)appDict {
+    BOOL value = [[appDict objectForKey:kCheckWeekly] boolValue];
+    if (value)
+        NSLog(@"Starting Weekly check timer");
+    else
+        NSLog(@"Stopping Weekly check timer");
+}
+
+- (void)checkAnonInfo:(NSDictionary *)appDict {
+    BOOL value = [[appDict objectForKey:kAnonInfo] boolValue];
+    if (value)
+        NSLog(@"Will inlcude anon info");
+    else
+        NSLog(@"Anon info disabled");
+}
+
+- (void)checkUseHotKey {
+    BOOL value = [_prefs useHotKey];
+    if (value)
+        NSLog(@"Hot key enabled");
+    else
+        NSLog(@"Hot key disabled");
+}
+
+- (void)checkHotKey:(NSDictionary *)appDict {
+    NSInteger hkCode  = [[appDict objectForKey:kHotKeyCode] integerValue];
+    NSInteger hkFlags = [[appDict objectForKey:kHotKeyFlags] integerValue];
+    KeyCombo  hotkey  = {(NSUInteger) hkCode, hkFlags};
+}
+
+//- (void)observeNotification:(NSNotification *)note {
+//    NSString *name = [note name];
+//    if ([name isEqualToString:kNotifyName]) {
+////        NSLog(@"Got: %@", (NSDictionary *) [note userInfo]);
+//        [self checkForChanges:(NSDictionary *) [note userInfo]];
+//    }
+////    NSLog(@"Got Notification: %@", note);
+//}
+
+- (void)checkForUpdate {
+    NSTimeInterval oneWeek = 60 * 60 * 24 * 7;
+    NSDate *checkDate = [NSDate dateWithTimeInterval:oneWeek sinceDate:[_prefs lastCheck]];
+    NSDate *today     = [NSDate date];
+    NSComparisonResult checkResult = [today compare:checkDate];
+    if (checkResult == NSOrderedDescending) {
+        // TODO: checkin code
+    }
+}
+
 
 @end

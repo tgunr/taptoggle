@@ -13,6 +13,7 @@
 
 - (void)setFromUserDefaults;
 - (void)setUserDefaultsWithDictionry:(NSDictionary *)defaultDict;
+
 @end
 
 @implementation Preferences
@@ -21,7 +22,6 @@
 @synthesize prefsVersion;
 @synthesize lastCheck;
 @synthesize shouldRun;
-@synthesize checkNow;
 @synthesize keyCombo;
 @synthesize userDefaults;
 
@@ -79,7 +79,6 @@
     prefsVersion = [userDefaults stringForKey:kPrefsVersion];
     lastCheck    = [userDefaults objectForKey:kLastCheck];
     shouldRun    = [userDefaults boolForKey:kShouldRun];
-    checkNow     = [userDefaults boolForKey:kCheckNow];
 
 }
 
@@ -141,7 +140,7 @@
     NSLog(@"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
-- (void)setWith:(NSDictionary *)prefDictionary {
+- (void)setWithDictionary:(NSDictionary *)prefDictionary {
     showStatus   = [[prefDictionary objectForKey:kShowStatus] boolValue];
     _checkWeekly = [[prefDictionary objectForKey:kCheckWeekly] boolValue];
     _anonInfo    = [[prefDictionary objectForKey:kAnonInfo] boolValue];
@@ -151,17 +150,17 @@
 }
 
 - (NSDictionary *)dictionary {
-    NSDictionary *prefsAsDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                      [NSNumber numberWithBool:showStatus], kShowStatus,
-                                                      [NSNumber numberWithBool:_checkWeekly], kCheckWeekly,
-                                                      [NSNumber numberWithBool:_anonInfo], kAnonInfo,
-                                                      [NSNumber numberWithBool:_useHotKey], kUseHotKey,
-                                                      [NSNumber numberWithInteger:keyCombo.code], kHotKeyCode,
-                                                      [NSNumber numberWithInteger:keyCombo.flags], kHotKeyFlags,
-                                                      prefsVersion, kPrefsVersion,
-                                                      [NSNumber numberWithBool:shouldRun], kShouldRun,
-                                                      [NSNumber numberWithBool:checkNow], kCheckNow,
-                                                      nil];
+    NSDictionary *prefsAsDict = 
+    [NSDictionary dictionaryWithObjectsAndKeys:
+     [NSNumber numberWithBool:showStatus], kShowStatus,
+     [NSNumber numberWithBool:_checkWeekly], kCheckWeekly,
+     [NSNumber numberWithBool:_anonInfo], kAnonInfo,
+     [NSNumber numberWithBool:_useHotKey], kUseHotKey,
+     [NSNumber numberWithInteger:keyCombo.code], kHotKeyCode,
+     [NSNumber numberWithInteger:keyCombo.flags], kHotKeyFlags,
+     prefsVersion, kPrefsVersion,
+     [NSNumber numberWithBool:shouldRun], kShouldRun,
+     nil];
     return prefsAsDict;
 }
 
@@ -170,30 +169,26 @@
     [userDefaults setBool:anUseHotKey forKey:kUseHotKey];
 }
 
+- (BOOL)useHotKey {
+    return _useHotKey;
+}
+
 - (void)setAnonInfo:(BOOL)anAnonInfo {
     _anonInfo = anAnonInfo;
     [userDefaults setBool:anAnonInfo forKey:kAnonInfo];
-}
-
-- (void)setCheckWeekly:(BOOL)aCheckWeekly {
-    _checkWeekly = aCheckWeekly;
-    [userDefaults setBool:aCheckWeekly forKey:kAnonInfo];
-}
-
-- (BOOL)showStatus {
-    return showStatus;
-}
-
-- (BOOL)checkWeekly {
-    return _checkWeekly;
 }
 
 - (BOOL)anonInfo {
     return _anonInfo;
 }
 
-- (BOOL)useHotKey {
-    return _useHotKey;
+- (void)setCheckWeekly:(BOOL)aCheckWeekly {
+    _checkWeekly = aCheckWeekly;
+    [userDefaults setBool:aCheckWeekly forKey:kCheckWeekly];
+}
+
+- (BOOL)checkWeekly {
+    return _checkWeekly;
 }
 
 - (void)setShowStatus:(BOOL)status {
@@ -201,12 +196,30 @@
     [userDefaults setBool:status forKey:kShowStatus];
 }
 
+- (BOOL)showStatus {
+    return showStatus;
+}
+
+- (void)setShouldRun:(BOOL)status {
+    shouldRun = status;
+    [userDefaults setBool:status forKey:kShouldRun];
+}
+
+- (BOOL)showShouldRun {
+    return shouldRun;
+}
+
+- (void)setKeyCombo:(KeyCombo)aKeyCombo {
+    keyCombo = aKeyCombo;
+    [userDefaults setInteger:keyCombo.code forKey:kHotKeyCode];
+    [userDefaults setInteger:keyCombo.flags forKey:kHotKeyFlags];
+}
+
 - (void)notify {
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults synchronize];
+    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    [defaults synchronize];
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kNotifyName object:@"TapToggle"
                                                                  userInfo:[self dictionary] deliverImmediately:YES];
 }
-
 
 @end

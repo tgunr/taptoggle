@@ -17,7 +17,6 @@
     NSString *prefsVersion;
     NSDate   *lastCheck;
     BOOL     shouldRun;
-    BOOL     checkNow;
     KeyCombo keyCombo;
 }
 
@@ -31,20 +30,23 @@
 
 // These are defaulted programatically
 @property (retain) NSString *prefsVersion;
-@property (retain) NSDate   *lastCheck;
-@property (assign) BOOL                                           shouldRun;
-@property (assign) BOOL                                           checkNow;
+@property (retain, setter = setLastCheck:, getter=lastCheck) NSDate   *lastCheck;
+@property (assign, setter=setshouldRun:, getter=shouldRun) BOOL shouldRun;
 @property (assign, setter=setKeyCombo:, getter=keyCombo) KeyCombo keyCombo;
 
 - (void)notify;
 - (Preferences *)initPreferences:(id)sender;
-- (void)setWith:(NSDictionary *)prefDictionary;
+- (void)setWithDictionary:(NSDictionary *)prefDictionary;
 - (NSDictionary *)dictionary;
-- (BOOL)showStatus;
 - (void)setShowStatus:(BOOL)aShowStatus;
+- (BOOL)showStatus;
 - (void)setUseHotKey:(BOOL)anUseHotKey;
+- (BOOL)useHotKey;
 - (void)setAnonInfo:(BOOL)anAnonInfo;
+- (BOOL)anonInfo;
 - (void)setCheckWeekly:(BOOL)aCheckWeekly;
-
+- (BOOL)checkWeekly;
+- (void)setShouldRun:(BOOL)aShouldRun;
+- (BOOL)shouldRun;
 
 @end

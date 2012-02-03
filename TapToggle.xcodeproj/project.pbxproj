@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18214DC54FB00613F39 /* SysPref.scpt */; };
 		754D525914DA678200D56DFA /* TapToggleMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F47214D7B1190086171A /* TapToggleMenu.m */; };
 		75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F45414D7AF5E0086171A /* Cocoa.framework */; };
 		75E0F45F14D7AF5F0086171A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F45D14D7AF5F0086171A /* InfoPlist.strings */; };
@@ -89,6 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7535D18214DC54FB00613F39 /* SysPref.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = SysPref.scpt; sourceTree = "<group>"; };
 		75E0F45014D7AF5E0086171A /* TapToggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapToggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E0F45414D7AF5E0086171A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75E0F45714D7AF5E0086171A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -212,6 +214,7 @@
 		75E0F48F14D7B2740086171A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7535D18214DC54FB00613F39 /* SysPref.scpt */,
 				75E0F47614D7B1840086171A /* Localizable.strings */,
 				75E0F47914D7B1840086171A /* Preferences.plist */,
 				75E0F47B14D7B1840086171A /* TapToggle.icns */,
@@ -343,6 +346,7 @@
 				75E0F48A14D7B1840086171A /* TapToggleOff-24.png in Resources */,
 				75E0F48B14D7B1840086171A /* TapToggleOn-24.png in Resources */,
 				75E0F49514D7B3510086171A /* TapToggle.xib in Resources */,
+				7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
