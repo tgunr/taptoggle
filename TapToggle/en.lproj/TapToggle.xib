@@ -15,6 +15,7 @@
 			<string>NSViewController</string>
 			<string>NSScroller</string>
 			<string>NSButton</string>
+			<string>NSMenu</string>
 			<string>NSTextFieldCell</string>
 			<string>NSImageView</string>
 			<string>NSButtonCell</string>
@@ -22,6 +23,7 @@
 			<string>NSImageCell</string>
 			<string>NSScrollView</string>
 			<string>NSTableView</string>
+			<string>NSMenuItem</string>
 			<string>NSCustomObject</string>
 			<string>NSCustomView</string>
 			<string>NSView</string>
@@ -45,6 +47,124 @@
 			</object>
 			<object class="NSCustomObject" id="278121016">
 				<string key="NSClassName">NSApplication</string>
+			</object>
+			<object class="NSMenu" id="692452578">
+				<string key="NSTitle">AMainMenu</string>
+				<array class="NSMutableArray" key="NSMenuItems">
+					<object class="NSMenuItem" id="455858161">
+						<reference key="NSMenu" ref="692452578"/>
+						<string key="NSTitle">TapToggle</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSKeyEquivModMask">1048576</int>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<object class="NSCustomResource" key="NSOnImage" id="618274498">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuCheckmark</string>
+						</object>
+						<object class="NSCustomResource" key="NSMixedImage" id="913837511">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuMixedState</string>
+						</object>
+						<string key="NSAction">submenuAction:</string>
+						<object class="NSMenu" key="NSSubmenu" id="1062302883">
+							<string key="NSTitle">TapToggle</string>
+							<array class="NSMutableArray" key="NSMenuItems">
+								<object class="NSMenuItem" id="959270562">
+									<reference key="NSMenu" ref="1062302883"/>
+									<string key="NSTitle">About TapToggle</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="618274498"/>
+									<reference key="NSMixedImage" ref="913837511"/>
+								</object>
+								<object class="NSMenuItem" id="1001241351">
+									<reference key="NSMenu" ref="1062302883"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="618274498"/>
+									<reference key="NSMixedImage" ref="913837511"/>
+								</object>
+								<object class="NSMenuItem" id="641754053">
+									<reference key="NSMenu" ref="1062302883"/>
+									<string key="NSTitle">Hide TapToggle</string>
+									<string key="NSKeyEquiv">h</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="618274498"/>
+									<reference key="NSMixedImage" ref="913837511"/>
+								</object>
+								<object class="NSMenuItem" id="768395191">
+									<reference key="NSMenu" ref="1062302883"/>
+									<string key="NSTitle">Hide Others</string>
+									<string key="NSKeyEquiv">h</string>
+									<int key="NSKeyEquivModMask">1572864</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="618274498"/>
+									<reference key="NSMixedImage" ref="913837511"/>
+								</object>
+								<object class="NSMenuItem" id="904886583">
+									<reference key="NSMenu" ref="1062302883"/>
+									<string key="NSTitle">Show All</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="618274498"/>
+									<reference key="NSMixedImage" ref="913837511"/>
+								</object>
+								<object class="NSMenuItem" id="521540274">
+									<reference key="NSMenu" ref="1062302883"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="618274498"/>
+									<reference key="NSMixedImage" ref="913837511"/>
+								</object>
+								<object class="NSMenuItem" id="459939403">
+									<reference key="NSMenu" ref="1062302883"/>
+									<string key="NSTitle">Quit TapToggle</string>
+									<string key="NSKeyEquiv">q</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="618274498"/>
+									<reference key="NSMixedImage" ref="913837511"/>
+								</object>
+							</array>
+							<string key="NSName">_NSAppleMenu</string>
+						</object>
+					</object>
+					<object class="NSMenuItem" id="185817478">
+						<reference key="NSMenu" ref="692452578"/>
+						<string key="NSTitle">Help</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="618274498"/>
+						<reference key="NSMixedImage" ref="913837511"/>
+						<string key="NSAction">submenuAction:</string>
+						<object class="NSMenu" key="NSSubmenu" id="511744385">
+							<string key="NSTitle">Help</string>
+							<array class="NSMutableArray" key="NSMenuItems">
+								<object class="NSMenuItem" id="673122112">
+									<reference key="NSMenu" ref="511744385"/>
+									<string key="NSTitle">TapToggle Help</string>
+									<string key="NSKeyEquiv">?</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="618274498"/>
+									<reference key="NSMixedImage" ref="913837511"/>
+								</object>
+							</array>
+							<string key="NSName">_NSHelpMenu</string>
+						</object>
+					</object>
+				</array>
+				<string key="NSName">_NSMainMenu</string>
 			</object>
 			<object class="NSWindowTemplate" id="393027907">
 				<int key="NSWindowStyleMask">78</int>
@@ -891,6 +1011,46 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 					<int key="connectionID">510</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">terminate:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="459939403"/>
+					</object>
+					<int key="connectionID">659</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">hide:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="641754053"/>
+					</object>
+					<int key="connectionID">660</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">hideOtherApplications:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="768395191"/>
+					</object>
+					<int key="connectionID">661</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">unhideAllApplications:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="904886583"/>
+					</object>
+					<int key="connectionID">662</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">orderFrontStandardAboutPanel:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="959270562"/>
+					</object>
+					<int key="connectionID">663</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="660800786"/>
@@ -1669,6 +1829,93 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 						<reference key="object" ref="237920014"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">514</int>
+						<reference key="object" ref="692452578"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="185817478"/>
+							<reference ref="455858161"/>
+						</array>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">515</int>
+						<reference key="object" ref="185817478"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="511744385"/>
+						</array>
+						<reference key="parent" ref="692452578"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">520</int>
+						<reference key="object" ref="455858161"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="1062302883"/>
+						</array>
+						<reference key="parent" ref="692452578"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">527</int>
+						<reference key="object" ref="1062302883"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="768395191"/>
+							<reference ref="521540274"/>
+							<reference ref="1001241351"/>
+							<reference ref="459939403"/>
+							<reference ref="904886583"/>
+							<reference ref="641754053"/>
+							<reference ref="959270562"/>
+						</array>
+						<reference key="parent" ref="455858161"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">528</int>
+						<reference key="object" ref="768395191"/>
+						<reference key="parent" ref="1062302883"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">529</int>
+						<reference key="object" ref="521540274"/>
+						<reference key="parent" ref="1062302883"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">531</int>
+						<reference key="object" ref="1001241351"/>
+						<reference key="parent" ref="1062302883"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">535</int>
+						<reference key="object" ref="459939403"/>
+						<reference key="parent" ref="1062302883"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">536</int>
+						<reference key="object" ref="904886583"/>
+						<reference key="parent" ref="1062302883"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">537</int>
+						<reference key="object" ref="641754053"/>
+						<reference key="parent" ref="1062302883"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">538</int>
+						<reference key="object" ref="959270562"/>
+						<reference key="parent" ref="1062302883"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">657</int>
+						<reference key="object" ref="511744385"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="673122112"/>
+						</array>
+						<reference key="parent" ref="185817478"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">658</int>
+						<reference key="object" ref="673122112"/>
+						<reference key="parent" ref="511744385"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1734,14 +1981,27 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 				<string key="330.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="333.CustomClassName">TapToggleViewController</string>
 				<string key="333.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="514.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="515.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="520.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="527.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="528.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="529.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="531.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="535.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="536.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="537.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="538.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="657.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="658.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="99.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">513</int>
+			<int key="maxID">663</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1931,6 +2191,8 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NSMenuCheckmark">{9, 8}</string>
+			<string key="NSMenuMixedState">{7, 2}</string>
 			<string key="NSSwitch">{15, 15}</string>
 			<string key="TapToggle">{512, 512}</string>
 		</dictionary>
