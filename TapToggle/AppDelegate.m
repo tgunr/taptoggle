@@ -16,29 +16,26 @@
 @interface AppDelegate ()
 
 - (void)setPrefs:(Preferences *)preferences;
+- (void)tapShowPreferences;
+
+
+@property (nonatomic, retain, readwrite) Preferences *prefs;
+
 
 @end
 
 @implementation AppDelegate {
 }
 
-@synthesize window = _window;
+@synthesize window;
 @synthesize prefs = _prefs;
 
 
-- (void)setPrefs: (Preferences *)preferences {
+- (void)setPrefs:(Preferences *)preferences {
     _prefs = preferences;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-//    TapToggleMenu *menu = [TapToggleMenu instance];
-//    _monitor = [[TapToggleMenu alloc] initWithPreferences:_prefs];
-
-
-//    [[NSDistributedNotificationCenter defaultCenter]
-//                                      addObserver:_monitor selector:@selector(observeNotification:) name:kNotifyName
-//                                           object:nil];
-
     NSBundle *myBundle = [NSBundle mainBundle];
     NSURL    *myURL    = [myBundle bundleURL];
     LSRegisterURL((__bridge CFURLRef) myURL, TRUE);
@@ -75,15 +72,6 @@
     KeyCombo  hotkey  = {(NSUInteger) hkCode, hkFlags};
 }
 
-//- (void)observeNotification:(NSNotification *)note {
-//    NSString *name = [note name];
-//    if ([name isEqualToString:kNotifyName]) {
-////        NSLog(@"Got: %@", (NSDictionary *) [note userInfo]);
-//        [self checkForChanges:(NSDictionary *) [note userInfo]];
-//    }
-////    NSLog(@"Got Notification: %@", note);
-//}
-
 - (void)checkForUpdate {
     NSTimeInterval oneWeek = 60 * 60 * 24 * 7;
     NSDate *checkDate = [NSDate dateWithTimeInterval:oneWeek sinceDate:[_prefs lastCheck]];
@@ -94,5 +82,7 @@
     }
 }
 
-
+- (void)tapShowPreferences {
+    [window orderFrontRegardless];
+}
 @end

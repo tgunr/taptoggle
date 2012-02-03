@@ -12,7 +12,9 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (nonatomic, retain) Preferences       *prefs;
-@property (nonatomic, retain) IBOutlet NSWindow *window;
+@property (nonatomic, retain, readonly) Preferences *prefs;
+@property (nonatomic, retain) IBOutlet NSWindow     *window;
+
+- (void)tapShowPreferences;
 
 @end
