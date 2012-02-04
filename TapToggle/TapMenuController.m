@@ -32,27 +32,16 @@
     return tapMenuController;
 }
 
-- (IBAction)tapToggleClick:(id)sender {
-}
-
-- (IBAction)tapPrefClick:(id)sender {
-}
-
-- (IBAction)tapQuitClick:(id)sender {
-}
-
 - (id)init {
     self = [super init];
     if (self) {
-        tapMenu = [[NSMenu alloc] init];
+//        tapMenu = [[NSMenu alloc] init];
         prefs = [Preferences shared];
     }
     return self;
 }
 
 - (void)awakeFromNib {
-    if (![NSBundle loadNibNamed:@"MenuExtra" owner:self])
-        NSLog(@"Failed to load MenuExtra.xib");
 }
 
 - (BOOL)isClicking {
@@ -98,16 +87,16 @@
     NSLog(@"Tap CLick is: %@", clickState);
 }
 
-- (void)tapClickOff {
+- (IBAction)tapToggleClick:(id)sender {
     [self toggleClicking];
 }
 
-- (void)tapQuit {
-    [[NSApplication sharedApplication] terminate:self];
+- (IBAction)tapPrefClick:(id)sender {
+    [[NSApp delegate] tapShowPreferences];
 }
 
-- (void)tapPreferences {
-    [[NSApp delegate] tapShowPreferences];
+- (IBAction)tapQuitClick:(id)sender {
+    [[NSApplication sharedApplication] terminate:self];
 }
 
 - (void)activate {

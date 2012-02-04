@@ -30,7 +30,16 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     prefs = [Preferences shared];
+    NSNib *nib = [[NSNib alloc]initWithNibNamed:@"MenuExtra" bundle:nil];
+    
+    // At this pint, our outlets to inside this nib will be properly setup. It is important to note
+    // that they will get overwritten when this is called again!
+    // In general, it is good practice to use a unique controller object for each nib you load.
+    // You will normally pass that controller as the 'owner'. For simplicity purposes we are passing
+    // in this object as the owner.
+    //
     tapMenuController = [TapMenuController instance];
+    [nib instantiateNibWithOwner:tapMenuController topLevelObjects:nil];
     
 //    NSBundle *myBundle = [NSBundle mainBundle];
 //    NSURL    *myURL    = [myBundle bundleURL];
@@ -79,6 +88,6 @@
 }
 
 - (void)tapShowPreferences {
-    [window orderFrontRegardless];
+    [window makeKeyAndOrderFront: self];
 }
 @end

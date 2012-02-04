@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		750E29C814DDDE4800FE314C /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 750E29BC14DDDDE400FE314C /* ShortcutRecorder.framework */; };
 		7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18214DC54FB00613F39 /* SysPref.scpt */; };
 		7535D18614DC6C6A00613F39 /* MenuExtra.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18414DC6C6A00613F39 /* MenuExtra.xib */; };
 		7535D18914DC70C600613F39 /* TapMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7535D18814DC70C600613F39 /* TapMenuController.m */; };
@@ -26,51 +27,49 @@
 		75E0F48B14D7B1840086171A /* TapToggleOn-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F48114D7B1840086171A /* TapToggleOn-24.png */; };
 		75E0F48E14D7B1AF0086171A /* TapToggleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F48D14D7B1AF0086171A /* TapToggleViewController.m */; };
 		75E0F49514D7B3510086171A /* TapToggle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F49214D7B3510086171A /* TapToggle.xib */; };
-		75E0F4B014D7BE3B0086171A /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4A514D7BE130086171A /* ShortcutRecorder.framework */; };
 		75E0F4B214D7D0DA0086171A /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4B114D7D0D90086171A /* ServiceManagement.framework */; };
 		75E0F4B414D7D6050086171A /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4B314D7D6040086171A /* PreferencePanes.framework */; };
-		75F56D6414D8A60C0022D215 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75E0F4A514D7BE130086171A /* ShortcutRecorder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		75E0F4A414D7BE130086171A /* PBXContainerItemProxy */ = {
+		750E29BB14DDDDE400FE314C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */;
+			containerPortal = 750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 939837800DA42965007F53F3;
 			remoteInfo = "ShortcutRecorder.framework - with embedded ibplugin";
 		};
-		75E0F4A614D7BE130086171A /* PBXContainerItemProxy */ = {
+		750E29BD14DDDDE400FE314C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */;
+			containerPortal = 750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 939838A50DA4300F007F53F3;
 			remoteInfo = "ShortcutRecorder.ibplugin - for embedding in framework";
 		};
-		75E0F4A814D7BE130086171A /* PBXContainerItemProxy */ = {
+		750E29BF14DDDDE400FE314C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */;
+			containerPortal = 750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 93983B220DA43C4E007F53F3;
 			remoteInfo = ShortcutRecorderFramework_Tester;
 		};
-		75E0F4AA14D7BE130086171A /* PBXContainerItemProxy */ = {
+		750E29C114DDDDE400FE314C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */;
+			containerPortal = 750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 342E00CF109CCBF5009AD8CA;
 			remoteInfo = "ShortcutRecorder.ibplugin - standalone";
 		};
-		75E0F4AC14D7BE130086171A /* PBXContainerItemProxy */ = {
+		750E29C314DDDDE400FE314C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */;
+			containerPortal = 750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 342E0104109CCC36009AD8CA;
 			remoteInfo = ShortcutRecorder.framework;
 		};
-		75E0F4AE14D7BE280086171A /* PBXContainerItemProxy */ = {
+		750E29C614DDDE1400FE314C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */;
+			containerPortal = 750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 342E00EB109CCC36009AD8CA;
 			remoteInfo = ShortcutRecorder.framework;
@@ -84,13 +83,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				75F56D6414D8A60C0022D215 /* ShortcutRecorder.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = ../../Contributed/ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = "<group>"; };
 		7535D18214DC54FB00613F39 /* SysPref.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = SysPref.scpt; sourceTree = "<group>"; };
 		7535D18514DC6C6A00613F39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MenuExtra.xib; sourceTree = "<group>"; };
 		7535D18714DC70C600613F39 /* TapMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapMenuController.h; sourceTree = "<group>"; };
@@ -122,7 +121,6 @@
 		75E0F48D14D7B1AF0086171A /* TapToggleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TapToggleViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		75E0F49314D7B3510086171A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TapToggle.xib; sourceTree = "<group>"; };
 		75E0F49614D7BB6C0086171A /* TapToggle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TapToggle.entitlements; sourceTree = "<group>"; };
-		75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = ../../Contributed/ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = "<group>"; };
 		75E0F4B114D7D0D90086171A /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		75E0F4B314D7D6040086171A /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -132,9 +130,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				750E29C814DDDE4800FE314C /* ShortcutRecorder.framework in Frameworks */,
 				75E0F4B414D7D6050086171A /* PreferencePanes.framework in Frameworks */,
 				75E0F4B214D7D0DA0086171A /* ServiceManagement.framework in Frameworks */,
-				75E0F4B014D7BE3B0086171A /* ShortcutRecorder.framework in Frameworks */,
 				75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,10 +140,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		750E29AE14DDDDE400FE314C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				750E29BC14DDDDE400FE314C /* ShortcutRecorder.framework */,
+				750E29BE14DDDDE400FE314C /* ShortcutRecorder.ibplugin */,
+				750E29C014DDDDE400FE314C /* ShortcutRecorder.app */,
+				750E29C214DDDDE400FE314C /* ShortcutRecorder.ibplugin */,
+				750E29C414DDDDE400FE314C /* ShortcutRecorder.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		75E0F44514D7AF5E0086171A = {
 			isa = PBXGroup;
 			children = (
-				75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */,
+				750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */,
 				75E0F45A14D7AF5E0086171A /* TapToggle */,
 				75E0F45314D7AF5E0086171A /* Frameworks */,
 				75E0F45114D7AF5E0086171A /* Products */,
@@ -186,12 +196,12 @@
 			children = (
 				7535D18414DC6C6A00613F39 /* MenuExtra.xib */,
 				75E0F49214D7B3510086171A /* TapToggle.xib */,
-				75E0F48C14D7B1AF0086171A /* TapToggleViewController.h */,
-				75E0F48D14D7B1AF0086171A /* TapToggleViewController.m */,
 				75E0F48F14D7B2740086171A /* Resources */,
 				75E0F47714D7B1840086171A /* Preferences.h */,
 				75E0F47814D7B1840086171A /* Preferences.m */,
 				75E0F47A14D7B1840086171A /* Prefs.h */,
+				75E0F48C14D7B1AF0086171A /* TapToggleViewController.h */,
+				75E0F48D14D7B1AF0086171A /* TapToggleViewController.m */,
 				7535D18714DC70C600613F39 /* TapMenuController.h */,
 				7535D18814DC70C600613F39 /* TapMenuController.m */,
 				75E0F46614D7AF5F0086171A /* AppDelegate.h */,
@@ -230,18 +240,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		75E0F49814D7BE120086171A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				75E0F4A514D7BE130086171A /* ShortcutRecorder.framework */,
-				75E0F4A714D7BE130086171A /* ShortcutRecorder.ibplugin */,
-				75E0F4A914D7BE130086171A /* ShortcutRecorder.app */,
-				75E0F4AB14D7BE130086171A /* ShortcutRecorder.ibplugin */,
-				75E0F4AD14D7BE130086171A /* ShortcutRecorder.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -257,7 +255,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				75E0F4AF14D7BE280086171A /* PBXTargetDependency */,
+				750E29C714DDDE1400FE314C /* PBXTargetDependency */,
 			);
 			name = TapToggle;
 			productName = TapToggle;
@@ -284,8 +282,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 75E0F49814D7BE120086171A /* Products */;
-					ProjectRef = 75E0F49714D7BE120086171A /* ShortcutRecorder.xcodeproj */;
+					ProductGroup = 750E29AE14DDDDE400FE314C /* Products */;
+					ProjectRef = 750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -296,39 +294,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		75E0F4A514D7BE130086171A /* ShortcutRecorder.framework */ = {
+		750E29BC14DDDDE400FE314C /* ShortcutRecorder.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ShortcutRecorder.framework;
-			remoteRef = 75E0F4A414D7BE130086171A /* PBXContainerItemProxy */;
+			remoteRef = 750E29BB14DDDDE400FE314C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		75E0F4A714D7BE130086171A /* ShortcutRecorder.ibplugin */ = {
+		750E29BE14DDDDE400FE314C /* ShortcutRecorder.ibplugin */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ShortcutRecorder.ibplugin;
-			remoteRef = 75E0F4A614D7BE130086171A /* PBXContainerItemProxy */;
+			remoteRef = 750E29BD14DDDDE400FE314C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		75E0F4A914D7BE130086171A /* ShortcutRecorder.app */ = {
+		750E29C014DDDDE400FE314C /* ShortcutRecorder.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = ShortcutRecorder.app;
-			remoteRef = 75E0F4A814D7BE130086171A /* PBXContainerItemProxy */;
+			remoteRef = 750E29BF14DDDDE400FE314C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		75E0F4AB14D7BE130086171A /* ShortcutRecorder.ibplugin */ = {
+		750E29C214DDDDE400FE314C /* ShortcutRecorder.ibplugin */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ShortcutRecorder.ibplugin;
-			remoteRef = 75E0F4AA14D7BE130086171A /* PBXContainerItemProxy */;
+			remoteRef = 750E29C114DDDDE400FE314C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		75E0F4AD14D7BE130086171A /* ShortcutRecorder.framework */ = {
+		750E29C414DDDDE400FE314C /* ShortcutRecorder.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ShortcutRecorder.framework;
-			remoteRef = 75E0F4AC14D7BE130086171A /* PBXContainerItemProxy */;
+			remoteRef = 750E29C314DDDDE400FE314C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -372,10 +370,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		75E0F4AF14D7BE280086171A /* PBXTargetDependency */ = {
+		750E29C714DDDE1400FE314C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ShortcutRecorder.framework;
-			targetProxy = 75E0F4AE14D7BE280086171A /* PBXContainerItemProxy */;
+			targetProxy = 750E29C614DDDE1400FE314C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -79,9 +79,9 @@
     prefState = [prefs useHotKey] ? NSOnState : NSOffState;
     [useHotkeyCheckbox setState:prefState];
     [hotKeyControl setKeyCombo:[prefs keyCombo]];
-//    toggleME = [TapToggleMenu instance];
-//    [toggleME initWithPreferences:prefs];
-    [self setState];
+//    if (![NSBundle loadNibNamed:@"MenuExtra" owner:[TapMenuController instance]])
+//        NSLog(@"Failed to load MenuExtra.xib");
+//    [self setState];
 }
 
  - (IBAction)startClicked:(id)sender {
