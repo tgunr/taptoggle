@@ -79,9 +79,6 @@
     prefState = [prefs useHotKey] ? NSOnState : NSOffState;
     [useHotkeyCheckbox setState:prefState];
     [hotKeyControl setKeyCombo:[prefs keyCombo]];
-//    if (![NSBundle loadNibNamed:@"MenuExtra" owner:[TapMenuController instance]])
-//        NSLog(@"Failed to load MenuExtra.xib");
-//    [self setState];
 }
 
  - (IBAction)startClicked:(id)sender {
@@ -156,6 +153,7 @@
 
 #pragma mark - Misc
 - (IBAction)websiteClicked:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: @"http://TapToggle.polymicro.net"]];
 }
 
 #pragma mark - Shortcut delegate methods
