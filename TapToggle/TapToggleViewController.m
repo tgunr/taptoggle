@@ -35,8 +35,15 @@
 @synthesize monitorCheck;
 @synthesize prefs;
 @synthesize eventMonitor;
+@synthesize menuExtraController;
 
 #pragma mark - Startup
+- (id)init {
+    if ( self = [super init] ) {
+        // Init code
+    }
+    return self;
+}
 
 - (void)setState {
     BOOL status = [prefs shouldRun];
@@ -119,7 +126,7 @@
 
 #pragma mark - Update code
 - (IBAction)checkNowClicked:(id)sender {
-    BOOL use = [checkNowButton state] == NSOnState ? YES : NO;
+//    BOOL use = [checkNowButton state] == NSOnState ? YES : NO;
     // TODO: make checkin code
 }
 

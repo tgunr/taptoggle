@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Preferences;
+@class AppDelegate;
 
 @interface TapMenuController : NSObject        {
 }
@@ -18,9 +19,10 @@
 @property (weak) IBOutlet NSMenuItem *tapClickItem;
 @property (weak) IBOutlet NSMenuItem *tapPrefItem;
 @property (weak) IBOutlet NSMenuItem *tapQuitItem;
+@property (weak) IBOutlet AppDelegate *appDelegate;
 
 + (id)instance;
-- (void)initWithPreferences:(__unsafe_unretained Preferences *)preferences;
+//- (void)initWithPreferences:(__unsafe_unretained Preferences *)preferences;
 - (void)checkForChanges;
 
 - (IBAction)tapToggleClick:(id)sender;

@@ -10,6 +10,7 @@
 
 @class SRRecorderControl;
 @class Preferences;
+@class TapMenuController;
 
 @interface TapToggleViewController : NSViewController
 
@@ -31,6 +32,7 @@
 @property (strong) IBOutlet NSPanel         *infoPanel;
 @property (assign) NSTimer                  *monitorCheck;
 @property (retain) NSEvent *eventMonitor;
+@property (weak) IBOutlet TapMenuController *menuExtraController;
 
 - (IBAction)showStatus:(id)sender;
 - (IBAction)startClicked:(id)sender;

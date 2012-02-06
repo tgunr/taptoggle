@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) Preferences *prefs;
 @property (nonatomic, retain) IBOutlet NSWindow     *window;
-@property (nonatomic, retain) TapMenuController *tapMenuController;
+@property (weak) IBOutlet TapMenuController *menuExtraController;
 - (void)tapShowPreferences;
 
 @end

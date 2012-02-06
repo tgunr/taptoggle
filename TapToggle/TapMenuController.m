@@ -10,6 +10,7 @@
 #import "Preferences.h"
 #import "AppDelegate.h"
 #import "Prefs.h"
+#import <PMUtility/PMUtility.h>
 
 @implementation TapMenuController {
 @private
@@ -21,27 +22,30 @@
 @synthesize tapClickItem;
 @synthesize tapPrefItem;
 @synthesize tapQuitItem;
+@synthesize appDelegate;
 
-+ (id)instance {
-    static dispatch_once_t onceQueue;
-    static TapMenuController *tapMenuController = nil;
+static TapMenuController *sharedTapMenuContollerInstance = nil; 
 
-    dispatch_once(&onceQueue, ^{
-        tapMenuController = [[self alloc] init];
-    });
-    return tapMenuController;
++(TapMenuController *) instance
+{
+    @synchronized(self) {
+        if (sharedTapMenuContollerInstance == nil) {
+            sharedTapMenuContollerInstance = [[self alloc] init];
+        }
+        return sharedTapMenuContollerInstance;
+    }
 }
 
 - (id)init {
     self = [super init];
     if (self) {
-//        tapMenu = [[NSMenu alloc] init];
-        prefs = [Preferences shared];
+        sharedTapMenuContollerInstance = self;
     }
     return self;
 }
 
 - (void)awakeFromNib {
+    prefs = [Preferences shared];
 }
 
 - (BOOL)isClicking {
@@ -84,7 +88,7 @@
     else
         [tapClickItem setTitle:@"Tap Click On"];
     NSString *clickState = clicking ? @"ON" : @"OFF";
-    NSLog(@"Tap CLick is: %@", clickState);
+    PMLOG(1, @"Tap Click is: %@", clickState);
 }
 
 - (IBAction)tapToggleClick:(id)sender {
@@ -123,10 +127,11 @@
 - (void)checkShowStatusMenu {
     BOOL show = [prefs showStatus];
     BOOL run  = [prefs shouldRun];
-    if (run) if (show)
-        [self activate];
-    else
-        [self deactivate];
+    if (run) 
+        if (show)
+            [self activate];
+        else
+            [self deactivate];
     else
         [self deactivate];
 }
@@ -158,13 +163,13 @@ void processEvent(NSEvent *event) {
             if (keycode == combo.code) if (modifiers == combo.flags)
                 [menu toggleClicking];
             NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
-            NSLog(@"Looking for: %@", lookingFor);
+            PMLOG(1, @"Looking for: %@", lookingFor);
             NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
-            NSLog(@"Got: %@", results);
+            PMLOG(1, @"Got: %@", results);
         }
     }
     if ([event type] == NSLeftMouseUp) {
-        NSLog(@"click event: %@", NSStringFromPoint([event locationInWindow]));
+        PMLOG(1, @"click event: %@", NSStringFromPoint([event locationInWindow]));
     }
 }
 

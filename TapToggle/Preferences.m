@@ -8,6 +8,7 @@
 #import <PreferencePanes/PreferencePanes.h>
 #import "Preferences.h"
 #import "Prefs.h"
+#import <PMUtility/pm.h>
 
 @interface Preferences ()
 
@@ -76,7 +77,7 @@
 
 - (void)setFromUserDefaults {
     NSDictionary *defaultPrefsDict = [userDefaults dictionaryRepresentation];
-    NSLog(@"Prefs: %@", defaultPrefsDict);
+    PMLOG(1, @"Prefs: %@", defaultPrefsDict);
 
     showStatus   = [userDefaults boolForKey:kShowStatus];
     _checkWeekly = [userDefaults boolForKey:kCheckWeekly];
@@ -116,7 +117,7 @@
 - (void)setUserDefaultsWithDictionry:(NSDictionary *)defaultDict {
     [userDefaults registerDefaults:defaultDict];
 //        [defaults synchronize];
-    NSLog(@"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    PMLOG(1, @"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
 - (void)setWithDictionary:(NSDictionary *)prefDictionary {
@@ -188,12 +189,12 @@
     return shouldRun;
 }
 
-- (void)setKeyCombo:(KeyCombo)aKeyCombo {
-    keyCombo = aKeyCombo;
-    [userDefaults setInteger:keyCombo.code forKey:kHotKeyCode];
-    [userDefaults setInteger:keyCombo.flags forKey:kHotKeyFlags];
-}
-
+//- (void)setKeyCombo:(KeyCombo)aKeyCombo {
+//    keyCombo = aKeyCombo;
+//    [userDefaults setInteger:keyCombo.code forKey:kHotKeyCode];
+//    [userDefaults setInteger:keyCombo.flags forKey:kHotKeyFlags];
+//}
+//
 - (void)notify {
     //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //    [defaults synchronize];
