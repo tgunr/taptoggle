@@ -26,7 +26,7 @@
 @synthesize keyCombo;
 @synthesize userDefaults;
 
-+ (id)shared
++ (id)instance
 {
     static dispatch_once_t onceQueue;
     static Preferences *preferences = nil;
@@ -79,7 +79,7 @@
     NSDictionary *defaultPrefsDict = [userDefaults dictionaryRepresentation];
     PMLOG(1, @"Prefs: %@", defaultPrefsDict);
 
-    showStatus   = [userDefaults boolForKey:kShowStatus];
+    _showStatus   = [userDefaults boolForKey:kShowStatus];
     _checkWeekly = [userDefaults boolForKey:kCheckWeekly];
     _anonInfo    = [userDefaults boolForKey:kAnonInfo];
     _useHotKey   = [userDefaults boolForKey:kUseHotKey];
@@ -121,7 +121,7 @@
 }
 
 - (void)setWithDictionary:(NSDictionary *)prefDictionary {
-    showStatus   = [[prefDictionary objectForKey:kShowStatus] boolValue];
+    _showStatus   = [[prefDictionary objectForKey:kShowStatus] boolValue];
     _checkWeekly = [[prefDictionary objectForKey:kCheckWeekly] boolValue];
     _anonInfo    = [[prefDictionary objectForKey:kAnonInfo] boolValue];
     _useHotKey   = [[prefDictionary objectForKey:kUseHotKey] boolValue];
@@ -132,7 +132,7 @@
 - (NSDictionary *)dictionary {
     NSDictionary *prefsAsDict = 
     [NSDictionary dictionaryWithObjectsAndKeys:
-     [NSNumber numberWithBool:showStatus], kShowStatus,
+     [NSNumber numberWithBool:_showStatus], kShowStatus,
      [NSNumber numberWithBool:_checkWeekly], kCheckWeekly,
      [NSNumber numberWithBool:_anonInfo], kAnonInfo,
      [NSNumber numberWithBool:_useHotKey], kUseHotKey,
@@ -172,12 +172,12 @@
 }
 
 - (void)setShowStatus:(BOOL)status {
-    showStatus = status;
+    _showStatus = status;
     [userDefaults setBool:status forKey:kShowStatus];
 }
 
 - (BOOL)showStatus {
-    return showStatus;
+    return _showStatus;
 }
 
 - (void)setShouldRun:(BOOL)status {
@@ -189,12 +189,12 @@
     return shouldRun;
 }
 
-//- (void)setKeyCombo:(KeyCombo)aKeyCombo {
-//    keyCombo = aKeyCombo;
-//    [userDefaults setInteger:keyCombo.code forKey:kHotKeyCode];
-//    [userDefaults setInteger:keyCombo.flags forKey:kHotKeyFlags];
-//}
-//
+- (void)setKeyCombo:(KeyCombo)aKeyCombo {
+    keyCombo = aKeyCombo;
+    [userDefaults setInteger:keyCombo.code forKey:kHotKeyCode];
+    [userDefaults setInteger:keyCombo.flags forKey:kHotKeyFlags];
+}
+
 - (void)notify {
     //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //    [defaults synchronize];

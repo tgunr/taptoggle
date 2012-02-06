@@ -49,14 +49,14 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
     if (self) {
         if (!statusItem) {
             [self buildMenuExtra];
-            prefs = [Preferences shared];
+            prefs = [Preferences instance];
         }
     }
     return self;
 }
 
 - (void)awakeFromNib {
-    prefs = [Preferences shared];
+    prefs = [Preferences instance];
 //    NSArray *nibArray;
 //    NSNib *nib = [[NSNib alloc]initWithNibNamed:@"MenuExtra" bundle:nil];
 //    BOOL result = [nib instantiateNibWithOwner:NSApp topLevelObjects:&nibArray];

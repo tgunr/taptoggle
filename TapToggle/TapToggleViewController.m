@@ -69,10 +69,13 @@
 
 - (void)awakeFromNib {
     NSInteger prefState;
-    prefs = [Preferences shared];
+    prefs = [Preferences instance];
+    
     [versionTextField setStringValue:TapToggle_VERSION];
+    
     prefState = [prefs showStatus] ? NSOnState : NSOffState;
     [showStatusCheckBox setState:prefState];
+    
     prefState = [prefs checkWeekly] ? NSOnState : NSOffState;
     [weeklyCheckBox setState:prefState];
     if (prefState == NSOnState) {
@@ -80,12 +83,23 @@
     }
     else
         [anonInfoCheckBox setEnabled:NO];
+    
     prefState = [prefs anonInfo] ? NSOnState : NSOffState;
     [anonInfoCheckBox setState:prefState];
+    
     prefState = [prefs useHotKey] ? NSOnState : NSOffState;
     [useHotkeyCheckbox setState:prefState];
     [hotKeyControl setKeyCombo:[prefs keyCombo]];
+    if (prefState == NSOnState) {
+        [hotKeyControl setHidden:NO];
+    }
+    else
+        [hotKeyControl setHidden:YES];
+    
     menuExtraController = [TapMenuController instance];
+
+    [self setState];
+    
 }
 
  - (IBAction)startClicked:(id)sender {

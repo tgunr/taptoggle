@@ -40,7 +40,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    prefs = [Preferences shared];
+    prefs = [Preferences instance];
     
     // At this pint, our outlets to inside this nib will be properly setup. It is important to note
     // that they will get overwritten when this is called again!

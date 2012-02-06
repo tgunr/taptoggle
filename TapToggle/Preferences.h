@@ -10,7 +10,7 @@
 
 @interface Preferences : NSObject {
     NSUserDefaults *userDefaults;
-    BOOL showStatus;
+    BOOL _showStatus;
     BOOL _checkWeekly;
     BOOL _anonInfo;
     BOOL _useHotKey;
@@ -34,7 +34,7 @@
 @property (assign, setter=setshouldRun:, getter=shouldRun) BOOL shouldRun;
 @property (assign, setter=setKeyCombo:, getter=keyCombo) KeyCombo keyCombo;
 
-+ (id)shared;
++ (id)instance;
 - (void)notify;
 - (Preferences *)initPreferences;
 - (void)setWithDictionary:(NSDictionary *)prefDictionary;
