@@ -48,16 +48,14 @@
     // You will normally pass that controller as the 'owner'. For simplicity purposes we are passing
     // in this object as the owner.
     //
+    NSArray *nibArray;
+    NSNib *nib = [[NSNib alloc]initWithNibNamed:@"MenuExtra" bundle:nil];
+//    BOOL result = [nib instantiateNibWithOwner:NSApp topLevelObjects:&nibArray];
+//    if (!result) {
+//        PMLOG(1, @"Did NOT load MenuExtra nib file");
+//        return;
+//    }
     menuExtraController = [TapMenuController instance];
-    if ([menuExtraController tapMenu] == nil) {
-        NSNib *nib = [[NSNib alloc]initWithNibNamed:@"MenuExtra" bundle:nil];
-        BOOL result = [nib instantiateNibWithOwner:NSApp topLevelObjects:nil];
-        if (!result) {
-            PMLOG(1, @"Did NOT load MenuExtra nib file");
-            return;
-        }
-    }
-
 //    NSBundle *myBundle = [NSBundle mainBundle];
 //    NSURL    *myURL    = [myBundle bundleURL];
 //    LSRegisterURL((__bridge CFURLRef) myURL, TRUE);

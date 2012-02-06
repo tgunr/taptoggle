@@ -36,16 +36,24 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
     }
 }
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        sharedTapMenuContollerInstance = self;
-    }
-    return self;
-}
-
+//- (id)init {
+//    self = [super init];
+//    if (self) {
+//        sharedTapMenuContollerInstance = self;
+//    }
+//    return self;
+//}
+//
 - (void)awakeFromNib {
     prefs = [Preferences shared];
+    @synchronized(self) {
+        if (sharedTapMenuContollerInstance == nil) {
+            sharedTapMenuContollerInstance = self;
+        }
+    }
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 }
 
 - (BOOL)isClicking {
@@ -110,6 +118,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
         statusItem = newStatusItem;
         // Install the item
         [statusItem setMenu:tapMenu];
+        id ci = tapClickItem;
     }
     BOOL clicking = [self isClicking];
     NSImage *theImage = [self getClickingImage:clicking];

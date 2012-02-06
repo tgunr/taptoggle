@@ -177,7 +177,7 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="566746466">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSButton" id="779411716">
@@ -185,7 +185,6 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{529, 12}, {59, 32}}</string>
 							<reference key="NSSuperview" ref="566746466"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:687</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="225309775">
@@ -435,7 +434,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 						</object>
 					</array>
 					<string key="NSFrameSize">{602, 391}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="163828214"/>
 					<string key="NSReuseIdentifierKey">_NS:207</string>
 				</object>
@@ -456,7 +454,7 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{224.66399999999999, 10}</string>
 				<object class="NSView" key="NSWindowView" id="1037298196">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSButton" id="712589537">
@@ -464,7 +462,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{228, 294}, {178, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="595921171"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:771</string>
@@ -496,7 +493,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{17, 192}, {134, 17}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="376136684"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:3944</string>
@@ -522,7 +518,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">12</int>
 							<string key="NSFrame">{{172, 20}, {5, 344}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="512326706"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:2168</string>
@@ -548,7 +543,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{17, 167}, {134, 17}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="852677206"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:3944</string>
@@ -573,7 +567,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{17, 133}, {134, 26}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="306354166"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:3944</string>
@@ -594,7 +587,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{29, 101}, {111, 25}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="62653504"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:2485</string>
@@ -619,8 +611,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">-2147483380</int>
 							<string key="NSFrame">{{183, 26}, {111, 25}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:2485</string>
 							<bool key="NSEnabled">YES</bool>
@@ -644,7 +634,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{217, 328}, {57, 17}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="629605613"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:3944</string>
@@ -665,7 +654,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{277, 328}, {81, 17}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="984505945"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:3944</string>
@@ -686,7 +674,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{530, 323}, {111, 25}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="712589537"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:2485</string>
@@ -711,7 +698,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">12</int>
 							<string key="NSFrame">{{193, 237}, {448, 5}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="248217740"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:2411</string>
@@ -737,7 +723,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{225, 204}, {184, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="778592292"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:771</string>
@@ -764,7 +749,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">-2147483636</int>
 							<string key="NSFrame">{{193, 119}, {448, 5}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="959225714"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:2411</string>
@@ -790,7 +774,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{530, 200}, {111, 25}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="289980487"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:2485</string>
@@ -815,7 +798,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{251, 180}, {272, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="862511652"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:771</string>
@@ -842,7 +824,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{362, 138}, {111, 25}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="575895806"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:2485</string>
@@ -875,7 +856,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							</set>
 							<string key="NSFrame">{{20, 239}, {128, 128}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="469481529"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSImageCell" key="NSCell" id="550609243">
@@ -897,7 +877,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">-2147483380</int>
 							<string key="NSFrame">{{196, 96}, {84, 17}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="147185445"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:3944</string>
@@ -918,7 +897,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">-2147483380</int>
 							<string key="NSFrame">{{229, 70}, {415, 22}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="509859685"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:3944</string>
@@ -940,7 +918,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{253, 248}, {140, 22}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="235671097"/>
 							<string key="NSReuseIdentifierKey">_NS:1192</string>
 							<string key="NSClassName">SRRecorderControl</string>
@@ -950,7 +927,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{228, 274}, {135, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="668704849"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSReuseIdentifierKey">_NS:771</string>
@@ -974,8 +950,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 						</object>
 					</array>
 					<string key="NSFrameSize">{664, 389}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="421553921"/>
 					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
@@ -1215,14 +1189,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">menuExtraController</string>
-						<reference key="source" ref="753359017"/>
-						<reference key="destination" ref="727332395"/>
-					</object>
-					<int key="connectionID">667</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">anonInfoCheckBox</string>
 						<reference key="source" ref="237920014"/>
 						<reference key="destination" ref="852677206"/>
@@ -1427,15 +1393,7 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 						<reference key="source" ref="237920014"/>
 						<reference key="destination" ref="727332395"/>
 					</object>
-					<int key="connectionID">669</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">appDelegate</string>
-						<reference key="source" ref="727332395"/>
-						<reference key="destination" ref="753359017"/>
-					</object>
-					<int key="connectionID">668</int>
+					<int key="connectionID">671</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1944,7 +1902,7 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 						<reference key="parent" ref="333103107"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">666</int>
+						<int key="objectID">670</int>
 						<reference key="object" ref="727332395"/>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -2027,14 +1985,14 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="657.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="658.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="666.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="670.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="99.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">669</int>
+			<int key="maxID">671</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2291,7 +2249,7 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 			<string key="NSMenuCheckmark">{9, 8}</string>
 			<string key="NSMenuMixedState">{7, 2}</string>
 			<string key="NSSwitch">{15, 15}</string>
-			<string key="TapToggle">{512, 512}</string>
+			<string key="TapToggle">{256, 256}</string>
 		</dictionary>
 	</data>
 </archive>
