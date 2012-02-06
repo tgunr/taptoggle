@@ -36,21 +36,15 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
     }
 }
 
-//- (id)init {
-//    self = [super init];
-//    if (self) {
-//        sharedTapMenuContollerInstance = self;
-//    }
-//    return self;
-//}
-//
+- (id)init {
+    self = [super init];
+    if (self) {
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
     prefs = [Preferences shared];
-    @synchronized(self) {
-        if (sharedTapMenuContollerInstance == nil) {
-            sharedTapMenuContollerInstance = self;
-        }
-    }
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
