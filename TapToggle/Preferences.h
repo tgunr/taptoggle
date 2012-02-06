@@ -9,30 +9,20 @@
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
 @interface Preferences : NSObject {
-    NSUserDefaults *userDefaults;
-    BOOL _showStatus;
-    BOOL _checkWeekly;
-    BOOL _anonInfo;
-    BOOL _useHotKey;
-    NSString *prefsVersion;
-    NSDate   *lastCheck;
-    BOOL     shouldRun;
-    KeyCombo keyCombo;
 }
 
 @property (retain) NSUserDefaults *userDefaults;
 
 // These are set by the Preferences.plist for default values
-//@property (assign, setter=setShowStatus:, getter=showStatus, readonly) BOOL   _showStatus;
+@property (assign, setter=setShowStatus:, getter=showStatus, readonly) BOOL   _showStatus;
 @property (assign, setter=setCheckWeekly:, getter=checkWeekly) BOOL _checkWeekly;
 @property (assign, setter=setAnonInfo:, getter=anonInfo) BOOL       _anonInfo;
 @property (assign, setter=setUseHotKey:, getter=useHotKey) BOOL     _useHotKey;
+@property (retain, setter=setPrefsVersion:, getter=prefsVersion) NSString *_prefsVersion;
+@property (retain, setter=setLastCheck:, getter=lastCheck) NSDate       *_lastCheck;
+@property (assign, setter=setShouldRun:, getter=shouldRun) BOOL              _shouldRun;
+@property (nonatomic, assign, setter=setKeyCombo:, getter=keyCombo) KeyCombo _keyCombo;
 
-// These are defaulted programatically
-@property (retain) NSString *prefsVersion;
-@property (retain, setter = setLastCheck:, getter=lastCheck) NSDate   *lastCheck;
-@property (assign, setter=setshouldRun:, getter=shouldRun) BOOL shouldRun;
-@property (assign, setter=setKeyCombo:, getter=keyCombo) KeyCombo keyCombo;
 
 + (id)instance;
 - (void)notify;
@@ -49,5 +39,8 @@
 - (BOOL)checkWeekly;
 - (void)setShouldRun:(BOOL)aShouldRun;
 - (BOOL)shouldRun;
-
+- (void)setKeyCombo:(KeyCombo)aHotKeyCombo;
+- (KeyCombo)keyCombo;
+- (void)setPrefsVersion:(NSString *)aPrefsVersion;
+- (NSString *)prefsVersion;
 @end

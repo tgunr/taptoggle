@@ -17,13 +17,18 @@
 
 @end
 
-@implementation Preferences
+@implementation Preferences {
+    NSUserDefaults *userDefaults;
+    BOOL _showStatus;
+    BOOL _checkWeekly;
+    BOOL _anonInfo;
+    BOOL _useHotKey;
+    NSString *_prefsVersion;
+    NSDate   *lastCheck;
+    BOOL     shouldRun;
+    KeyCombo hotKeyCombo;
+}
 
-//@synthesize showStatus;
-@synthesize prefsVersion;
-@synthesize lastCheck;
-@synthesize shouldRun;
-@synthesize keyCombo;
 @synthesize userDefaults;
 
 + (id)instance
@@ -84,10 +89,10 @@
     _anonInfo    = [userDefaults boolForKey:kAnonInfo];
     _useHotKey   = [userDefaults boolForKey:kUseHotKey];
 
-    keyCombo.flags = (NSUInteger) [userDefaults integerForKey:kHotKeyFlags];
-    keyCombo.code  = [userDefaults integerForKey:kHotKeyCode];
+    hotKeyCombo.flags = (NSUInteger) [userDefaults integerForKey:kHotKeyFlags];
+    hotKeyCombo.code  = [userDefaults integerForKey:kHotKeyCode];
 
-    prefsVersion = [userDefaults stringForKey:kPrefsVersion];
+    _prefsVersion = [userDefaults stringForKey:kPrefsVersion];
     lastCheck    = [userDefaults objectForKey:kLastCheck];
     shouldRun    = [userDefaults boolForKey:kShouldRun];
 
@@ -96,9 +101,7 @@
 - (Preferences *)initPreferences {
     self = [super init];
     if (self) {
-        //    NSString *sourcesVersion = PREFS_VERSION;
         NSString *currentVersion = nil;
-        //    BOOL needsUpdate = NO;
         userDefaults = [NSUserDefaults standardUserDefaults];
         
         // Check preferences version for change
@@ -109,6 +112,16 @@
             [self setUserDefaultsWithDictionry:[self getInitialDefaults]];
         }
         
+        NSString *sourcesVersion = PREFS_VERSION;
+        BOOL needsUpdate = NO;
+        if (! [currentVersion isEqualToString:sourcesVersion])
+            needsUpdate = YES;
+        
+        if (needsUpdate) {
+            // Do need preference conversion here
+            [self setPrefsVersion:sourcesVersion];
+        }
+            
         [self setFromUserDefaults];
     }
     return self;
@@ -125,8 +138,8 @@
     _checkWeekly = [[prefDictionary objectForKey:kCheckWeekly] boolValue];
     _anonInfo    = [[prefDictionary objectForKey:kAnonInfo] boolValue];
     _useHotKey   = [[prefDictionary objectForKey:kUseHotKey] boolValue];
-    keyCombo.code  = [[prefDictionary objectForKey:kHotKeyCode] integerValue];
-    keyCombo.flags = (NSUInteger) [[prefDictionary objectForKey:kHotKeyFlags] integerValue];
+    hotKeyCombo.code  = [[prefDictionary objectForKey:kHotKeyCode] integerValue];
+    hotKeyCombo.flags = (NSUInteger) [[prefDictionary objectForKey:kHotKeyFlags] integerValue];
 }
 
 - (NSDictionary *)dictionary {
@@ -136,9 +149,9 @@
      [NSNumber numberWithBool:_checkWeekly], kCheckWeekly,
      [NSNumber numberWithBool:_anonInfo], kAnonInfo,
      [NSNumber numberWithBool:_useHotKey], kUseHotKey,
-     [NSNumber numberWithInteger:keyCombo.code], kHotKeyCode,
-     [NSNumber numberWithInteger:keyCombo.flags], kHotKeyFlags,
-     prefsVersion, kPrefsVersion,
+     [NSNumber numberWithInteger:hotKeyCombo.code], kHotKeyCode,
+     [NSNumber numberWithInteger:hotKeyCombo.flags], kHotKeyFlags,
+     _prefsVersion, kPrefsVersion,
      [NSNumber numberWithBool:shouldRun], kShouldRun,
      nil];
     return prefsAsDict;
@@ -185,14 +198,39 @@
     [userDefaults setBool:status forKey:kShouldRun];
 }
 
-- (BOOL)showShouldRun {
+- (BOOL)shouldRun {
     return shouldRun;
 }
 
-- (void)setKeyCombo:(KeyCombo)aKeyCombo {
-    keyCombo = aKeyCombo;
-    [userDefaults setInteger:keyCombo.code forKey:kHotKeyCode];
-    [userDefaults setInteger:keyCombo.flags forKey:kHotKeyFlags];
+- (KeyCombo)keyCombo {
+    KeyCombo result = hotKeyCombo;
+    return result;
+    //To change the template use AppCode | Preferences | File Templates.
+
+}
+
+- (void)setKeyCombo:(KeyCombo)aHotKeyCombo {
+    hotKeyCombo = aHotKeyCombo;
+    [userDefaults setInteger:aHotKeyCombo.code forKey:kHotKeyCode];
+    [userDefaults setInteger:aHotKeyCombo.flags forKey:kHotKeyFlags];
+}
+
+- (NSString *)prefsVersion {
+    return _prefsVersion;
+}
+
+- (void)setPrefsVersion:(NSString *)aPrefsVersion {
+    _prefsVersion = aPrefsVersion;
+    [userDefaults setObject:aPrefsVersion forKey:kPrefsVersion];
+}
+
+- (NSDate *)lastCheck {
+    return lastCheck;
+}
+
+- (void)setLastCheck:(NSDate *)aLastCheck {
+    lastCheck = aLastCheck;
+    [userDefaults setObject:aLastCheck forKey:kLastCheck];
 }
 
 - (void)notify {
@@ -201,5 +239,6 @@
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kNotifyName object:@"TapToggle"
                                                                  userInfo:[self dictionary] deliverImmediately:YES];
 }
+
 
 @end
