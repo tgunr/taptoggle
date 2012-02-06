@@ -64,8 +64,7 @@
             eventMonitor = nil;
         }
     }
-    [[TapMenuController instance] 
-     checkForChanges];
+    [menuExtraController checkForChanges];
 }
 
 - (void)awakeFromNib {
@@ -86,6 +85,7 @@
     prefState = [prefs useHotKey] ? NSOnState : NSOffState;
     [useHotkeyCheckbox setState:prefState];
     [hotKeyControl setKeyCombo:[prefs keyCombo]];
+    menuExtraController = [TapMenuController instance];
 }
 
  - (IBAction)startClicked:(id)sender {
@@ -97,21 +97,20 @@
         [prefs setShouldRun:NO];
     }
      [self setState];
-     [[TapMenuController instance] 
-      checkForChanges];
+     [menuExtraController checkForChanges];
 }
 
 #pragma mark - Monitor effect methods
 - (IBAction)showStatus:(id)sender {
     BOOL use = [showStatusCheckBox state] == NSOnState ? YES : NO;
     [prefs setShowStatus:use];
-    [[TapMenuController instance] checkForChanges];
+    [menuExtraController checkForChanges];
 }
 
 - (IBAction)useHotkeyClicked:(id)sender {
     BOOL use = [useHotkeyCheckbox state] == NSOnState ? YES : NO;
     [prefs setUseHotKey:use];
-    [[TapMenuController instance] checkForChanges];
+    [menuExtraController checkForChanges];
 }
 
 - (IBAction)anonInfoClicked:(id)sender {

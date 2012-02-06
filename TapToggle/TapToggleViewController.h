@@ -32,7 +32,7 @@
 @property (strong) IBOutlet NSPanel         *infoPanel;
 @property (assign) NSTimer                  *monitorCheck;
 @property (retain) NSEvent *eventMonitor;
-@property (weak) IBOutlet TapMenuController *menuExtraController;
+@property (retain) TapMenuController *menuExtraController;
 
 - (IBAction)showStatus:(id)sender;
 - (IBAction)startClicked:(id)sender;

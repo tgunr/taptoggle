@@ -16,10 +16,10 @@
 @property (retain) Preferences  *prefs;
 @property (retain) NSStatusItem *statusItem;
 @property (strong) IBOutlet NSMenu *tapMenu;
-@property (weak) IBOutlet NSMenuItem *tapClickItem;
-@property (weak) IBOutlet NSMenuItem *tapPrefItem;
-@property (weak) IBOutlet NSMenuItem *tapQuitItem;
-@property (weak) IBOutlet AppDelegate *appDelegate;
+@property (strong) IBOutlet NSMenuItem *tapClickItem;
+@property (strong) IBOutlet NSMenuItem *tapPrefItem;
+@property (strong) IBOutlet NSMenuItem *tapQuitItem;
+@property (strong) IBOutlet AppDelegate *appDelegate;
 
 + (id)instance;
 //- (void)initWithPreferences:(__unsafe_unretained Preferences *)preferences;

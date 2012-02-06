@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		750E29C814DDDE4800FE314C /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 750E29BC14DDDDE400FE314C /* ShortcutRecorder.framework */; };
 		7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18214DC54FB00613F39 /* SysPref.scpt */; };
-		7535D18614DC6C6A00613F39 /* MenuExtra.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18414DC6C6A00613F39 /* MenuExtra.xib */; };
 		7535D18914DC70C600613F39 /* TapMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7535D18814DC70C600613F39 /* TapMenuController.m */; };
 		7535D1B814DF0B7D00613F39 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 750E29BC14DDDDE400FE314C /* ShortcutRecorder.framework */; };
 		75B79C8414DF303500CED163 /* PMUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79C8114DF2E7F00CED163 /* PMUtility.framework */; };
 		75B79C8514DF304100CED163 /* PMUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75B79C8114DF2E7F00CED163 /* PMUtility.framework */; };
 		75B79C8814DF35B200CED163 /* PMUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79C8714DF35B200CED163 /* PMUtility.framework */; };
+		75B79C8E14DFC48D00CED163 /* MenuExtra.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75B79C8C14DFC48D00CED163 /* MenuExtra.xib */; };
 		75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F45414D7AF5E0086171A /* Cocoa.framework */; };
 		75E0F45F14D7AF5F0086171A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F45D14D7AF5F0086171A /* InfoPlist.strings */; };
 		75E0F46114D7AF5F0086171A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F46014D7AF5F0086171A /* main.m */; };
@@ -111,11 +111,11 @@
 /* Begin PBXFileReference section */
 		750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = ../../Contributed/ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = "<group>"; };
 		7535D18214DC54FB00613F39 /* SysPref.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = SysPref.scpt; sourceTree = "<group>"; };
-		7535D18514DC6C6A00613F39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MenuExtra.xib; sourceTree = "<group>"; };
 		7535D18714DC70C600613F39 /* TapMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapMenuController.h; sourceTree = "<group>"; };
 		7535D18814DC70C600613F39 /* TapMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TapMenuController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMUtility.xcodeproj; path = ../PMUtility/PMUtility.xcodeproj; sourceTree = "<group>"; };
 		75B79C8714DF35B200CED163 /* PMUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMUtility.framework; path = ../PMUtility/build/Debug/PMUtility.framework; sourceTree = "<group>"; };
+		75B79C8D14DFC48D00CED163 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MenuExtra.xib; sourceTree = "<group>"; };
 		75E0F45014D7AF5E0086171A /* TapToggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapToggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E0F45414D7AF5E0086171A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75E0F45714D7AF5E0086171A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -228,7 +228,7 @@
 		75E0F45A14D7AF5E0086171A /* TapToggle */ = {
 			isa = PBXGroup;
 			children = (
-				7535D18414DC6C6A00613F39 /* MenuExtra.xib */,
+				75B79C8C14DFC48D00CED163 /* MenuExtra.xib */,
 				75E0F49214D7B3510086171A /* TapToggle.xib */,
 				75E0F48F14D7B2740086171A /* Resources */,
 				75E0F47714D7B1840086171A /* Preferences.h */,
@@ -394,7 +394,7 @@
 				75E0F48B14D7B1840086171A /* TapToggleOn-24.png in Resources */,
 				75E0F49514D7B3510086171A /* TapToggle.xib in Resources */,
 				7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */,
-				7535D18614DC6C6A00613F39 /* MenuExtra.xib in Resources */,
+				75B79C8E14DFC48D00CED163 /* MenuExtra.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,10 +429,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7535D18414DC6C6A00613F39 /* MenuExtra.xib */ = {
+		75B79C8C14DFC48D00CED163 /* MenuExtra.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7535D18514DC6C6A00613F39 /* en */,
+				75B79C8D14DFC48D00CED163 /* en */,
 			);
 			name = MenuExtra.xib;
 			sourceTree = "<group>";

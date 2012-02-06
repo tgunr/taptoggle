@@ -964,9 +964,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 			<object class="NSCustomObject" id="753359017">
 				<string key="NSClassName">AppDelegate</string>
 			</object>
-			<object class="NSCustomObject" id="727332395">
-				<string key="NSClassName">TapMenuController</string>
-			</object>
 			<object class="NSViewController" id="237920014"/>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -1386,14 +1383,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 						<reference key="destination" ref="575895806"/>
 					</object>
 					<int key="connectionID">359</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">menuExtraController</string>
-						<reference key="source" ref="237920014"/>
-						<reference key="destination" ref="727332395"/>
-					</object>
-					<int key="connectionID">671</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1901,11 +1890,6 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 						<reference key="object" ref="494977864"/>
 						<reference key="parent" ref="333103107"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">670</int>
-						<reference key="object" ref="727332395"/>
-						<reference key="parent" ref="0"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1985,262 +1969,15 @@ IHVzIG1haWx0bzovL3N1cHBvcnRAcG9seW1pY3Jvc3lzdGVtcy5jb20</bytes>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="657.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="658.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="670.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="99.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">671</int>
+			<int key="maxID">673</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">AppDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="menuExtraController">TapMenuController</string>
-						<string key="window">NSWindow</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="menuExtraController">
-							<string key="name">menuExtraController</string>
-							<string key="candidateClassName">TapMenuController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="window">
-							<string key="name">window</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/AppDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SRRecorderControl</string>
-					<string key="superclassName">NSControl</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">delegate</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">delegate</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">delegate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SRRecorderControl.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TapMenuController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="tapPrefClick:">id</string>
-						<string key="tapQuitClick:">id</string>
-						<string key="tapToggleClick:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="tapPrefClick:">
-							<string key="name">tapPrefClick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="tapQuitClick:">
-							<string key="name">tapQuitClick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="tapToggleClick:">
-							<string key="name">tapToggleClick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="appDelegate">AppDelegate</string>
-						<string key="tapClickItem">NSMenuItem</string>
-						<string key="tapMenu">NSMenu</string>
-						<string key="tapPrefItem">NSMenuItem</string>
-						<string key="tapQuitItem">NSMenuItem</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="appDelegate">
-							<string key="name">appDelegate</string>
-							<string key="candidateClassName">AppDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tapClickItem">
-							<string key="name">tapClickItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tapMenu">
-							<string key="name">tapMenu</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tapPrefItem">
-							<string key="name">tapPrefItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tapQuitItem">
-							<string key="name">tapQuitItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TapMenuController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TapToggleViewController</string>
-					<string key="superclassName">NSViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="anonInfoClicked:">id</string>
-						<string key="checkNowClicked:">id</string>
-						<string key="checkWeeklyClicked:">id</string>
-						<string key="infoDoneClicked:">id</string>
-						<string key="installClicked:">id</string>
-						<string key="moreInfoClicked:">id</string>
-						<string key="showStatus:">id</string>
-						<string key="startClicked:">id</string>
-						<string key="useHotkeyClicked:">id</string>
-						<string key="websiteClicked:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="anonInfoClicked:">
-							<string key="name">anonInfoClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="checkNowClicked:">
-							<string key="name">checkNowClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="checkWeeklyClicked:">
-							<string key="name">checkWeeklyClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="infoDoneClicked:">
-							<string key="name">infoDoneClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="installClicked:">
-							<string key="name">installClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="moreInfoClicked:">
-							<string key="name">moreInfoClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showStatus:">
-							<string key="name">showStatus:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="startClicked:">
-							<string key="name">startClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="useHotkeyClicked:">
-							<string key="name">useHotkeyClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="websiteClicked:">
-							<string key="name">websiteClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="anonInfoCheckBox">NSButton</string>
-						<string key="checkNowButton">NSButton</string>
-						<string key="hotKeyControl">SRRecorderControl</string>
-						<string key="infoPanel">NSPanel</string>
-						<string key="installButton">NSButton</string>
-						<string key="licensedToTextField">NSTextField</string>
-						<string key="mainView">NSView</string>
-						<string key="menuExtraController">TapMenuController</string>
-						<string key="moreInfoButton">NSButton</string>
-						<string key="showStatusCheckBox">NSButton</string>
-						<string key="startButton">NSButton</string>
-						<string key="statusTextField">NSTextField</string>
-						<string key="useHotkeyCheckbox">NSButton</string>
-						<string key="versionTextField">NSTextField</string>
-						<string key="websiteButton">NSButton</string>
-						<string key="weeklyCheckBox">NSButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="anonInfoCheckBox">
-							<string key="name">anonInfoCheckBox</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="checkNowButton">
-							<string key="name">checkNowButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="hotKeyControl">
-							<string key="name">hotKeyControl</string>
-							<string key="candidateClassName">SRRecorderControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="infoPanel">
-							<string key="name">infoPanel</string>
-							<string key="candidateClassName">NSPanel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="installButton">
-							<string key="name">installButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="licensedToTextField">
-							<string key="name">licensedToTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="mainView">
-							<string key="name">mainView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="menuExtraController">
-							<string key="name">menuExtraController</string>
-							<string key="candidateClassName">TapMenuController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="moreInfoButton">
-							<string key="name">moreInfoButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="showStatusCheckBox">
-							<string key="name">showStatusCheckBox</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="startButton">
-							<string key="name">startButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="statusTextField">
-							<string key="name">statusTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="useHotkeyCheckbox">
-							<string key="name">useHotkeyCheckbox</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="versionTextField">
-							<string key="name">versionTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="websiteButton">
-							<string key="name">websiteButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="weeklyCheckBox">
-							<string key="name">weeklyCheckBox</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TapToggleViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

@@ -61,6 +61,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--no-debug"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "--debug-level=2"
             isEnabled = "NO">
          </CommandLineArgument>

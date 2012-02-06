@@ -48,8 +48,8 @@
     // You will normally pass that controller as the 'owner'. For simplicity purposes we are passing
     // in this object as the owner.
     //
-    NSArray *nibArray;
-    NSNib *nib = [[NSNib alloc]initWithNibNamed:@"MenuExtra" bundle:nil];
+//    NSArray *nibArray;
+//    NSNib *nib = [[NSNib alloc]initWithNibNamed:@"MenuExtra" bundle:nil];
 //    BOOL result = [nib instantiateNibWithOwner:NSApp topLevelObjects:&nibArray];
 //    if (!result) {
 //        PMLOG(1, @"Did NOT load MenuExtra nib file");

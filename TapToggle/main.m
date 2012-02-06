@@ -23,6 +23,8 @@ int main(int argc, char *argv[])
         NSArray *arguments = [[NSProcessInfo processInfo] arguments];
         for (int i=1; i < [arguments count]; i++) {
             NSString * argument = [arguments objectAtIndex:i];
+            if ([argument isEqualToString:@"--nodebug"]) 
+                debuglevel = 0;
             if ([argument hasPrefix:@"--debug-level="]) {
                 NSArray *dl = [argument componentsSeparatedByString:@"="];
                 // Make sure there is a level value

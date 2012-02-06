@@ -12,6 +12,14 @@
 #import "Prefs.h"
 #import <PMUtility/PMUtility.h>
 
+@interface TapMenuController () {
+@private
+    
+}
+- (void)buildMenuExtra;
+
+@end
+
 @implementation TapMenuController {
 @private
 }
@@ -39,15 +47,48 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 - (id)init {
     self = [super init];
     if (self) {
+        if (!statusItem) {
+            [self buildMenuExtra];
+            prefs = [Preferences shared];
+        }
     }
     return self;
 }
 
 - (void)awakeFromNib {
     prefs = [Preferences shared];
+//    NSArray *nibArray;
+//    NSNib *nib = [[NSNib alloc]initWithNibNamed:@"MenuExtra" bundle:nil];
+//    BOOL result = [nib instantiateNibWithOwner:NSApp topLevelObjects:&nibArray];
+//    if (!result) {
+//        PMLOG(1, @"Did NOT load MenuExtra nib file");
+//        return;
+//    }
+//    sharedTapMenuContollerInstance = [TapMenuController instance];
+//
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)buildMenuExtra {
+    tapMenu = [[NSMenu alloc] init];
+    
+    // Build the menu items
+//    [tapMenu initWithTitle:@"TapToggle"];
+    [tapMenu setAutoenablesItems:NO];
+    tapClickItem = [[NSMenuItem alloc]
+                    initWithTitle:@"Tap Click Off" action:@selector(tapToggleClick:) keyEquivalent:@""];
+    [tapClickItem setTarget:self];
+    [tapClickItem setEnabled:YES];
+    [tapMenu addItem:tapClickItem];
+    
+    tapPrefItem = [[NSMenuItem alloc] initWithTitle:@"Preferences…" action:@selector(tapPrefClick) keyEquivalent:@""];
+    [tapPrefItem setEnabled:YES];
+    [tapPrefItem setTarget:self];
+    [tapMenu addItem:tapPrefItem];
+    
+    tapQuitItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(tapQuitClick) keyEquivalent:@""];
+    [tapQuitItem setEnabled:YES];
+    [tapQuitItem setTarget:self];
+    [tapMenu addItem:tapQuitItem];
 }
 
 - (BOOL)isClicking {
@@ -110,10 +151,17 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
         NSStatusBar  *bar           = [NSStatusBar systemStatusBar];
         NSStatusItem *newStatusItem = [bar statusItemWithLength:NSVariableStatusItemLength];
         statusItem = newStatusItem;
+
         // Install the item
         [statusItem setMenu:tapMenu];
         id ci = tapClickItem;
     }
+//    [tapClickItem setTarget:self];
+//    [tapPrefItem setTarget:self];
+//    [tapQuitItem setTarget:self];
+//    [tapClickItem setEnabled:YES];
+//    [tapPrefItem setEnabled:YES];
+//    [tapQuitItem setEnabled:YES];
     BOOL clicking = [self isClicking];
     NSImage *theImage = [self getClickingImage:clicking];
     [statusItem setImage:theImage];
@@ -172,7 +220,7 @@ void processEvent(NSEvent *event) {
         }
     }
     if ([event type] == NSLeftMouseUp) {
-        PMLOG(1, @"click event: %@", NSStringFromPoint([event locationInWindow]));
+        PMLOG(2, @"click event: %@", NSStringFromPoint([event locationInWindow]));
     }
 }
 
