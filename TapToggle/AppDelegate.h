@@ -10,12 +10,31 @@
 
 @class Preferences;
 @class TapMenuController;
+@class LaunchAtLoginController;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+#define NSApplicationRelaunchDaemon @"relaunch"
 
-@property (nonatomic, retain) Preferences *prefs;
-@property (nonatomic, retain) IBOutlet NSWindow     *window;
-@property (weak) IBOutlet TapMenuController *menuExtraController;
-- (void)tapShowPreferences;
+@interface NSApplication (Relaunch)
 
+- (void) relaunch:(id) sender;
+
+@end
+
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+@private
+    NSMenu     *_dockMenu;
+    NSMenuItem *dockClickItem;
+    NSMenuItem *dockPrefItem;
+
+    LaunchAtLoginController *loginController;
+}
+
+
+@property (nonatomic, retain) Preferences       *prefs;
+@property (nonatomic, retain) IBOutlet NSWindow *window;
+@property (nonatomic, retain) TapMenuController *menuExtraController;
+@property (nonatomic, retain) NSMenu            *dockMenu;
+
+- (void) tapShowPreferences;
+- (void) setLogin:(BOOL) install;
 @end

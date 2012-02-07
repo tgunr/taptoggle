@@ -1,46 +1,34 @@
 //
 //  Created by davec on 01/28/12.
 //
-// To change the template use AppCode | Preferences | File Templates.
-//
 
 
 #import <PreferencePanes/PreferencePanes.h>
 #import "Preferences.h"
 #import "Prefs.h"
-#import <PMUtility/pm.h>
 
 @interface Preferences ()
 
-- (void)setFromUserDefaults;
-- (void)setUserDefaultsWithDictionry:(NSDictionary *)defaultDict;
+- (void) setFromUserDefaults;
+- (void) setUserDefaultsWithDictionry:(NSDictionary *) defaultDict;
 
 @end
 
-@implementation Preferences {
-    NSUserDefaults *userDefaults;
-    BOOL _showStatus;
-    BOOL _checkWeekly;
-    BOOL _anonInfo;
-    BOOL _useHotKey;
-    NSString *_prefsVersion;
-    NSDate   *lastCheck;
-    BOOL     shouldRun;
-    KeyCombo hotKeyCombo;
-}
+@implementation Preferences
 
 @synthesize userDefaults;
 
-+ (id)instance
-{
++ (id) instance {
     static dispatch_once_t onceQueue;
     static Preferences *preferences = nil;
-    
-    dispatch_once(&onceQueue, ^{ preferences = [[self alloc] initPreferences]; });
+
+    dispatch_once(&onceQueue, ^{
+        preferences = [[self alloc] initPreferences];
+    });
     return preferences;
 }
 
-- (NSString *)loadDefaultsPath:(id)loader {
+- (NSString *) loadDefaultsPath:(id) loader {
     NSString *loaderPath;
     if ([loader isKindOfClass:[NSApplication class]]) {
         NSBundle *mb = [NSBundle mainBundle];
@@ -56,10 +44,10 @@
     return loaderPath;
 }
 
-- (NSDictionary *)getInitialDefaults {
+- (NSDictionary *) getInitialDefaults {
     NSDictionary *defaultPrefsDict;
     NSString     *bPath;
-    NSBundle *mb = [NSBundle mainBundle];
+    NSBundle     *mb = [NSBundle mainBundle];
     bPath = [mb bundlePath];
 
     NSString *plistFile = [bPath
@@ -80,61 +68,62 @@
     return internalDict;
 }
 
-- (void)setFromUserDefaults {
+- (void) setFromUserDefaults {
     NSDictionary *defaultPrefsDict = [userDefaults dictionaryRepresentation];
-    PMLOG(1, @"Prefs: %@", defaultPrefsDict);
+    PMLOG(2, @"Prefs: %@", defaultPrefsDict);
 
     _showStatus   = [userDefaults boolForKey:kShowStatus];
-    _checkWeekly = [userDefaults boolForKey:kCheckWeekly];
-    _anonInfo    = [userDefaults boolForKey:kAnonInfo];
-    _useHotKey   = [userDefaults boolForKey:kUseHotKey];
+    _checkWeekly  = [userDefaults boolForKey:kCheckWeekly];
+    _anonInfo     = [userDefaults boolForKey:kAnonInfo];
+    _useHotKey    = [userDefaults boolForKey:kUseHotKey];
+    _prefsVersion = [userDefaults stringForKey:kPrefsVersion];
+    lastCheck     = [userDefaults objectForKey:kLastCheck];
 
     hotKeyCombo.flags = (NSUInteger) [userDefaults integerForKey:kHotKeyFlags];
     hotKeyCombo.code  = [userDefaults integerForKey:kHotKeyCode];
 
-    _prefsVersion = [userDefaults stringForKey:kPrefsVersion];
-    lastCheck    = [userDefaults objectForKey:kLastCheck];
-    shouldRun    = [userDefaults boolForKey:kShouldRun];
-
+    _showDock  = [userDefaults boolForKey:kShowDock];
+    _shouldRun = [userDefaults boolForKey:kShouldRun];
+    _loginItem = [userDefaults boolForKey:kLoginItem];
 }
 
-- (Preferences *)initPreferences {
+- (Preferences *) initPreferences {
     self = [super init];
     if (self) {
         NSString *currentVersion = nil;
-        userDefaults = [NSUserDefaults standardUserDefaults];
-        
+        userDefaults             = [NSUserDefaults standardUserDefaults];
+
         // Check preferences version for change
         if (userDefaults)
             currentVersion = [userDefaults stringForKey:kPrefsVersion];
-        
+
         if (currentVersion == nil) {
             [self setUserDefaultsWithDictionry:[self getInitialDefaults]];
         }
-        
+
         NSString *sourcesVersion = PREFS_VERSION;
         BOOL needsUpdate = NO;
-        if (! [currentVersion isEqualToString:sourcesVersion])
+        if (![currentVersion isEqualToString:sourcesVersion])
             needsUpdate = YES;
-        
+
         if (needsUpdate) {
             // Do need preference conversion here
             [self setPrefsVersion:sourcesVersion];
         }
-            
+
         [self setFromUserDefaults];
     }
     return self;
 }
 
-- (void)setUserDefaultsWithDictionry:(NSDictionary *)defaultDict {
+- (void) setUserDefaultsWithDictionry:(NSDictionary *) defaultDict {
     [userDefaults registerDefaults:defaultDict];
 //        [defaults synchronize];
     PMLOG(1, @"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
-- (void)setWithDictionary:(NSDictionary *)prefDictionary {
-    _showStatus   = [[prefDictionary objectForKey:kShowStatus] boolValue];
+- (void) setWithDictionary:(NSDictionary *) prefDictionary {
+    _showStatus  = [[prefDictionary objectForKey:kShowStatus] boolValue];
     _checkWeekly = [[prefDictionary objectForKey:kCheckWeekly] boolValue];
     _anonInfo    = [[prefDictionary objectForKey:kAnonInfo] boolValue];
     _useHotKey   = [[prefDictionary objectForKey:kUseHotKey] boolValue];
@@ -142,98 +131,113 @@
     hotKeyCombo.flags = (NSUInteger) [[prefDictionary objectForKey:kHotKeyFlags] integerValue];
 }
 
-- (NSDictionary *)dictionary {
-    NSDictionary *prefsAsDict = 
-    [NSDictionary dictionaryWithObjectsAndKeys:
-     [NSNumber numberWithBool:_showStatus], kShowStatus,
-     [NSNumber numberWithBool:_checkWeekly], kCheckWeekly,
-     [NSNumber numberWithBool:_anonInfo], kAnonInfo,
-     [NSNumber numberWithBool:_useHotKey], kUseHotKey,
-     [NSNumber numberWithInteger:hotKeyCombo.code], kHotKeyCode,
-     [NSNumber numberWithInteger:hotKeyCombo.flags], kHotKeyFlags,
-     _prefsVersion, kPrefsVersion,
-     [NSNumber numberWithBool:shouldRun], kShouldRun,
-     nil];
+- (NSDictionary *) dictionary {
+    NSDictionary *prefsAsDict =
+                         [NSDictionary dictionaryWithObjectsAndKeys:
+                                               [NSNumber numberWithBool:_showStatus], kShowStatus,
+                                               [NSNumber numberWithBool:_checkWeekly], kCheckWeekly,
+                                               [NSNumber numberWithBool:_anonInfo], kAnonInfo,
+                                               [NSNumber numberWithBool:_useHotKey], kUseHotKey,
+                                               [NSNumber numberWithInteger:hotKeyCombo.code], kHotKeyCode,
+                                               [NSNumber numberWithInteger:hotKeyCombo.flags], kHotKeyFlags,
+                                               _prefsVersion, kPrefsVersion,
+                                               [NSNumber numberWithBool:_shouldRun], kShouldRun,
+                                               nil];
     return prefsAsDict;
 }
 
-- (void)setUseHotKey:(BOOL)anUseHotKey {
+- (void) setUseHotKey:(BOOL) anUseHotKey {
     _useHotKey = anUseHotKey;
     [userDefaults setBool:anUseHotKey forKey:kUseHotKey];
 }
 
-- (BOOL)useHotKey {
+- (BOOL) useHotKey {
     return _useHotKey;
 }
 
-- (void)setAnonInfo:(BOOL)anAnonInfo {
+- (void) setAnonInfo:(BOOL) anAnonInfo {
     _anonInfo = anAnonInfo;
     [userDefaults setBool:anAnonInfo forKey:kAnonInfo];
 }
 
-- (BOOL)anonInfo {
+- (BOOL) anonInfo {
     return _anonInfo;
 }
 
-- (void)setCheckWeekly:(BOOL)aCheckWeekly {
+- (void) setCheckWeekly:(BOOL) aCheckWeekly {
     _checkWeekly = aCheckWeekly;
     [userDefaults setBool:aCheckWeekly forKey:kCheckWeekly];
 }
 
-- (BOOL)checkWeekly {
+- (BOOL) checkWeekly {
     return _checkWeekly;
 }
 
-- (void)setShowStatus:(BOOL)status {
+- (void) setShowStatus:(BOOL) status {
     _showStatus = status;
     [userDefaults setBool:status forKey:kShowStatus];
 }
 
-- (BOOL)showStatus {
+- (BOOL) showStatus {
     return _showStatus;
 }
 
-- (void)setShouldRun:(BOOL)status {
-    shouldRun = status;
+- (void) setShouldRun:(BOOL) status {
+    _shouldRun = status;
     [userDefaults setBool:status forKey:kShouldRun];
 }
 
-- (BOOL)shouldRun {
-    return shouldRun;
+- (BOOL) shouldRun {
+    return _shouldRun;
 }
 
-- (KeyCombo)keyCombo {
-    KeyCombo result = hotKeyCombo;
-    return result;
-    //To change the template use AppCode | Preferences | File Templates.
-
+- (KeyCombo) keyCombo {
+    return hotKeyCombo;
 }
 
-- (void)setKeyCombo:(KeyCombo)aHotKeyCombo {
+- (void) setKeyCombo:(KeyCombo) aHotKeyCombo {
     hotKeyCombo = aHotKeyCombo;
     [userDefaults setInteger:aHotKeyCombo.code forKey:kHotKeyCode];
     [userDefaults setInteger:aHotKeyCombo.flags forKey:kHotKeyFlags];
 }
 
-- (NSString *)prefsVersion {
+- (void) setShowDock:(BOOL) aShowDock {
+    _showDock = aShowDock;
+    [userDefaults setBool:aShowDock forKey:kShowDock];
+}
+
+- (BOOL) showDock {
+    return _showDock;
+}
+
+- (NSString *) prefsVersion {
     return _prefsVersion;
 }
 
-- (void)setPrefsVersion:(NSString *)aPrefsVersion {
+- (void) setPrefsVersion:(NSString *) aPrefsVersion {
     _prefsVersion = aPrefsVersion;
     [userDefaults setObject:aPrefsVersion forKey:kPrefsVersion];
 }
 
-- (NSDate *)lastCheck {
+- (NSDate *) lastCheck {
     return lastCheck;
 }
 
-- (void)setLastCheck:(NSDate *)aLastCheck {
+- (void) setLastCheck:(NSDate *) aLastCheck {
     lastCheck = aLastCheck;
     [userDefaults setObject:aLastCheck forKey:kLastCheck];
 }
 
-- (void)notify {
+- (void) setLoginItem:(BOOL) aLoginItem {
+    _loginItem = aLoginItem;
+    [userDefaults setBool:aLoginItem forKey:kLoginItem];
+}
+
+- (BOOL) loginItem {
+    return _loginItem;
+}
+
+- (void) notify {
     //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //    [defaults synchronize];
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kNotifyName object:@"TapToggle"

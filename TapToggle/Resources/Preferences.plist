@@ -4,6 +4,10 @@
     <dict>
         <key>com.polymicrosystems.taptoggle.showStatus</key>
         <true/>
+        <key>com.polymicrosystems.taptoggle.showDock</key>
+        <true/>
+        <key>com.polymicrosystems.taptoggle.loginItem</key>
+        <true/>
         <key>com.polymicrosystems.taptoggle.checkWeekly</key>
         <true/>
         <key>com.polymicrosystems.taptoggle.anonInfo</key>

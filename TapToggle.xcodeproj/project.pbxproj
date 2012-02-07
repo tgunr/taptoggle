@@ -13,6 +13,12 @@
 		7535D1B814DF0B7D00613F39 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 750E29BC14DDDDE400FE314C /* ShortcutRecorder.framework */; };
 		75B79CA814E0432F00CED163 /* PMUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79C8114DF2E7F00CED163 /* PMUtility.framework */; };
 		75B79CA914E0434500CED163 /* PMUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75B79C8114DF2E7F00CED163 /* PMUtility.framework */; };
+		75B79CAF14E08CF200CED163 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */; };
+		75B79CD314E0B2B800CED163 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CD214E0B2B800CED163 /* Foundation.framework */; };
+		75B79CD614E0B2B800CED163 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B79CD514E0B2B800CED163 /* main.m */; };
+		75B79CE114E0B36300CED163 /* relaunch in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75B79CD014E0B2B800CED163 /* relaunch */; };
+		75B79CE314E0D44400CED163 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CE214E0D44300CED163 /* Cocoa.framework */; };
+		75B79CE614E127E000CED163 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CE514E127E000CED163 /* Carbon.framework */; };
 		75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F45414D7AF5E0086171A /* Cocoa.framework */; };
 		75E0F45F14D7AF5F0086171A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F45D14D7AF5F0086171A /* InfoPlist.strings */; };
 		75E0F46114D7AF5F0086171A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F46014D7AF5F0086171A /* main.m */; };
@@ -90,9 +96,26 @@
 			remoteGlobalIDString = 7535D1CE14DF240C00613F39;
 			remoteInfo = PMUtility;
 		};
+		75B79CDE14E0B34800CED163 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75E0F44714D7AF5E0086171A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75B79CCF14E0B2B800CED163;
+			remoteInfo = relaunch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		75B79CE014E0B34E00CED163 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				75B79CE114E0B36300CED163 /* relaunch in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		75F56D6314D8A5DF0022D215 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,6 +136,15 @@
 		7535D18814DC70C600613F39 /* TapMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TapMenuController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMUtility.xcodeproj; path = ../PMUtility/PMUtility.xcodeproj; sourceTree = "<group>"; };
 		75B79C8714DF35B200CED163 /* PMUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMUtility.framework; path = ../PMUtility/build/Debug/PMUtility.framework; sourceTree = "<group>"; };
+		75B79CAD14E08CF100CED163 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchAtLoginController.h; path = ../../../Contributed/LaunchAtLoginController/LaunchAtLoginController.h; sourceTree = "<group>"; };
+		75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = ../../../Contributed/LaunchAtLoginController/LaunchAtLoginController.m; sourceTree = "<group>"; };
+		75B79CD014E0B2B800CED163 /* relaunch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = relaunch; sourceTree = BUILT_PRODUCTS_DIR; };
+		75B79CD214E0B2B800CED163 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		75B79CD514E0B2B800CED163 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		75B79CD814E0B2B800CED163 /* relaunch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "relaunch-Prefix.pch"; sourceTree = "<group>"; };
+		75B79CD914E0B2B800CED163 /* relaunch.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = relaunch.1; sourceTree = "<group>"; };
+		75B79CE214E0D44300CED163 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		75B79CE514E127E000CED163 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		75E0F45014D7AF5E0086171A /* TapToggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapToggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E0F45414D7AF5E0086171A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		75E0F45714D7AF5E0086171A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -145,10 +177,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		75B79CCD14E0B2B800CED163 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75B79CE314E0D44400CED163 /* Cocoa.framework in Frameworks */,
+				75B79CD314E0B2B800CED163 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		75E0F44D14D7AF5E0086171A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75B79CE614E127E000CED163 /* Carbon.framework in Frameworks */,
 				750E29C814DDDE4800FE314C /* ShortcutRecorder.framework in Frameworks */,
 				75B79CA814E0432F00CED163 /* PMUtility.framework in Frameworks */,
 				75E0F4B414D7D6050086171A /* PreferencePanes.framework in Frameworks */,
@@ -180,12 +222,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		75B79CD414E0B2B800CED163 /* relaunch */ = {
+			isa = PBXGroup;
+			children = (
+				75B79CD514E0B2B800CED163 /* main.m */,
+				75B79CD914E0B2B800CED163 /* relaunch.1 */,
+				75B79CD714E0B2B800CED163 /* Supporting Files */,
+			);
+			path = relaunch;
+			sourceTree = "<group>";
+		};
+		75B79CD714E0B2B800CED163 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75B79CE214E0D44300CED163 /* Cocoa.framework */,
+				75B79CD814E0B2B800CED163 /* relaunch-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		75E0F44514D7AF5E0086171A = {
 			isa = PBXGroup;
 			children = (
 				75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */,
 				750E29AD14DDDDE400FE314C /* ShortcutRecorder.xcodeproj */,
 				75E0F45A14D7AF5E0086171A /* TapToggle */,
+				75B79CD414E0B2B800CED163 /* relaunch */,
 				75E0F45314D7AF5E0086171A /* Frameworks */,
 				75E0F45114D7AF5E0086171A /* Products */,
 			);
@@ -195,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				75E0F45014D7AF5E0086171A /* TapToggle.app */,
+				75B79CD014E0B2B800CED163 /* relaunch */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,8 +265,10 @@
 		75E0F45314D7AF5E0086171A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75B79CE514E127E000CED163 /* Carbon.framework */,
 				75B79C8714DF35B200CED163 /* PMUtility.framework */,
 				75E0F45414D7AF5E0086171A /* Cocoa.framework */,
+				75B79CD214E0B2B800CED163 /* Foundation.framework */,
 				75E0F45614D7AF5E0086171A /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -224,6 +289,8 @@
 		75E0F45A14D7AF5E0086171A /* TapToggle */ = {
 			isa = PBXGroup;
 			children = (
+				75B79CAD14E08CF100CED163 /* LaunchAtLoginController.h */,
+				75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */,
 				75E0F49214D7B3510086171A /* TapToggle.xib */,
 				75E0F48F14D7B2740086171A /* Resources */,
 				75E0F47714D7B1840086171A /* Preferences.h */,
@@ -272,6 +339,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		75B79CCF14E0B2B800CED163 /* relaunch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75B79CDB14E0B2B800CED163 /* Build configuration list for PBXNativeTarget "relaunch" */;
+			buildPhases = (
+				75B79CCC14E0B2B800CED163 /* Sources */,
+				75B79CCD14E0B2B800CED163 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = relaunch;
+			productName = relaunch;
+			productReference = 75B79CD014E0B2B800CED163 /* relaunch */;
+			productType = "com.apple.product-type.tool";
+		};
 		75E0F44F14D7AF5E0086171A /* TapToggle */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75E0F46E14D7AF5F0086171A /* Build configuration list for PBXNativeTarget "TapToggle" */;
@@ -280,10 +363,12 @@
 				75E0F44D14D7AF5E0086171A /* Frameworks */,
 				75E0F44E14D7AF5E0086171A /* Resources */,
 				75F56D6314D8A5DF0022D215 /* CopyFiles */,
+				75B79CE014E0B34E00CED163 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				75B79CDF14E0B34800CED163 /* PBXTargetDependency */,
 				75B79C8314DF302D00CED163 /* PBXTargetDependency */,
 				750E29C714DDDE1400FE314C /* PBXTargetDependency */,
 			);
@@ -323,6 +408,7 @@
 			projectRoot = "";
 			targets = (
 				75E0F44F14D7AF5E0086171A /* TapToggle */,
+				75B79CCF14E0B2B800CED163 /* relaunch */,
 			);
 		};
 /* End PBXProject section */
@@ -395,6 +481,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		75B79CCC14E0B2B800CED163 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75B79CD614E0B2B800CED163 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		75E0F44C14D7AF5E0086171A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -404,6 +498,7 @@
 				75E0F48414D7B1840086171A /* Preferences.m in Sources */,
 				75E0F48E14D7B1AF0086171A /* TapToggleViewController.m in Sources */,
 				7535D18914DC70C600613F39 /* TapMenuController.m in Sources */,
+				75B79CAF14E08CF200CED163 /* LaunchAtLoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +514,11 @@
 			isa = PBXTargetDependency;
 			name = PMUtility;
 			targetProxy = 75B79C8214DF302D00CED163 /* PBXContainerItemProxy */;
+		};
+		75B79CDF14E0B34800CED163 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75B79CCF14E0B2B800CED163 /* relaunch */;
+			targetProxy = 75B79CDE14E0B34800CED163 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -450,6 +550,29 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		75B79CDC14E0B2B800CED163 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		75B79CDD14E0B2B800CED163 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		75E0F46C14D7AF5F0086171A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -525,6 +648,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		75B79CDB14E0B2B800CED163 /* Build configuration list for PBXNativeTarget "relaunch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75B79CDC14E0B2B800CED163 /* Debug */,
+				75B79CDD14E0B2B800CED163 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		75E0F44A14D7AF5E0086171A /* Build configuration list for PBXProject "TapToggle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -12,12 +12,16 @@
 @class Preferences;
 @class TapMenuController;
 
-@interface TapToggleViewController : NSViewController
+@interface TapToggleViewController : NSViewController {
+@private
+}
 
 @property (retain) Preferences              *prefs;
 @property (weak) IBOutlet NSView            *mainView;
 @property (weak) IBOutlet NSTextField       *statusTextField;
 @property (weak) IBOutlet NSButton          *showStatusCheckBox;
+@property (weak) IBOutlet NSButton          *loginItemCheckBox;
+@property (weak) IBOutlet NSButton          *showDockCheckBox;
 @property (weak) IBOutlet NSButton          *startButton;
 @property (weak) IBOutlet NSButton          *weeklyCheckBox;
 @property (weak) IBOutlet NSButton          *anonInfoCheckBox;
@@ -30,18 +34,20 @@
 @property (weak) IBOutlet NSButton          *useHotkeyCheckbox;
 @property (weak) IBOutlet SRRecorderControl *hotKeyControl;
 @property (strong) IBOutlet NSPanel         *infoPanel;
-@property (assign) NSTimer                  *monitorCheck;
-@property (retain) NSEvent *eventMonitor;
-@property (retain) TapMenuController *menuExtraController;
+@property (retain) NSTimer                  *monitorCheck;
+@property (retain) NSEvent                  *eventMonitor;
+@property (retain) TapMenuController        *menuExtraController;
 
-- (IBAction)showStatus:(id)sender;
-- (IBAction)startClicked:(id)sender;
-- (IBAction)checkWeeklyClicked:(id)sender;
-- (IBAction)checkNowClicked:(id)sender;
-- (IBAction)moreInfoClicked:(id)sender;
-- (IBAction)installClicked:(id)sender;
-- (IBAction)websiteClicked:(id)sender;
-- (IBAction)infoDoneClicked:(id)sender;
-- (IBAction)useHotkeyClicked:(id)sender;
-- (IBAction)anonInfoClicked:(id)sender;
+- (IBAction) showStatus:(id) sender;
+- (IBAction) loginItemClicked:(id) sender;
+- (IBAction) showDockClicked:(id) sender;
+- (IBAction) startClicked:(id) sender;
+- (IBAction) checkWeeklyClicked:(id) sender;
+- (IBAction) checkNowClicked:(id) sender;
+- (IBAction) moreInfoClicked:(id) sender;
+- (IBAction) installClicked:(id) sender;
+- (IBAction) websiteClicked:(id) sender;
+- (IBAction) infoDoneClicked:(id) sender;
+- (IBAction) useHotkeyClicked:(id) sender;
+- (IBAction) anonInfoClicked:(id) sender;
 @end

@@ -6,93 +6,115 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <ServiceManagement/ServiceManagement.h>
-#import <CoreServices/CoreServices.h>
 #import "AppDelegate.h"
 #import "Preferences.h"
 #import "Prefs.h"
 #import "TapMenuController.h"
-#import <PMUtility/pm.h>
+#import "LaunchAtLoginController.h"
 
-@interface AppDelegate ()
+@implementation NSApplication (Relaunch)
 
-- (void)tapShowPreferences;
+- (void) relaunch:(id) sender {
+    NSString *daemonPath = [[NSBundle mainBundle] pathForResource:NSApplicationRelaunchDaemon ofType:nil];
+    NSString *path       = [[NSBundle mainBundle] bundlePath];
+    NSString *pid        = [NSString stringWithFormat:@"%d", [[NSProcessInfo processInfo] processIdentifier]];
+    NSArray  *args       = [NSArray arrayWithObjects:path, pid, nil];
+    [NSTask launchedTaskWithLaunchPath:daemonPath arguments:args];
+    [self terminate:sender];
+}
 
 @end
 
-@implementation AppDelegate {
-@private
-}
+@interface AppDelegate ()
+
+- (void) tapShowPreferences;
+
+@end
+
+@implementation AppDelegate
 
 @synthesize window;
 @synthesize prefs;
 @synthesize menuExtraController;
+@synthesize dockMenu = _dockMenu;
 
-- (id)init {
-    if ( self = [super init] ) {
-        // Init code
+- (void) buildDockMenu {
+    _dockMenu = [[NSMenu alloc]
+                         initWithTitle:@"TapToggle"];
+    [_dockMenu setAutoenablesItems:NO];
+    NSMenuItem *item;
+
+    dockClickItem = [[NSMenuItem alloc]
+                                 initWithTitle:@"Tap Click Off" action:@selector(tapToggleClick) keyEquivalent:@""];
+    [item setEnabled:YES];
+    [item setTarget:self];
+    [_dockMenu addItem:dockClickItem];
+
+    dockPrefItem = [[NSMenuItem alloc]
+                                initWithTitle:@"Preferences" action:@selector(tapPrefClick) keyEquivalent:@""];
+    [item setTarget:self];
+    [item setEnabled:YES];
+    [_dockMenu addItem:dockPrefItem];
+
+}
+
+- (void) toggleClicking {
+    NSDictionary  *dict;
+    NSBundle      *myBundle = [NSBundle mainBundle];
+    NSURL         *asURL    = [myBundle URLForResource:@"SysPref" withExtension:@"scpt"];
+    NSAppleScript *as       = [[NSAppleScript alloc] initWithContentsOfURL:asURL error:&dict];
+    [as executeAndReturnError:&dict];
+    BOOL clicking = [menuExtraController isClicking];
+    if (clicking) {
+        [dockClickItem setTitle:@"Tap Click Off"];
     }
-    return self;
+    else {
+        [dockClickItem setTitle:@"Tap Click On"];
+    }
+    NSString *clickState = clicking ? @"ON" : @"OFF";
+    PMLOG(1, @"Tap Click is: %@", clickState);
 }
 
-- (void)awakeFromNib {
-    
+- (void) tapToggleClick {
+    PMHERE;
+    [self toggleClicking];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    prefs = [Preferences instance];
-    
-    // At this pint, our outlets to inside this nib will be properly setup. It is important to note
-    // that they will get overwritten when this is called again!
-    // In general, it is good practice to use a unique controller object for each nib you load.
-    // You will normally pass that controller as the 'owner'. For simplicity purposes we are passing
-    // in this object as the owner.
-    //
-//    NSArray *nibArray;
-//    NSNib *nib = [[NSNib alloc]initWithNibNamed:@"MenuExtra" bundle:nil];
-//    BOOL result = [nib instantiateNibWithOwner:NSApp topLevelObjects:&nibArray];
-//    if (!result) {
-//        PMLOG(1, @"Did NOT load MenuExtra nib file");
-//        return;
-//    }
+- (void) tapPrefClick {
+    PMHERE;
+    [self tapShowPreferences];
+}
+
+
+- (NSMenu *) applicationDockMenu:(NSApplication *) sender {
+    PMHERE;
+    return _dockMenu;
+}
+
+- (void) applicationDidFinishLaunching:(NSNotification *) aNotification {
+    prefs               = [Preferences instance];
     menuExtraController = [TapMenuController instance];
-//    NSBundle *myBundle = [NSBundle mainBundle];
-//    NSURL    *myURL    = [myBundle bundleURL];
-//    LSRegisterURL((__bridge CFURLRef) myURL, TRUE);
-//    SMLoginItemSetEnabled((CFStringRef) tptmenuextra, true);
+    _dockMenu           = [menuExtraController dockMenu];
+    loginController     = [[LaunchAtLoginController alloc] init];
 }
 
-- (void)checkWeekly:(NSDictionary *)appDict {
+- (void) checkWeekly:(NSDictionary *) appDict {
     BOOL value = [[appDict objectForKey:kCheckWeekly] boolValue];
     if (value)
-        PMLOG(1, @"Starting Weekly check timer");
+    PMLOG(1, @"Starting Weekly check timer");
     else
-        PMLOG(1, @"Stopping Weekly check timer");
+          PMLOG(1, @"Stopping Weekly check timer");
 }
 
-- (void)checkAnonInfo:(NSDictionary *)appDict {
+- (void) checkAnonInfo:(NSDictionary *) appDict {
     BOOL value = [[appDict objectForKey:kAnonInfo] boolValue];
     if (value)
-        PMLOG(1, @"Will inlcude anon info");
+    PMLOG(1, @"Will inlcude anon info");
     else
-        PMLOG(1, @"Anon info disabled");
+          PMLOG(1, @"Anon info disabled");
 }
 
-- (void)checkUseHotKey {
-    BOOL value = [prefs useHotKey];
-    if (value)
-        PMLOG(1, @"Hot key enabled");
-    else
-        PMLOG(1, @"Hot key disabled");
-}
-
-- (void)checkHotKey:(NSDictionary *)appDict {
-//    NSInteger hkCode  = [[appDict objectForKey:kHotKeyCode] integerValue];
-//    NSInteger hkFlags = [[appDict objectForKey:kHotKeyFlags] integerValue];
-//    KeyCombo  hotkey  = {(NSUInteger) hkCode, hkFlags};
-}
-
-- (void)checkForUpdate {
+- (void) checkForUpdate {
     NSTimeInterval oneWeek = 60 * 60 * 24 * 7;
     NSDate *checkDate = [NSDate dateWithTimeInterval:oneWeek sinceDate:[prefs lastCheck]];
     NSDate *today     = [NSDate date];
@@ -102,7 +124,18 @@
     }
 }
 
-- (void)tapShowPreferences {
-    [window makeKeyAndOrderFront: self];
+- (void) tapShowPreferences {
+    PMHERE;
+    [NSApp activateIgnoringOtherApps:YES];
 }
+
+- (NSMenu *) applicationDockMenu {
+    _dockMenu = [[NSMenu alloc] initWithTitle:@"TapToggle"];
+    return _dockMenu;
+}
+
+- (void) setLogin:(BOOL) install {
+    [loginController setLaunchAtLogin:install];
+}
+
 @end

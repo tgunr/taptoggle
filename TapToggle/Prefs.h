@@ -30,4 +30,6 @@
 #define kHotKeyCode @"com.polymicrosystems.taptoggle.hotKeyCode"
 #define kLastCheck @"com.polymicrosystems.taptoggle.lastCheck"
 #define kCheckNow @"com.polymicrosystems.taptoggle.checkNow"
+#define kShowDock @"com.polymicrosystems.taptoggle.showDock"
+#define kLoginItem @"com.polymicrosystems.taptoggle.loginItem"
 #endif

@@ -11,23 +11,36 @@
 @class Preferences;
 @class AppDelegate;
 
-@interface TapMenuController : NSObject        {
+@interface TapMenuController : NSObject {
+@private
+    NSMenu       *dockMenu;
+    Preferences  *prefs;
+    NSStatusItem *statusItem;
+    NSMenu       *tapMenu;
+    NSMenuItem   *tapClickItem;
+    NSMenuItem   *tapPrefItem;
+    NSMenuItem   *tapQuitItem;
+    AppDelegate  *appDelegate;
 }
+
 @property (retain) Preferences  *prefs;
 @property (retain) NSStatusItem *statusItem;
-@property (strong) IBOutlet NSMenu *tapMenu;
-@property (strong) IBOutlet NSMenuItem *tapClickItem;
-@property (strong) IBOutlet NSMenuItem *tapPrefItem;
-@property (strong) IBOutlet NSMenuItem *tapQuitItem;
-@property (strong) IBOutlet AppDelegate *appDelegate;
+@property (strong) NSMenu       *tapMenu;
+@property (strong) NSMenu       *dockMenu;
+@property (strong) NSMenuItem   *tapClickItem;
+@property (strong) NSMenuItem   *tapPrefItem;
+@property (strong) NSMenuItem   *tapQuitItem;
+@property (strong) AppDelegate  *appDelegate;
+@property (strong) NSMenuItem   *dockClickItem;
+@property (strong) NSMenuItem   *dockPrefItem;
 
-+ (id)instance;
-//- (void)initWithPreferences:(__unsafe_unretained Preferences *)preferences;
-- (void)checkForChanges;
++ (id) instance;
+- (BOOL) isClicking;
+- (void) checkForChanges;
 
-- (IBAction)tapToggleClick:(id)sender;
-- (IBAction)tapPrefClick:(id)sender;
-- (IBAction)tapQuitClick:(id)sender;
+- (void) tapToggleClick;
+- (void) tapPrefClick;
+- (void) tapQuitClick;
 
 void processEvent(NSEvent *event);
 
