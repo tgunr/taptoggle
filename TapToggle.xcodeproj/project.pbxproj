@@ -630,11 +630,13 @@
 		75E0F46F14D7AF5F0086171A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer: Dave Carlton (E4VTD6YF39)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "AA84E266-C023-473A-97BB-EB55F58F2037";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -642,11 +644,13 @@
 		75E0F47014D7AF5F0086171A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer: Dave Carlton (E4VTD6YF39)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "AA84E266-C023-473A-97BB-EB55F58F2037";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
