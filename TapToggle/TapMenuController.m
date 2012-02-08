@@ -16,6 +16,9 @@
 
 - (void) buildMenuExtra;
 - (void) buildDockMenu;
+- (void) getMenuImages;
+- (void) getDockImages;
+
 
 @end
 
@@ -26,13 +29,18 @@
 @synthesize prefs;
 @synthesize statusItem;
 @synthesize tapMenu;
-@synthesize tapClickItem;
-@synthesize tapPrefItem;
-@synthesize tapQuitItem;
+@synthesize menuToggleItem;
+@synthesize menuPrefItem;
+@synthesize menuQuitItem;
 @synthesize appDelegate;
 @synthesize dockMenu;
 @synthesize dockClickItem;
 @synthesize dockPrefItem;
+@synthesize dockOffImage;
+@synthesize dockOnImage;
+@synthesize menuOffImage;
+@synthesize menuOnImage;
+
 
 static TapMenuController *sharedTapMenuContollerInstance = nil;
 
@@ -50,7 +58,9 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
     if (self) {
         if (!statusItem) {
             [self buildMenuExtra];
+            [self getMenuImages];
             [self buildDockMenu];
+            [self getDockImages];
             prefs = [Preferences instance];
         }
     }
@@ -58,50 +68,51 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) buildMenuExtra {
+    PMHERE;
     tapMenu = [[NSMenu alloc] init];
 
     // Build the menu items
 //    [tapMenu initWithTitle:@"TapToggle"];
     [tapMenu setAutoenablesItems:NO];
-    tapClickItem = [[NSMenuItem alloc]
-                                initWithTitle:@"Tap Click Off" action:@selector(tapToggleClick) keyEquivalent:@""];
-    [tapClickItem setTarget:self];
-    [tapClickItem setEnabled:YES];
-    [tapMenu addItem:tapClickItem];
+    menuToggleItem = [[NSMenuItem alloc]
+                                  initWithTitle:@"Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
+    [menuToggleItem setTarget:self];
+    [menuToggleItem setEnabled:YES];
+    [tapMenu addItem:menuToggleItem];
 
-    tapPrefItem = [[NSMenuItem alloc] initWithTitle:@"Preferences…" action:@selector(tapPrefClick) keyEquivalent:@""];
-    [tapPrefItem setEnabled:YES];
-    [tapPrefItem setTarget:self];
-    [tapMenu addItem:tapPrefItem];
+    menuPrefItem = [[NSMenuItem alloc] initWithTitle:@"Preferences…" action:@selector(menuPrefClick) keyEquivalent:@""];
+    [menuPrefItem setEnabled:YES];
+    [menuPrefItem setTarget:self];
+    [tapMenu addItem:menuPrefItem];
 
-    tapQuitItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(tapQuitClick) keyEquivalent:@""];
-    [tapQuitItem setEnabled:YES];
-    [tapQuitItem setTarget:self];
-    [tapMenu addItem:tapQuitItem];
+    menuQuitItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(menuQuitClick) keyEquivalent:@""];
+    [menuQuitItem setEnabled:YES];
+    [menuQuitItem setTarget:self];
+    [tapMenu addItem:menuQuitItem];
 }
 
 - (void) buildDockMenu {
+    PMHERE;
     dockMenu = [[NSMenu alloc]
                         initWithTitle:@"TapToggle"];
     [dockMenu setAutoenablesItems:NO];
     NSMenuItem *item;
 
     dockClickItem = [[NSMenuItem alloc]
-                                 initWithTitle:@"Tap Click Off" action:@selector(tapToggleClick) keyEquivalent:@""];
-    [item setEnabled:YES];
-    [item setTarget:self];
+                                 initWithTitle:@"Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
+    [dockClickItem setEnabled:YES];
+    [dockClickItem setTarget:self];
     [dockMenu addItem:dockClickItem];
 
     dockPrefItem = [[NSMenuItem alloc]
-                                initWithTitle:@"Preferences" action:@selector(tapPrefClick) keyEquivalent:@""];
-    [item setTarget:self];
-    [item setEnabled:YES];
+                                initWithTitle:@"Preferences" action:@selector(menuPrefClick) keyEquivalent:@""];
+    [dockPrefItem setTarget:self];
+    [dockPrefItem setEnabled:YES];
     [dockMenu addItem:dockPrefItem];
 
 }
 
-
-- (BOOL) isClicking {
+- (BOOL) getTapClickState {
     // Check the current state
     NSFileManager *fm    = [NSFileManager defaultManager];
     NSArray       *paths = [fm URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask];
@@ -113,17 +124,67 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
     return clicking;
 }
 
-- (NSImage *) getClickingImage:(BOOL) clicking {
-    // Determine the image to use
+- (void) getMenuImages {
+    PMHERE;
     NSBundle *myBundle = [NSBundle mainBundle];
     NSString *onPath   = [myBundle pathForImageResource:@"TapToggleOn-24.png"];
     NSString *offPath  = [myBundle pathForImageResource:@"TapToggleOff-24.png"];
-    NSImage  *tapImage = [[NSImage alloc] initWithContentsOfFile:offPath];
+    menuOnImage  = [[NSImage alloc] initWithContentsOfFile:onPath];
+    menuOffImage = [[NSImage alloc] initWithContentsOfFile:offPath];
+}
 
-    if (clicking) {
-        tapImage = [[NSImage alloc] initWithContentsOfFile:onPath];
+- (void) getDockImages {
+    PMHERE;
+    NSBundle *myBundle = [NSBundle mainBundle];
+    NSString *onPath   = [myBundle pathForImageResource:@"TapToggleOn-256.png"];
+    NSString *offPath  = [myBundle pathForImageResource:@"TapToggleOff-256.png"];
+    dockOnImage  = [[NSImage alloc] initWithContentsOfFile:onPath];
+    dockOffImage = [[NSImage alloc] initWithContentsOfFile:offPath];
+}
+
+- (NSImage *) getMenuImage:(BOOL) state {
+    // Determine the image to use
+    if (state) {
+        return menuOnImage;
     }
-    return tapImage;
+    else
+        return menuOffImage;
+}
+
+- (NSImage *) getDockImage:(BOOL) state {
+    // Determine the image to use
+    if (state) {
+        return dockOnImage;
+    }
+    else
+        return dockOffImage;
+}
+
+- (void) setMenuTitle:(BOOL) state {
+    PMHERE;
+    if (state) {
+        [menuToggleItem setTitle:@"Tap Click Off"];
+        [dockClickItem setTitle:@"Tap Click Off"];
+    }
+    else {
+        [menuToggleItem setTitle:@"Tap Click On"];
+        [dockClickItem setTitle:@"Tap Click On"];
+    }
+}
+
+- (void) setMenuImage:(BOOL) state {
+    PMHERE;
+    NSImage *menuImage = [self getMenuImage:state];
+    [statusItem setImage:menuImage];
+    NSImage *dockImage = [self getDockImage:state];
+    [NSApp setApplicationIconImage:dockImage];
+}
+
+- (void) setMenus {
+    BOOL clickState = [self getTapClickState];
+    PMLOG(1, @"Tap Click is: %@", clickState ? @"ON" : @"OFF");
+    [self setMenuTitle:clickState];
+    [self setMenuImage:clickState];
 }
 
 - (void) toggleClicking {
@@ -132,33 +193,20 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
     NSURL         *asURL    = [myBundle URLForResource:@"SysPref" withExtension:@"scpt"];
     NSAppleScript *as       = [[NSAppleScript alloc] initWithContentsOfURL:asURL error:&dict];
     [as executeAndReturnError:&dict];
-
-    BOOL clicking = [self isClicking];
-    NSImage *clickImage = [self getClickingImage:clicking];
-    [statusItem setImage:clickImage];
-    if (clicking) {
-        [tapClickItem setTitle:@"Tap Click Off"];
-        [dockClickItem setTitle:@"Tap Click Off"];
-    }
-    else {
-        [tapClickItem setTitle:@"Tap Click On"];
-        [dockClickItem setTitle:@"Tap Click On"];
-    }
-    NSString *clickState = clicking ? @"ON" : @"OFF";
-    PMLOG(1, @"Tap Click is: %@", clickState);
+    [self setMenus];
 }
 
-- (void) tapToggleClick {
+- (void) menuToggleClick {
     PMHERE;
     [self toggleClicking];
 }
 
-- (void) tapPrefClick {
+- (void) menuPrefClick {
     PMHERE;
     [[NSApp delegate] tapShowPreferences];
 }
 
-- (void) tapQuitClick {
+- (void) menuQuitClick {
     [[NSApplication sharedApplication] terminate:self];
 }
 
@@ -170,8 +218,8 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 
         [statusItem setMenu:tapMenu];
     }
-    BOOL clicking = [self isClicking];
-    NSImage *theImage = [self getClickingImage:clicking];
+    BOOL clickState = [self getTapClickState];
+    NSImage *theImage = [self getMenuImage:clickState];
     [statusItem setImage:theImage];
 }
 
@@ -227,17 +275,17 @@ void processEvent(NSEvent *event) {
         KeyCombo combo = [preferences keyCombo];
 
         if ([preferences useHotKey]) {
+            NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
+            PMLOG(2, @"Looking for: %@", lookingFor);
+            NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
+            PMLOG(2, @"Got: %@", results);
             if (keycode == combo.code) if (modifiers == combo.flags)
                 [menu toggleClicking];
-//            NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
-//            PMLOG(1, @"Looking for: %@", lookingFor);
-//            NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
-//            PMLOG(1, @"Got: %@", results);
         }
     }
-//    if ([event type] == NSLeftMouseUp) {
-//        PMLOG(2, @"click event: %@", NSStringFromPoint([event locationInWindow]));
-//    }
+    if ([event type] == NSLeftMouseUp) {
+        PMLOG(3, @"click event: %@", NSStringFromPoint([event locationInWindow]));
+    }
 }
 
 @end

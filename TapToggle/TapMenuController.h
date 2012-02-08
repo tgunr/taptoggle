@@ -17,30 +17,41 @@
     Preferences  *prefs;
     NSStatusItem *statusItem;
     NSMenu       *tapMenu;
-    NSMenuItem   *tapClickItem;
-    NSMenuItem   *tapPrefItem;
-    NSMenuItem   *tapQuitItem;
+    NSMenuItem   *menuToggleItem;
+    NSMenuItem   *menuPrefItem;
+    NSMenuItem   *menuQuitItem;
+    NSImage      *menuOnImage;
+    NSImage      *menuOffImage;
+    NSImage      *dockOnImage;
+    NSImage      *dockOffImage;
     AppDelegate  *appDelegate;
 }
 
-@property (retain) Preferences  *prefs;
-@property (retain) NSStatusItem *statusItem;
-@property (strong) NSMenu       *tapMenu;
-@property (strong) NSMenu       *dockMenu;
-@property (strong) NSMenuItem   *tapClickItem;
-@property (strong) NSMenuItem   *tapPrefItem;
-@property (strong) NSMenuItem   *tapQuitItem;
-@property (strong) AppDelegate  *appDelegate;
-@property (strong) NSMenuItem   *dockClickItem;
-@property (strong) NSMenuItem   *dockPrefItem;
+@property (nonatomic, retain) Preferences  *prefs;
+@property (nonatomic, retain) NSStatusItem *statusItem;
+@property (nonatomic, strong) NSMenu       *tapMenu;
+@property (nonatomic, strong) NSMenu       *dockMenu;
+@property (nonatomic, strong) NSMenuItem   *menuToggleItem;
+@property (nonatomic, strong) NSMenuItem   *menuPrefItem;
+@property (nonatomic, strong) NSMenuItem   *menuQuitItem;
+@property (nonatomic, strong) AppDelegate  *appDelegate;
+@property (nonatomic, strong) NSMenuItem   *dockClickItem;
+@property (nonatomic, strong) NSMenuItem   *dockPrefItem;
+@property (nonatomic, strong) NSImage      *dockOffImage;
+@property (nonatomic, strong) NSImage      *dockOnImage;
+@property (nonatomic, strong) NSImage      *menuOffImage;
+@property (nonatomic, strong) NSImage      *menuOnImage;
+
 
 + (id) instance;
-- (BOOL) isClicking;
+- (BOOL) getTapClickState;
+- (NSImage *) getMenuImage:(BOOL) state;
 - (void) checkForChanges;
 
-- (void) tapToggleClick;
-- (void) tapPrefClick;
-- (void) tapQuitClick;
+- (void) setMenus;
+- (void) menuToggleClick;
+- (void) menuPrefClick;
+- (void) menuQuitClick;
 
 void processEvent(NSEvent *event);
 

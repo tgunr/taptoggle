@@ -25,6 +25,8 @@
     NSMenu     *_dockMenu;
     NSMenuItem *dockClickItem;
     NSMenuItem *dockPrefItem;
+    NSImage    *onImage;
+    NSImage    *offImage;
 
     LaunchAtLoginController *loginController;
 }
