@@ -10,6 +10,7 @@
 #import "Preferences.h"
 #import "AppDelegate.h"
 #import "Prefs.h"
+#import "HID.h"
 
 @interface TapMenuController () {
 }
@@ -40,7 +41,6 @@
 @synthesize dockOnImage;
 @synthesize menuOffImage;
 @synthesize menuOnImage;
-
 
 static TapMenuController *sharedTapMenuContollerInstance = nil;
 
@@ -112,15 +112,24 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 
 }
 
+- (BOOL)haveTrackPad {
+    long count = IOBluetoothFindNumberOfRegistryEntriesOfClassName("IOHITabletPointer");
+    BOOL haveTrackPad = (count != 0) ? YES : NO;
+    return haveTrackPad;
+}
+
 - (BOOL) getTapClickState {
-    // Check the current state
-    NSFileManager *fm    = [NSFileManager defaultManager];
-    NSArray       *paths = [fm URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask];
-    NSURL         *dPath = [paths objectAtIndex:0];
-    dPath = [dPath URLByAppendingPathComponent:[NSString stringWithFormat:@"Preferences/%@", kTrackPadPref]];
-    NSDictionary *tpDict = [NSDictionary dictionaryWithContentsOfFile:[dPath path]];
-    NSNumber     *click  = [tpDict objectForKey:@"Clicking"];
-    BOOL clicking = [click boolValue];
+    BOOL clicking = NO;
+    if ([self haveTrackPad]) {
+        // Check the current state
+        NSFileManager *fm    = [NSFileManager defaultManager];
+        NSArray       *paths = [fm URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask];
+        NSURL         *dPath = [paths objectAtIndex:0];
+        dPath                = [dPath URLByAppendingPathComponent:[NSString stringWithFormat:@"Preferences/%@", kTrackPadPref]];
+        NSDictionary *tpDict = [NSDictionary dictionaryWithContentsOfFile:[dPath path]];
+        NSNumber     *click  = [tpDict objectForKey:@"Clicking"];
+        clicking = [click boolValue];
+    }
     return clicking;
 }
 
@@ -234,7 +243,8 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 - (void) checkShowStatusMenu {
     BOOL show = [prefs showStatus];
     BOOL run  = [prefs shouldRun];
-    if (run) if (show)
+    if (run) 
+        if (show)
         [self activate];
     else
         [self deactivate];

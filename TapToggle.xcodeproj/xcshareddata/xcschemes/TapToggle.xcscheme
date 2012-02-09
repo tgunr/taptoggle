@@ -58,7 +58,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "--kill-pref"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--no-debug"
