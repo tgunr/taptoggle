@@ -67,6 +67,21 @@
 #pragma mark - Startup
 
 - (void) setState {
+    // Action for no trackpad
+    if (! [menuExtraController haveTrackPad]) {
+        [statusTextField setStringValue:@"No trackpad found"];
+        [statusTextField setTextColor:[NSColor orangeColor]];
+        [startButton setTitle:@"Start"];
+        [startButton setEnabled:NO];
+        if (eventMonitor) {
+            [NSEvent removeMonitor:eventMonitor];
+            eventMonitor = nil;
+        }
+        [menuExtraController checkForChanges];
+        return;
+    }
+    
+    // Trackpad available, shoe the status
     BOOL status = [prefs shouldRun];
     if (status) {
         [statusTextField setStringValue:@"Running"];
