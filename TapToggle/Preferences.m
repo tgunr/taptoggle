@@ -118,7 +118,24 @@
 
 - (void) setUserDefaultsWithDictionry:(NSDictionary *) defaultDict {
     [userDefaults registerDefaults:defaultDict];
-//        [defaults synchronize];
+    NSArray *keys = [defaultDict allKeys];
+    for (id aKey in keys) {
+        id object = [defaultDict objectForKey:aKey];
+        id value = [defaultDict valueForKey:aKey];
+        Class objectClass = [object class];
+        if ( [value isKindOfClass:[NSNumber     class]] ) 
+        { 
+            const char *type = [object objCType];
+//            NSLog(@"type: %s", type);
+            if (! strcmp(type, "c"))
+                [userDefaults setBool:[object boolValue] forKey:aKey];
+            else
+                NSLog(@"Error: unknown user preference NSNumber type: %s", type);
+        } else {
+            { [userDefaults setObject:object forKey:aKey]; }
+        }
+    }
+    [userDefaults synchronize];
     PMLOG(1, @"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 

@@ -98,7 +98,7 @@
 
     prefState = [prefs showStatus] ? NSOnState : NSOffState;
     [showStatusCheckBox setState:prefState];
-//    [showDockCheckBox setEnabled:[prefs showStatus]];
+    [showDockCheckBox setEnabled:[prefs showStatus]];
 
     prefState = [prefs checkWeekly] ? NSOnState : NSOffState;
     [weeklyCheckBox setState:prefState];
@@ -122,7 +122,7 @@
 
     prefState = [prefs showDock] ? NSOnState : NSOffState;
     [showDockCheckBox setState:prefState];
-//    [showStatusCheckBox setEnabled:[prefs showDock]];
+    [showStatusCheckBox setEnabled:[prefs showDock]];
 
 
     prefState = [prefs loginItem] ? NSOnState : NSOffState;
