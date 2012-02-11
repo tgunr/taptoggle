@@ -85,7 +85,8 @@
     BOOL status = [prefs shouldRun];
     if (status) {
         [statusTextField setStringValue:@"Running"];
-        [statusTextField setTextColor:[NSColor greenColor]];
+        NSColor *aColor = [NSColor colorWithCalibratedRed:0.000 green:0.502 blue:0.000 alpha:1.000];
+        [statusTextField setTextColor:aColor];
         [startButton setTitle:@"Stop"];
         eventMonitor = [NSEvent
                 addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {

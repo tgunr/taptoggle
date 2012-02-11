@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>com.polymicrosystems.taptoggle.showStatus</key>
-        <true/>
-        <key>com.polymicrosystems.taptoggle.showDock</key>
-        <true/>
-        <key>com.polymicrosystems.taptoggle.loginItem</key>
-        <true/>
-        <key>com.polymicrosystems.taptoggle.checkWeekly</key>
-        <true/>
-        <key>com.polymicrosystems.taptoggle.anonInfo</key>
-        <true/>
-        <key>com.polymicrosystems.taptoggle.useHotKey</key>
-        <true/>
-        <key>com.polymicrosystems.taptoggle.hotKeyCode</key>
-        <integer>17</integer>
-        <key>com.polymicrosystems.taptoggle.hotKeyFlags</key>
-        <integer>1966080</integer>
-    </dict>
+<dict>
+	<key>com.polymicrosystems.taptoggle.showStatus</key>
+	<true/>
+	<key>com.polymicrosystems.taptoggle.showDock</key>
+	<true/>
+	<key>com.polymicrosystems.taptoggle.loginItem</key>
+	<false/>
+	<key>com.polymicrosystems.taptoggle.checkWeekly</key>
+	<true/>
+	<key>com.polymicrosystems.taptoggle.anonInfo</key>
+	<true/>
+	<key>com.polymicrosystems.taptoggle.useHotKey</key>
+	<true/>
+	<key>com.polymicrosystems.taptoggle.hotKeyCode</key>
+	<integer>17</integer>
+	<key>com.polymicrosystems.taptoggle.hotKeyFlags</key>
+	<integer>1966080</integer>
+</dict>
 </plist>

@@ -30,8 +30,8 @@
 @property (nonatomic, assign, setter=setCheckWeekly:, getter=checkWeekly) BOOL         _checkWeekly;
 @property (nonatomic, assign, setter=setAnonInfo:, getter=anonInfo) BOOL               _anonInfo;
 @property (nonatomic, assign, setter=setUseHotKey:, getter=useHotKey) BOOL             _useHotKey;
-@property (nonatomic, assign, setter=setPrefsVersion:, getter=prefsVersion) NSString *_prefsVersion;
-@property (nonatomic, assign, setter=setLastCheck:, getter=lastCheck) NSDate         *_lastCheck;
+@property (nonatomic, retain, setter=setPrefsVersion:, getter=prefsVersion) NSString *_prefsVersion;
+@property (nonatomic, retain, setter=setLastCheck:, getter=lastCheck) NSDate         *_lastCheck;
 @property (nonatomic, assign, setter=setKeyCombo:, getter=keyCombo) KeyCombo hotKeyCombo;
 @property (nonatomic, assign, setter=setShowDock:, getter=showDock) BOOL     _showDock;
 @property (nonatomic, assign, setter=setShouldRun:, getter=shouldRun) BOOL   _shouldRun;
@@ -52,7 +52,7 @@
 - (void) setUseHotKey:(BOOL) anUseHotKey;
 - (BOOL) useHotKey;
 - (void) setPrefsVersion:(NSString *) aPrefsVersion;
-- (NSString *) prefsVersion;
+- (NSString *)prefsVersion;
 - (void) setLastCheck:(NSDate *) aDate;
 - (NSDate *) lastCheck;
 - (void) setKeyCombo:(KeyCombo) aHotKeyCombo;

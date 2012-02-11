@@ -41,7 +41,6 @@
 @property (nonatomic, strong) NSImage      *dockOnImage;
 @property (nonatomic, strong) NSImage      *menuOffImage;
 @property (nonatomic, strong) NSImage      *menuOnImage;
-@property (nonatomic, assign) BOOL         haveTrackPad;
 
 
 + (id) instance;
