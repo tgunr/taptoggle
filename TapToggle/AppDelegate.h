@@ -21,13 +21,15 @@
 @end
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-@private
+    NSWindow    *window;
     NSMenu     *_dockMenu;
     NSMenuItem *dockClickItem;
     NSMenuItem *dockPrefItem;
     NSImage    *onImage;
     NSImage    *offImage;
-
+    Preferences       *prefs;
+    TapMenuController *menuExtraController;
+    
     LaunchAtLoginController *loginController;
 }
 

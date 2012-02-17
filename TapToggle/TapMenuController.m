@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "Prefs.h"
 #import "HID.h"
+#import "DDLog.h"
 
 @interface TapMenuController () {
 }
@@ -68,7 +69,6 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) buildMenuExtra {
-    PMHERE;
     tapMenu = [[NSMenu alloc] init];
 
     // Build the menu items
@@ -92,7 +92,6 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) buildDockMenu {
-    PMHERE;
     dockMenu = [[NSMenu alloc]
                         initWithTitle:@"TapToggle"];
     [dockMenu setAutoenablesItems:NO];
@@ -137,7 +136,6 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) getMenuImages {
-    PMHERE;
     NSBundle *myBundle = [NSBundle mainBundle];
     NSString *onPath   = [myBundle pathForImageResource:@"TapToggleOn-24.png"];
     NSString *offPath  = [myBundle pathForImageResource:@"TapToggleOff-24.png"];
@@ -146,7 +144,6 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) getDockImages {
-    PMHERE;
     NSBundle *myBundle = [NSBundle mainBundle];
     NSString *onPath   = [myBundle pathForImageResource:@"TapToggleOn-256.png"];
     NSString *offPath  = [myBundle pathForImageResource:@"TapToggleOff-256.png"];
@@ -173,7 +170,6 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) setMenuTitle:(BOOL) state {
-    PMHERE;
     if (state) {
         [menuToggleItem setTitle:@"Tap Click Off"];
         [dockClickItem setTitle:@"Tap Click Off"];
@@ -185,7 +181,6 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) setMenuImage:(BOOL) state {
-    PMHERE;
     NSImage *menuImage = [self getMenuImage:state];
     [statusItem setImage:menuImage];
     NSImage *dockImage = [self getDockImage:state];
@@ -194,7 +189,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 
 - (void) setMenus {
     BOOL clickState = [self getTapClickState];
-    PMLOG(1, @"Tap Click is: %@", clickState ? @"ON" : @"OFF");
+    NSLog(@"Tap Click is: %@", clickState ? @"ON" : @"OFF");
     [self setMenuTitle:clickState];
     [self setMenuImage:clickState];
 }
@@ -209,12 +204,10 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) menuToggleClick {
-    PMHERE;
     [self toggleClicking];
 }
 
 - (void) menuPrefClick {
-    PMHERE;
     [[NSApp delegate] tapShowPreferences];
 }
 
@@ -289,15 +282,15 @@ void processEvent(NSEvent *event) {
 
         if ([preferences useHotKey]) {
             NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
-            PMLOG(2, @"Looking for: %@", lookingFor);
+            NSLog( @"Looking for: %@", lookingFor);
             NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
-            PMLOG(2, @"Got: %@", results);
+            NSLog( @"Got: %@", results);
             if (keycode == combo.code) if (modifiers == combo.flags)
                 [menu toggleClicking];
         }
     }
     if ([event type] == NSLeftMouseUp) {
-        PMLOG(3, @"click event: %@", NSStringFromPoint([event locationInWindow]));
+        NSLog( @"click event: %@", NSStringFromPoint([event locationInWindow]));
     }
 }
 

@@ -70,7 +70,7 @@
 
 - (void) setFromUserDefaults {
     NSDictionary *defaultPrefsDict = [userDefaults dictionaryRepresentation];
-    PMLOG(2, @"Prefs: %@", defaultPrefsDict);
+    NSLog( @"Prefs: %@", defaultPrefsDict);
 
     _showStatus   = [userDefaults boolForKey:kShowStatus];
     _checkWeekly  = [userDefaults boolForKey:kCheckWeekly];
@@ -136,7 +136,7 @@
         }
     }
     [userDefaults synchronize];
-    PMLOG(1, @"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    NSLog( @"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
 - (void) setWithDictionary:(NSDictionary *) prefDictionary {
