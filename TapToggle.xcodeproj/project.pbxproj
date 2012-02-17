@@ -113,6 +113,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		75185B0714EE3FE40011C05C /* MYLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYLog.h; sourceTree = "<group>"; };
 		752FA6AF14E483A800F782F4 /* HID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HID.h; sourceTree = "<group>"; };
 		752FA6B014E483A800F782F4 /* HID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HID.m; sourceTree = "<group>"; };
 		752FA6B214E4846C00F782F4 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
@@ -277,6 +278,7 @@
 		75E0F45A14D7AF5E0086171A /* TapToggle */ = {
 			isa = PBXGroup;
 			children = (
+				75185B0714EE3FE40011C05C /* MYLog.h */,
 				756B986B14EDF34300F866E0 /* DDLog.h */,
 				756B986C14EDF34300F866E0 /* DDLog.m */,
 				756B986D14EDF34300F866E0 /* DDASLLogger.h */,
@@ -623,6 +625,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
@@ -637,6 +640,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";

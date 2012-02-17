@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "Prefs.h"
 #import "HID.h"
-#import "DDLog.h"
+#import "MYLog.h"
 
 @interface TapMenuController () {
 }
@@ -114,8 +114,8 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 - (BOOL)haveTrackPad {
     long count = IOBluetoothFindNumberOfRegistryEntriesOfClassName("AppleUSBTCButtons");
     BOOL haveTrackPad = (count != 0) ? YES : NO;
-    if (! haveTrackPad) {
-        NSLog(@"No trackpad detected with AppleUSBTCButtons");
+    if (!haveTrackPad) {
+        DDLogWarn(@"No trackpad detected with AppleUSBTCButtons");
     }
     return haveTrackPad;
 }
@@ -189,7 +189,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 
 - (void) setMenus {
     BOOL clickState = [self getTapClickState];
-    NSLog(@"Tap Click is: %@", clickState ? @"ON" : @"OFF");
+    DDLogWarn(@"Tap Click is: %@", clickState ? @"ON" : @"OFF");
     [self setMenuTitle:clickState];
     [self setMenuImage:clickState];
 }
@@ -281,17 +281,24 @@ void processEvent(NSEvent *event) {
         KeyCombo combo = [preferences keyCombo];
 
         if ([preferences useHotKey]) {
+#ifdef DEBUG
             NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
             NSLog( @"Looking for: %@", lookingFor);
             NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
             NSLog( @"Got: %@", results);
+#endif
             if (keycode == combo.code) if (modifiers == combo.flags)
                 [menu toggleClicking];
         }
     }
+    
+#ifdef DEBUG
     if ([event type] == NSLeftMouseUp) {
-        NSLog( @"click event: %@", NSStringFromPoint([event locationInWindow]));
+        NSString *aPoint = NSStringFromPoint([event locationInWindow]);
+        NSLog(@"click event: %@", aPoint);
     }
+#endif
+
 }
 
 @end

@@ -7,10 +7,15 @@
 //
 
 #import "DDLog.h"
+#import "DDASLLogger.h"
+#import "DDTTYLogger.h"
 
 int main(int argc, char *argv[]) {
 
     @autoreleasepool {
+        [DDLog addLogger:[DDASLLogger sharedInstance]];
+        [DDLog addLogger:[DDTTYLogger sharedInstance]];
+
         NSArray *arguments = [[NSProcessInfo processInfo] arguments];
         for (int i = 1; i < [arguments count]; i++) {
             NSString *argument = [arguments objectAtIndex:i];

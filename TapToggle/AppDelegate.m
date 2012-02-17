@@ -11,6 +11,7 @@
 #import "Prefs.h"
 #import "TapMenuController.h"
 #import "LaunchAtLoginController.h"
+#import "MYLog.h"
 #import "DDLog.h"
 
 @implementation NSApplication (Relaunch)
@@ -43,7 +44,7 @@
     return _dockMenu;
 }
 
-- (void) applicationDidFinishLaunching:(NSNotification *) aNotification {
+- (void) applicationDidFinishLaunching:(NSNotification *) aNotification {	
     prefs               = [Preferences instance];
     menuExtraController = [TapMenuController instance];
     _dockMenu           = [menuExtraController dockMenu];
@@ -54,17 +55,17 @@
 - (void) checkWeekly:(NSDictionary *) appDict {
     BOOL value = [[appDict objectForKey:kCheckWeekly] boolValue];
     if (value)
-        NSLog(@"Starting Weekly check timer");
+        DDLogInfo(@"Starting Weekly check timer");
     else
-        NSLog(@"Stopping Weekly check timer");
+        DDLogInfo(@"Stopping Weekly check timer");
 }
 
 - (void) checkAnonInfo:(NSDictionary *) appDict {
     BOOL value = [[appDict objectForKey:kAnonInfo] boolValue];
     if (value)
-        NSLog(@"Will inlcude anon info");
+        DDLogInfo(@"Will inlcude anon info");
     else
-        NSLog(@"Anon info disabled");
+        DDLogInfo(@"Anon info disabled");
 }
 
 - (void) checkForUpdate {
