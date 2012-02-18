@@ -12,9 +12,12 @@
 		7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18214DC54FB00613F39 /* SysPref.scpt */; };
 		7535D18914DC70C600613F39 /* TapMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7535D18814DC70C600613F39 /* TapMenuController.m */; };
 		7536433914E1CEFB0005CBDA /* TapToggleOff-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 7536433814E1CEFB0005CBDA /* TapToggleOff-256.png */; };
+		756B987314EDF34400F866E0 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B986C14EDF34300F866E0 /* DDLog.m */; };
+		756B987514EDF34400F866E0 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B986E14EDF34300F866E0 /* DDASLLogger.m */; };
+		756B987714EDF34400F866E0 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B987014EDF34300F866E0 /* DDTTYLogger.m */; };
+		756B987914EDF34400F866E0 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B987214EDF34400F866E0 /* DDFileLogger.m */; };
 		759F34C014E4910A00F5C811 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 759F34B714E4909B00F5C811 /* ShortcutRecorder.framework */; };
 		759F34C114E4911400F5C811 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 759F34B714E4909B00F5C811 /* ShortcutRecorder.framework */; };
-		759F34DC14E6DD0C00F5C811 /* pm.m in Sources */ = {isa = PBXBuildFile; fileRef = 759F34DB14E6DD0C00F5C811 /* pm.m */; };
 		75B79CAF14E08CF200CED163 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */; };
 		75B79CD314E0B2B800CED163 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CD214E0B2B800CED163 /* Foundation.framework */; };
 		75B79CD614E0B2B800CED163 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B79CD514E0B2B800CED163 /* main.m */; };
@@ -84,13 +87,6 @@
 			remoteGlobalIDString = 75B79CCF14E0B2B800CED163;
 			remoteInfo = relaunch;
 		};
-		75D1740014E4550800F8A2D0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7535D1CF14DF240C00613F39;
-			remoteInfo = PMUtility;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,6 +113,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		75185B0714EE3FE40011C05C /* MYLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYLog.h; sourceTree = "<group>"; };
 		752FA6AF14E483A800F782F4 /* HID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HID.h; sourceTree = "<group>"; };
 		752FA6B014E483A800F782F4 /* HID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HID.m; sourceTree = "<group>"; };
 		752FA6B214E4846C00F782F4 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
@@ -125,9 +122,14 @@
 		7535D18714DC70C600613F39 /* TapMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapMenuController.h; sourceTree = "<group>"; };
 		7535D18814DC70C600613F39 /* TapMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TapMenuController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7536433814E1CEFB0005CBDA /* TapToggleOff-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TapToggleOff-256.png"; sourceTree = "<group>"; };
-		759F34DA14E6DD0C00F5C811 /* pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pm.h; path = ../../PMUtility/PMUtility/pm.h; sourceTree = "<group>"; };
-		759F34DB14E6DD0C00F5C811 /* pm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pm.m; path = ../../PMUtility/PMUtility/pm.m; sourceTree = "<group>"; };
-		75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMUtility.xcodeproj; path = ../PMUtility/PMUtility.xcodeproj; sourceTree = SOURCE_ROOT; };
+		756B986B14EDF34300F866E0 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DDLog.h; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDLog.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		756B986C14EDF34300F866E0 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDLog.m; sourceTree = "<group>"; };
+		756B986D14EDF34300F866E0 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDASLLogger.h; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDASLLogger.h; sourceTree = "<group>"; };
+		756B986E14EDF34300F866E0 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDASLLogger.m; sourceTree = "<group>"; };
+		756B986F14EDF34300F866E0 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDTTYLogger.h; sourceTree = "<group>"; };
+		756B987014EDF34300F866E0 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDTTYLogger.m; sourceTree = "<group>"; };
+		756B987114EDF34400F866E0 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDFileLogger.h; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDFileLogger.h; sourceTree = "<group>"; };
+		756B987214EDF34400F866E0 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDFileLogger.m; sourceTree = "<group>"; };
 		75B79C8714DF35B200CED163 /* PMUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMUtility.framework; path = ../PMUtility/build/Debug/PMUtility.framework; sourceTree = "<group>"; };
 		75B79CAD14E08CF100CED163 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchAtLoginController.h; path = ../../../Contributed/LaunchAtLoginController/LaunchAtLoginController.h; sourceTree = "<group>"; };
 		75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = ../../Contributed/LaunchAtLoginController/LaunchAtLoginController.m; sourceTree = SOURCE_ROOT; };
@@ -147,7 +149,7 @@
 		75E0F45C14D7AF5F0086171A /* TapToggle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TapToggle-Info.plist"; sourceTree = "<group>"; };
 		75E0F45E14D7AF5F0086171A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		75E0F46014D7AF5F0086171A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		75E0F46214D7AF5F0086171A /* TapToggle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TapToggle-Prefix.pch"; sourceTree = "<group>"; };
+		75E0F46214D7AF5F0086171A /* TapToggle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "TapToggle-Prefix.pch"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		75E0F46414D7AF5F0086171A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		75E0F46614D7AF5F0086171A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		75E0F46714D7AF5F0086171A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -227,19 +229,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		75D173FD14E4550800F8A2D0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				75D1740114E4550800F8A2D0 /* PMUtility.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		75E0F44514D7AF5E0086171A = {
 			isa = PBXGroup;
 			children = (
 				75D1740E14E4576A00F8A2D0 /* ShortcutRecorder.xcodeproj */,
-				75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */,
 				75E0F45A14D7AF5E0086171A /* TapToggle */,
 				75B79CD414E0B2B800CED163 /* relaunch */,
 				75E0F45314D7AF5E0086171A /* Frameworks */,
@@ -285,8 +278,15 @@
 		75E0F45A14D7AF5E0086171A /* TapToggle */ = {
 			isa = PBXGroup;
 			children = (
-				759F34DA14E6DD0C00F5C811 /* pm.h */,
-				759F34DB14E6DD0C00F5C811 /* pm.m */,
+				75185B0714EE3FE40011C05C /* MYLog.h */,
+				756B986B14EDF34300F866E0 /* DDLog.h */,
+				756B986C14EDF34300F866E0 /* DDLog.m */,
+				756B986D14EDF34300F866E0 /* DDASLLogger.h */,
+				756B986E14EDF34300F866E0 /* DDASLLogger.m */,
+				756B986F14EDF34300F866E0 /* DDTTYLogger.h */,
+				756B987014EDF34300F866E0 /* DDTTYLogger.m */,
+				756B987114EDF34400F866E0 /* DDFileLogger.h */,
+				756B987214EDF34400F866E0 /* DDFileLogger.m */,
 				75B79CAD14E08CF100CED163 /* LaunchAtLoginController.h */,
 				75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */,
 				75E0F49214D7B3510086171A /* TapToggle.xib */,
@@ -366,7 +366,6 @@
 				75F56D6314D8A5DF0022D215 /* CopyFiles */,
 				75B79CE014E0B34E00CED163 /* CopyFiles */,
 				759F34D814E6A9D500F5C811 /* ShellScript */,
-				7557400E14EF190C00EC14B2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -397,10 +396,6 @@
 			productRefGroup = 75E0F45114D7AF5E0086171A /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 75D173FD14E4550800F8A2D0 /* Products */;
-					ProjectRef = 75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */;
-				},
 				{
 					ProductGroup = 759F34AE14E4909B00F5C811 /* Products */;
 					ProjectRef = 75D1740E14E4576A00F8A2D0 /* ShortcutRecorder.xcodeproj */;
@@ -450,13 +445,6 @@
 			remoteRef = 759F34BE14E4909B00F5C811 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		75D1740114E4550800F8A2D0 /* PMUtility.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PMUtility.framework;
-			remoteRef = 75D1740014E4550800F8A2D0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -483,19 +471,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7557400E14EF190C00EC14B2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#codesign -s \"3rd Party Mac Developer Application: polyMicro Systems\" -fv \"/Users/davec/Library/Developer/Xcode/Archives/2012-02-17/TapToggle Release 2-17-12 3.14 PM.xcarchive/Products/Applications/TapToggle.app\"";
-		};
 		759F34D814E6A9D500F5C811 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,7 +506,10 @@
 				7535D18914DC70C600613F39 /* TapMenuController.m in Sources */,
 				75B79CAF14E08CF200CED163 /* LaunchAtLoginController.m in Sources */,
 				752FA6B114E483A800F782F4 /* HID.m in Sources */,
-				759F34DC14E6DD0C00F5C811 /* pm.m in Sources */,
+				756B987314EDF34400F866E0 /* DDLog.m in Sources */,
+				756B987514EDF34400F866E0 /* DDASLLogger.m in Sources */,
+				756B987714EDF34400F866E0 /* DDTTYLogger.m in Sources */,
+				756B987914EDF34400F866E0 /* DDFileLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,13 +554,11 @@
 		75B79CDC14E0B2B800CED163 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -591,12 +567,10 @@
 		75B79CDD14E0B2B800CED163 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -607,8 +581,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../PMUtility/build/$(CONFIGURATION)",
+					"$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)",
+				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -619,6 +596,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -627,28 +605,32 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../PMUtility/build/$(CONFIGURATION)",
+					"$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)",
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};
 		75E0F46F14D7AF5F0086171A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -656,15 +638,15 @@
 		75E0F47014D7AF5F0086171A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

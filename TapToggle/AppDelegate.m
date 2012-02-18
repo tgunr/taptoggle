@@ -3,7 +3,7 @@
 //  TrackPadTapMon
 //
 //  Created by Dave Carlton on 01/28/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 PolyMicro Systems. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -11,11 +11,12 @@
 #import "Prefs.h"
 #import "TapMenuController.h"
 #import "LaunchAtLoginController.h"
+#import "MYLog.h"
+#import "DDLog.h"
 
 @implementation NSApplication (Relaunch)
 
 - (void) relaunch:(id) sender {
-    PMHERE;
     NSString *daemonPath = [[NSBundle mainBundle] pathForResource:NSApplicationRelaunchDaemon ofType:nil];
     NSString *path       = [[NSBundle mainBundle] bundlePath];
     NSString *pid        = [NSString stringWithFormat:@"%d", [[NSProcessInfo processInfo] processIdentifier]];
@@ -40,12 +41,10 @@
 @synthesize dockMenu = _dockMenu;
 
 - (NSMenu *) applicationDockMenu:(NSApplication *) sender {
-    PMHERE;
     return _dockMenu;
 }
 
-- (void) applicationDidFinishLaunching:(NSNotification *) aNotification {
-    PMHERE;
+- (void) applicationDidFinishLaunching:(NSNotification *) aNotification {	
     prefs               = [Preferences instance];
     menuExtraController = [TapMenuController instance];
     _dockMenu           = [menuExtraController dockMenu];
@@ -56,17 +55,17 @@
 - (void) checkWeekly:(NSDictionary *) appDict {
     BOOL value = [[appDict objectForKey:kCheckWeekly] boolValue];
     if (value)
-    PMLOG(1, @"Starting Weekly check timer");
+        DDLogInfo(@"Starting Weekly check timer");
     else
-          PMLOG(1, @"Stopping Weekly check timer");
+        DDLogInfo(@"Stopping Weekly check timer");
 }
 
 - (void) checkAnonInfo:(NSDictionary *) appDict {
     BOOL value = [[appDict objectForKey:kAnonInfo] boolValue];
     if (value)
-    PMLOG(1, @"Will inlcude anon info");
+        DDLogInfo(@"Will inlcude anon info");
     else
-          PMLOG(1, @"Anon info disabled");
+        DDLogInfo(@"Anon info disabled");
 }
 
 - (void) checkForUpdate {
@@ -80,18 +79,15 @@
 }
 
 - (void) tapShowPreferences {
-    PMHERE;
     [NSApp activateIgnoringOtherApps:YES];
 }
 
 - (NSMenu *) applicationDockMenu {
-    PMHERE;
     _dockMenu = [[NSMenu alloc] initWithTitle:@"TapToggle"];
     return _dockMenu;
 }
 
 - (void) setLogin:(BOOL) install {
-    PMHERE;
     [loginController setLaunchAtLogin:install];
 }
 

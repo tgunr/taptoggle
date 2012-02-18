@@ -20,6 +20,8 @@
     NSMenuItem   *menuToggleItem;
     NSMenuItem   *menuPrefItem;
     NSMenuItem   *menuQuitItem;
+    NSMenuItem   *dockClickItem;
+    NSMenuItem   *dockPrefItem;
     NSImage      *menuOnImage;
     NSImage      *menuOffImage;
     NSImage      *dockOnImage;
