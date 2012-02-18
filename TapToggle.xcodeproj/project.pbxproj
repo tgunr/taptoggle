@@ -582,10 +582,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/../PMUtility/build/$(CONFIGURATION)",
-					"$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -607,10 +604,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/../PMUtility/build/$(CONFIGURATION)",
-					"$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
