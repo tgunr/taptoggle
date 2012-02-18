@@ -366,6 +366,7 @@
 				75F56D6314D8A5DF0022D215 /* CopyFiles */,
 				75B79CE014E0B34E00CED163 /* CopyFiles */,
 				759F34D814E6A9D500F5C811 /* ShellScript */,
+				7557400E14EF190C00EC14B2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -482,6 +483,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7557400E14EF190C00EC14B2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#codesign -s \"3rd Party Mac Developer Application: polyMicro Systems\" -fv \"/Users/davec/Library/Developer/Xcode/Archives/2012-02-17/TapToggle Release 2-17-12 3.14 PM.xcarchive/Products/Applications/TapToggle.app\"";
+		};
 		759F34D814E6A9D500F5C811 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -562,11 +576,13 @@
 		75B79CDC14E0B2B800CED163 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -575,10 +591,12 @@
 		75B79CDD14E0B2B800CED163 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
