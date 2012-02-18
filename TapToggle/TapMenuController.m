@@ -114,6 +114,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 
 - (BOOL)haveTrackPad {
     long count = IOBluetoothFindNumberOfRegistryEntriesOfClassName("AppleUSBTCButtons");
+    count += IOBluetoothFindNumberOfRegistryEntriesOfClassName("BNBTrackpadDevice");
     BOOL haveTrackPad = (count != 0) ? YES : NO;
     if (! haveTrackPad) {
         NSLog(@"No trackpad detected with AppleUSBTCButtons");
