@@ -6,7 +6,7 @@
 #import <PreferencePanes/PreferencePanes.h>
 #import "Preferences.h"
 #import "Prefs.h"
-#import "DDLog.h"
+#import "PMLog.h"
 
 @interface Preferences ()
 
@@ -71,7 +71,7 @@
 
 - (void) setFromUserDefaults {
     NSDictionary *defaultPrefsDict = [userDefaults dictionaryRepresentation];
-    DDLogInfo( @"Prefs: %@", defaultPrefsDict);
+    PMLogInfo( @"Prefs: %@", defaultPrefsDict);
 
     _showStatus   = [userDefaults boolForKey:kShowStatus];
     _checkWeekly  = [userDefaults boolForKey:kCheckWeekly];
@@ -131,13 +131,13 @@
             if (! strcmp(type, "c"))
                 [userDefaults setBool:[object boolValue] forKey:aKey];
             else
-                DDLogCWarn(@"Error: unknown user preference NSNumber type: %s", type);
+                PMLogCWarn(@"Error: unknown user preference NSNumber type: %s", type);
         } else {
             { [userDefaults setObject:object forKey:aKey]; }
         }
     }
     [userDefaults synchronize];
-    DDLogInfo( @"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    PMLogInfo( @"Prefs: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
 }
 
 - (void) setWithDictionary:(NSDictionary *) prefDictionary {

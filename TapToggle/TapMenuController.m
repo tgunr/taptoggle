@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "Prefs.h"
 #import "HID.h"
-#import "MYLog.h"
+#import "PMLog.h"
 
 @interface TapMenuController () {
 }
@@ -116,7 +116,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
     count += IOBluetoothFindNumberOfRegistryEntriesOfClassName("BNBTrackpadDevice");
     BOOL haveTrackPad = (count != 0) ? YES : NO;
     if (!haveTrackPad) {
-        DDLogWarn(@"No trackpad detected with AppleUSBTCButtons");
+        PMLogWarn(@"No trackpad detected with AppleUSBTCButtons");
     }
     return haveTrackPad;
 }
@@ -190,7 +190,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 
 - (void) setMenus {
     BOOL clickState = [self getTapClickState];
-    DDLogWarn(@"Tap Click is: %@", clickState ? @"ON" : @"OFF");
+    PMLogWarn(@"Tap Click is: %@", clickState ? @"ON" : @"OFF");
     [self setMenuTitle:clickState];
     [self setMenuImage:clickState];
 }

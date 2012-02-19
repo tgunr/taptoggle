@@ -6,16 +6,14 @@
 //  Copyright (c) 2012 PolyMicro Systems. All rights reserved.
 //
 
-#import "DDLog.h"
+#import "PMLog.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 
 int main(int argc, char *argv[]) {
-
     @autoreleasepool {
         [DDLog addLogger:[DDASLLogger sharedInstance]];
         [DDLog addLogger:[DDTTYLogger sharedInstance]];
-
         NSArray *arguments = [[NSProcessInfo processInfo] arguments];
         for (int i = 1; i < [arguments count]; i++) {
             NSString *argument = [arguments objectAtIndex:i];
@@ -24,6 +22,6 @@ int main(int argc, char *argv[]) {
                 system("rm $HOME/Library/Preferences/com.polymicrosystems.taptoggle.plist");
             }
         }
-        return NSApplicationMain(argc, (const char **) argv);
+    return NSApplicationMain(argc, (const char **) argv);
     }
 }

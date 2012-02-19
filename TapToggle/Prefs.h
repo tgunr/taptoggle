@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 PolyMicro Systems. All rights reserved.
 //
 
-#import "MYLog.h"
-
 #ifndef TapToggle_Prefs_h
 #define TapToggle_Prefs_h
 
@@ -34,11 +32,5 @@
 #define kCheckNow @"com.polymicrosystems.taptoggle.checkNow"
 #define kShowDock @"com.polymicrosystems.taptoggle.showDock"
 #define kLoginItem @"com.polymicrosystems.taptoggle.loginItem"
-
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_WARN;
-#endif
 
 #endif
