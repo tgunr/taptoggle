@@ -75,7 +75,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 //    [tapMenu initWithTitle:@"TapToggle"];
     [tapMenu setAutoenablesItems:NO];
     menuToggleItem = [[NSMenuItem alloc]
-                                  initWithTitle:@"Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
+                                  initWithTitle:@"Set Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
     [menuToggleItem setTarget:self];
     [menuToggleItem setEnabled:YES];
     [tapMenu addItem:menuToggleItem];
@@ -98,7 +98,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
     NSMenuItem *item;
 
     dockClickItem = [[NSMenuItem alloc]
-                                 initWithTitle:@"Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
+                                 initWithTitle:@"Set Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
     [dockClickItem setEnabled:YES];
     [dockClickItem setTarget:self];
     [dockMenu addItem:dockClickItem];
@@ -172,12 +172,12 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 
 - (void) setMenuTitle:(BOOL) state {
     if (state) {
-        [menuToggleItem setTitle:@"Tap Click Off"];
-        [dockClickItem setTitle:@"Tap Click Off"];
+        [menuToggleItem setTitle:@"Set Tap Click Off"];
+        [dockClickItem setTitle:@"Set Tap Click Off"];
     }
     else {
-        [menuToggleItem setTitle:@"Tap Click On"];
-        [dockClickItem setTitle:@"Tap Click On"];
+        [menuToggleItem setTitle:@"Set Tap Click On"];
+        [dockClickItem setTitle:@"Set Tap Click On"];
     }
 }
 
@@ -238,6 +238,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) checkShowStatusMenu {
+    PMHERE;
     BOOL show = [prefs showStatus];
     BOOL run  = [prefs shouldRun];
     if (run) 
@@ -282,23 +283,19 @@ void processEvent(NSEvent *event) {
         KeyCombo combo = [preferences keyCombo];
 
         if ([preferences useHotKey]) {
-#ifdef DEBUG
             NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
-            NSLog( @"Looking for: %@", lookingFor);
+            PMLOGC(PM_LEVEL_DEBUG, @"Looking for: %@", lookingFor);
             NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
-            NSLog( @"Got: %@", results);
-#endif
+            PMLOGC(PM_LEVEL_DEBUG, @"Got: %@", results);
             if (keycode == combo.code) if (modifiers == combo.flags)
                 [menu toggleClicking];
         }
     }
     
-#ifdef DEBUG
     if ([event type] == NSLeftMouseUp) {
         NSString *aPoint = NSStringFromPoint([event locationInWindow]);
-        NSLog(@"click event: %@", aPoint);
+        PMLOGC(PM_LEVEL_DEBUG, @"click event: %@", aPoint);
     }
-#endif
 
 }
 

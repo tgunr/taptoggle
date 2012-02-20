@@ -21,6 +21,9 @@ int main(int argc, char *argv[]) {
                     [argument isEqualToString:@"--killpref"]) {
                 system("rm $HOME/Library/Preferences/com.polymicrosystems.taptoggle.plist");
             }
+            if ([argument isEqualToString:@"--debug"]) {
+                pmLogLevel = LOG_LEVEL_DEBUG;
+            }
         }
     return NSApplicationMain(argc, (const char **) argv);
     }

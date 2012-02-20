@@ -44,8 +44,7 @@
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification *) aNotification {	
-    DDLogVerbose(@"File:%@ Method:%s", __FILE__, __FUNCTION__);
-    //        PMHERE;
+    PMHERE;
     prefs               = [Preferences instance];
     menuExtraController = [TapMenuController instance];
     _dockMenu           = [menuExtraController dockMenu];
