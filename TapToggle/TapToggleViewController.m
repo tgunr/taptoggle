@@ -34,7 +34,8 @@
     __weak SRRecorderControl *hotKeyControl;
     NSPanel                  *infoPanel;
     NSTimer                  *monitorCheck;
-    NSEvent                  *eventMonitor;
+    NSEvent                  *remoteMonitor;
+    NSEvent                  *localMonitor;
     TapMenuController        *menuExtraController;
 }
 
@@ -61,47 +62,61 @@
 @synthesize useHotkeyCheckbox;
 @synthesize monitorCheck;
 @synthesize prefs;
-@synthesize eventMonitor;
+@synthesize remoteMonitor;
+@synthesize localMonitor;
 @synthesize menuExtraController;
 
 #pragma mark - Startup
 
+- (void)removeMonitors {
+    if (remoteMonitor) {
+        [NSEvent removeMonitor:remoteMonitor];
+        remoteMonitor = nil;
+    }
+    if (localMonitor) {
+        [NSEvent removeMonitor:localMonitor];
+        localMonitor = nil;
+    }
+}
+
 - (void) setState {
+    PMHERE;
     // Action for no trackpad
     if (! [menuExtraController haveTrackPad]) {
         [statusTextField setStringValue:@"No trackpad found"];
         [statusTextField setTextColor:[NSColor orangeColor]];
         [startButton setTitle:@"Start"];
         [startButton setEnabled:NO];
-        if (eventMonitor) {
-            [NSEvent removeMonitor:eventMonitor];
-            eventMonitor = nil;
-        }
+        [self removeMonitors];
         [menuExtraController checkForChanges];
+        PMLogDebug(@"No trackpad found!");
         return;
     }
     
     // Trackpad available, shoe the status
     BOOL status = [prefs shouldRun];
+    PMLogDebug(@"Checking status: %d", status);
     if (status) {
         [statusTextField setStringValue:@"Running"];
         NSColor *aColor = [NSColor colorWithCalibratedRed:0.000 green:0.502 blue:0.000 alpha:1.000];
         [statusTextField setTextColor:aColor];
         [startButton setTitle:@"Stop"];
-        eventMonitor = [NSEvent
-                addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
-                    processEvent(event);
-                }];
+        remoteMonitor = [NSEvent
+                         addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
+                             processRemoteEvent(event);
+                         }];
+        localMonitor = [NSEvent
+                         addLocalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
+                             return processLocalEvent(event);
+                         }];
+        
     }
     else {
         [startButton setTitle:@"Start"];
         [statusTextField setStringValue:@"Not Running"];
         [statusTextField setTextColor:[NSColor redColor]];
 //        [prefs setShouldRun:NO];
-        if (eventMonitor) {
-            [NSEvent removeMonitor:eventMonitor];
-            eventMonitor = nil;
-        }
+        [self removeMonitors];
     }
     [menuExtraController checkForChanges];
 }

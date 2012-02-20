@@ -273,7 +273,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
         [self deactivate];
 }
 
-void processEvent(NSEvent *event) {
+void processRemoteEvent(NSEvent *event) {
     if ([event type] == NSKeyDown) {
         NSUInteger     modifiers = ([event modifierFlags] & NSDeviceIndependentModifierFlagsMask);
         unsigned short keycode   = [event keyCode];
@@ -297,6 +297,32 @@ void processEvent(NSEvent *event) {
         PMLOGC(PM_LEVEL_DEBUG, @"click event: %@", aPoint);
     }
 
+}
+
+NSEvent * processLocalEvent(NSEvent *event) {
+    if ([event type] == NSKeyDown) {
+        NSUInteger     modifiers = ([event modifierFlags] & NSDeviceIndependentModifierFlagsMask);
+        unsigned short keycode   = [event keyCode];
+        
+        TapMenuController *menu        = [TapMenuController instance];
+        Preferences       *preferences = [menu prefs];
+        KeyCombo combo = [preferences keyCombo];
+        
+        if ([preferences useHotKey]) {
+            NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
+            PMLOGC(PM_LEVEL_DEBUG, @"Looking for: %@", lookingFor);
+            NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
+            PMLOGC(PM_LEVEL_DEBUG, @"Got: %@", results);
+            if (keycode == combo.code) if (modifiers == combo.flags)
+                [menu toggleClicking];
+        }
+    }
+    
+    if ([event type] == NSLeftMouseUp) {
+        NSString *aPoint = NSStringFromPoint([event locationInWindow]);
+        PMLOGC(PM_LEVEL_DEBUG, @"click event: %@", aPoint);
+    }
+    return event;
 }
 
 @end

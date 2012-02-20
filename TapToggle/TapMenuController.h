@@ -55,6 +55,7 @@
 - (void) menuPrefClick;
 - (void) menuQuitClick;
 
-void processEvent(NSEvent *event);
+void processRemoteEvent(NSEvent *event);
+NSEvent * processLocalEvent(NSEvent *event);
 - (BOOL)haveTrackPad;
 @end

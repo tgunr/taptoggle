@@ -35,7 +35,8 @@
 @property (weak) IBOutlet SRRecorderControl *hotKeyControl;
 @property (strong) IBOutlet NSPanel         *infoPanel;
 @property (retain) NSTimer                  *monitorCheck;
-@property (retain) NSEvent                  *eventMonitor;
+@property (retain) NSEvent                  *remoteMonitor;
+@property (retain) NSEvent                  *localMonitor;
 @property (retain) TapMenuController        *menuExtraController;
 
 - (IBAction) showStatus:(id) sender;
