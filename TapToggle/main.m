@@ -7,8 +7,8 @@
 //
 
 #import "PMLog.h"
-#import "DDASLLogger.h"
-#import "DDTTYLogger.h"
+#import <Lumberjack/DDASLLogger.h>
+#import <Lumberjack/DDTTYLogger.h>
 
 int main(int argc, char *argv[]) {
     @autoreleasepool {
