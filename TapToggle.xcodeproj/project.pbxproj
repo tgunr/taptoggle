@@ -12,10 +12,11 @@
 		7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18214DC54FB00613F39 /* SysPref.scpt */; };
 		7535D18914DC70C600613F39 /* TapMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7535D18814DC70C600613F39 /* TapMenuController.m */; };
 		7536433914E1CEFB0005CBDA /* TapToggleOff-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 7536433814E1CEFB0005CBDA /* TapToggleOff-256.png */; };
-		756B987314EDF34400F866E0 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B986C14EDF34300F866E0 /* DDLog.m */; };
-		756B987514EDF34400F866E0 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B986E14EDF34300F866E0 /* DDASLLogger.m */; };
-		756B987714EDF34400F866E0 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B987014EDF34300F866E0 /* DDTTYLogger.m */; };
-		756B987914EDF34400F866E0 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 756B987214EDF34400F866E0 /* DDFileLogger.m */; };
+		7547624E155CE2D300655C6B /* LumberJack.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75476247155CE28900655C6B /* LumberJack.framework */; };
+		75476268155CE4AB00655C6B /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75476265155CE47D00655C6B /* ShortcutRecorder.framework */; };
+		75476269155CE4B900655C6B /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75476265155CE47D00655C6B /* ShortcutRecorder.framework */; };
+		7547626A155CE6EB00655C6B /* LumberJack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75476247155CE28900655C6B /* LumberJack.framework */; };
+		7547626D155D119A00655C6B /* relaunch in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75B79CD014E0B2B800CED163 /* relaunch */; };
 		75B79CAF14E08CF200CED163 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */; };
 		75B79CD314E0B2B800CED163 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CD214E0B2B800CED163 /* Foundation.framework */; };
 		75B79CD614E0B2B800CED163 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B79CD514E0B2B800CED163 /* main.m */; };
@@ -39,14 +40,72 @@
 		75E0F49514D7B3510086171A /* TapToggle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F49214D7B3510086171A /* TapToggle.xib */; };
 		75E0F4B214D7D0DA0086171A /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4B114D7D0D90086171A /* ServiceManagement.framework */; };
 		75E0F4B414D7D6050086171A /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F4B314D7D6040086171A /* PreferencePanes.framework */; };
-		75F9CE0714F3284F006800EE /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F9CDFD14F3284F006800EE /* SRRecorderControl.m */; };
-		75F9CE0B14F3284F006800EE /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F9CE0514F3284F006800EE /* SRCommon.m */; };
-		75F9CE1114F32A02006800EE /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F9CDFF14F3284F006800EE /* SRRecorderCell.m */; };
-		75F9CE1214F32A02006800EE /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F9CE0314F3284F006800EE /* SRValidator.m */; };
-		75F9CE1314F32AC6006800EE /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F9CE0114F3284F006800EE /* SRKeyCodeTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		75476246155CE28900655C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7547623E155CE28900655C6B /* LumberJack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75B21BE114F590070055DD45;
+			remoteInfo = LumberJack;
+		};
+		75476248155CE28900655C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7547623E155CE28900655C6B /* LumberJack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75D4574714F5A1B5003ECCF0;
+			remoteInfo = LUMBERJACK;
+		};
+		7547624B155CE2B300655C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7547623E155CE28900655C6B /* LumberJack.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 75B21BE014F590070055DD45;
+			remoteInfo = LumberJack;
+		};
+		7547625C155CE47D00655C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7547624F155CE47C00655C6B /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 939837800DA42965007F53F3;
+			remoteInfo = "ShortcutRecorder.framework - with embedded ibplugin";
+		};
+		7547625E155CE47D00655C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7547624F155CE47C00655C6B /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 939838A50DA4300F007F53F3;
+			remoteInfo = "ShortcutRecorder.ibplugin - for embedding in framework";
+		};
+		75476260155CE47D00655C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7547624F155CE47C00655C6B /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 93983B220DA43C4E007F53F3;
+			remoteInfo = ShortcutRecorderFramework_Tester;
+		};
+		75476262155CE47D00655C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7547624F155CE47C00655C6B /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 342E00CF109CCBF5009AD8CA;
+			remoteInfo = "ShortcutRecorder.ibplugin - standalone";
+		};
+		75476264155CE47D00655C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7547624F155CE47C00655C6B /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 342E0104109CCC36009AD8CA;
+			remoteInfo = ShortcutRecorder.framework;
+		};
+		75476266155CE49C00655C6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7547624F155CE47C00655C6B /* ShortcutRecorder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 342E00EB109CCC36009AD8CA;
+			remoteInfo = ShortcutRecorder.framework;
+		};
 		75B79CDE14E0B34800CED163 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75E0F44714D7AF5E0086171A /* Project object */;
@@ -57,12 +116,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		7547624D155CE2C400655C6B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				75476269155CE4B900655C6B /* ShortcutRecorder.framework in CopyFiles */,
+				7547624E155CE2D300655C6B /* LumberJack.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		75B79CE014E0B34E00CED163 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 7;
+			dstSubfolderSpec = 6;
 			files = (
+				7547626D155D119A00655C6B /* relaunch in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,14 +148,8 @@
 		7535D18714DC70C600613F39 /* TapMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapMenuController.h; sourceTree = "<group>"; };
 		7535D18814DC70C600613F39 /* TapMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TapMenuController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7536433814E1CEFB0005CBDA /* TapToggleOff-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TapToggleOff-256.png"; sourceTree = "<group>"; };
-		756B986B14EDF34300F866E0 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DDLog.h; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDLog.h; sourceTree = "<group>"; };
-		756B986C14EDF34300F866E0 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDLog.m; sourceTree = "<group>"; };
-		756B986D14EDF34300F866E0 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDASLLogger.h; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDASLLogger.h; sourceTree = "<group>"; };
-		756B986E14EDF34300F866E0 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDASLLogger.m; sourceTree = "<group>"; };
-		756B986F14EDF34300F866E0 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDTTYLogger.h; sourceTree = "<group>"; };
-		756B987014EDF34300F866E0 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDTTYLogger.m; sourceTree = "<group>"; };
-		756B987114EDF34400F866E0 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDFileLogger.h; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDFileLogger.h; sourceTree = "<group>"; };
-		756B987214EDF34400F866E0 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = ../../../Cocoa/CocoaLumberjack/Lumberjack/DDFileLogger.m; sourceTree = "<group>"; };
+		7547623E155CE28900655C6B /* LumberJack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LumberJack.xcodeproj; path = CocoaLumberJack/Lumberjack/LumberJack.xcodeproj; sourceTree = "<group>"; };
+		7547624F155CE47C00655C6B /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = ../../Contributed/ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = "<group>"; };
 		75B79C8714DF35B200CED163 /* PMUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMUtility.framework; path = ../PMUtility/build/Debug/PMUtility.framework; sourceTree = "<group>"; };
 		75B79CAD14E08CF100CED163 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchAtLoginController.h; path = ../../../Contributed/LaunchAtLoginController/LaunchAtLoginController.h; sourceTree = "<group>"; };
 		75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchAtLoginController.m; path = ../../Contributed/LaunchAtLoginController/LaunchAtLoginController.m; sourceTree = SOURCE_ROOT; };
@@ -125,19 +190,7 @@
 		75E0F49614D7BB6C0086171A /* TapToggle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TapToggle.entitlements; sourceTree = "<group>"; };
 		75E0F4B114D7D0D90086171A /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		75E0F4B314D7D6040086171A /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
-		75F9CDF714F302CE006800EE /* relaunch.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = relaunch.plist; path = ../relaunch/relaunch.plist; sourceTree = "<group>"; };
-		75F9CDFA14F3284F006800EE /* SR_LeopardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SR_LeopardView.h; path = ../../Contributed/ShortcutRecorder/Framework/SR_LeopardView.h; sourceTree = "<group>"; };
-		75F9CDFB14F3284F006800EE /* SR_LeopardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SR_LeopardView.m; path = ../../Contributed/ShortcutRecorder/Framework/SR_LeopardView.m; sourceTree = "<group>"; };
-		75F9CDFC14F3284F006800EE /* SRRecorderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRRecorderControl.h; path = ../../Contributed/ShortcutRecorder/Source/SRRecorderControl.h; sourceTree = "<group>"; };
-		75F9CDFD14F3284F006800EE /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRRecorderControl.m; path = ../../Contributed/ShortcutRecorder/Source/SRRecorderControl.m; sourceTree = "<group>"; };
-		75F9CDFE14F3284F006800EE /* SRRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRRecorderCell.h; path = ../../Contributed/ShortcutRecorder/Source/SRRecorderCell.h; sourceTree = "<group>"; };
-		75F9CDFF14F3284F006800EE /* SRRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRRecorderCell.m; path = ../../Contributed/ShortcutRecorder/Source/SRRecorderCell.m; sourceTree = "<group>"; };
-		75F9CE0014F3284F006800EE /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRKeyCodeTransformer.h; path = ../../Contributed/ShortcutRecorder/Source/SRKeyCodeTransformer.h; sourceTree = "<group>"; };
-		75F9CE0114F3284F006800EE /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRKeyCodeTransformer.m; path = ../../Contributed/ShortcutRecorder/Source/SRKeyCodeTransformer.m; sourceTree = "<group>"; };
-		75F9CE0214F3284F006800EE /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRValidator.h; path = ../../Contributed/ShortcutRecorder/Source/SRValidator.h; sourceTree = "<group>"; };
-		75F9CE0314F3284F006800EE /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRValidator.m; path = ../../Contributed/ShortcutRecorder/Source/SRValidator.m; sourceTree = "<group>"; };
-		75F9CE0414F3284F006800EE /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRCommon.h; path = ../../Contributed/ShortcutRecorder/Source/SRCommon.h; sourceTree = "<group>"; };
-		75F9CE0514F3284F006800EE /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRCommon.m; path = ../../Contributed/ShortcutRecorder/Source/SRCommon.m; sourceTree = "<group>"; };
+		75F9CDF714F302CE006800EE /* relaunch.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = relaunch.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,9 +207,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75476268155CE4AB00655C6B /* ShortcutRecorder.framework in Frameworks */,
 				752FA6B514E4852F00F782F4 /* IOKit.framework in Frameworks */,
 				75B79CE614E127E000CED163 /* Carbon.framework in Frameworks */,
 				75E0F4B414D7D6050086171A /* PreferencePanes.framework in Frameworks */,
+				7547626A155CE6EB00655C6B /* LumberJack.framework in Frameworks */,
 				75E0F4B214D7D0DA0086171A /* ServiceManagement.framework in Frameworks */,
 				75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */,
 			);
@@ -165,6 +220,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7547623F155CE28900655C6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75476247155CE28900655C6B /* LumberJack.framework */,
+				75476249155CE28900655C6B /* libLUMBERJACK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75476250155CE47C00655C6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7547625D155CE47D00655C6B /* ShortcutRecorder.framework */,
+				7547625F155CE47D00655C6B /* ShortcutRecorder.ibplugin */,
+				75476261155CE47D00655C6B /* ShortcutRecorder.app */,
+				75476263155CE47D00655C6B /* ShortcutRecorder.ibplugin */,
+				75476265155CE47D00655C6B /* ShortcutRecorder.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		75B79CD414E0B2B800CED163 /* relaunch */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +254,7 @@
 		75B79CD714E0B2B800CED163 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				75F9CDF714F302CE006800EE /* relaunch.plist */,
 				75B79CE214E0D44300CED163 /* Cocoa.framework */,
 				75B79CD814E0B2B800CED163 /* relaunch-Prefix.pch */,
 			);
@@ -187,7 +264,8 @@
 		75E0F44514D7AF5E0086171A = {
 			isa = PBXGroup;
 			children = (
-				75F9CE0C14F32864006800EE /* Shortcut */,
+				7547624F155CE47C00655C6B /* ShortcutRecorder.xcodeproj */,
+				7547623E155CE28900655C6B /* LumberJack.xcodeproj */,
 				75E0F45A14D7AF5E0086171A /* TapToggle */,
 				75B79CD414E0B2B800CED163 /* relaunch */,
 				75E0F45314D7AF5E0086171A /* Frameworks */,
@@ -234,14 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				75DD458014F06759005867F7 /* PMLog.h */,
-				756B986B14EDF34300F866E0 /* DDLog.h */,
-				756B986C14EDF34300F866E0 /* DDLog.m */,
-				756B986D14EDF34300F866E0 /* DDASLLogger.h */,
-				756B986E14EDF34300F866E0 /* DDASLLogger.m */,
-				756B986F14EDF34300F866E0 /* DDTTYLogger.h */,
-				756B987014EDF34300F866E0 /* DDTTYLogger.m */,
-				756B987114EDF34400F866E0 /* DDFileLogger.h */,
-				756B987214EDF34400F866E0 /* DDFileLogger.m */,
 				75B79CAD14E08CF100CED163 /* LaunchAtLoginController.h */,
 				75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */,
 				75E0F49214D7B3510086171A /* TapToggle.xib */,
@@ -266,7 +336,6 @@
 			isa = PBXGroup;
 			children = (
 				75E0F49614D7BB6C0086171A /* TapToggle.entitlements */,
-				75F9CDF714F302CE006800EE /* relaunch.plist */,
 				75E0F45C14D7AF5F0086171A /* TapToggle-Info.plist */,
 				75E0F45D14D7AF5F0086171A /* InfoPlist.strings */,
 				75E0F46014D7AF5F0086171A /* main.m */,
@@ -291,25 +360,6 @@
 				75E0F48114D7B1840086171A /* TapToggleOn-24.png */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		75F9CE0C14F32864006800EE /* Shortcut */ = {
-			isa = PBXGroup;
-			children = (
-				75F9CDFA14F3284F006800EE /* SR_LeopardView.h */,
-				75F9CDFB14F3284F006800EE /* SR_LeopardView.m */,
-				75F9CDFC14F3284F006800EE /* SRRecorderControl.h */,
-				75F9CDFD14F3284F006800EE /* SRRecorderControl.m */,
-				75F9CDFE14F3284F006800EE /* SRRecorderCell.h */,
-				75F9CDFF14F3284F006800EE /* SRRecorderCell.m */,
-				75F9CE0014F3284F006800EE /* SRKeyCodeTransformer.h */,
-				75F9CE0114F3284F006800EE /* SRKeyCodeTransformer.m */,
-				75F9CE0214F3284F006800EE /* SRValidator.h */,
-				75F9CE0314F3284F006800EE /* SRValidator.m */,
-				75F9CE0414F3284F006800EE /* SRCommon.h */,
-				75F9CE0514F3284F006800EE /* SRCommon.m */,
-			);
-			name = Shortcut;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,12 +388,15 @@
 				75E0F44C14D7AF5E0086171A /* Sources */,
 				75E0F44D14D7AF5E0086171A /* Frameworks */,
 				75E0F44E14D7AF5E0086171A /* Resources */,
+				7547624D155CE2C400655C6B /* CopyFiles */,
 				75B79CE014E0B34E00CED163 /* CopyFiles */,
 				759F34D814E6A9D500F5C811 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				75476267155CE49C00655C6B /* PBXTargetDependency */,
+				7547624C155CE2B300655C6B /* PBXTargetDependency */,
 				75B79CDF14E0B34800CED163 /* PBXTargetDependency */,
 			);
 			name = TapToggle;
@@ -369,6 +422,16 @@
 			mainGroup = 75E0F44514D7AF5E0086171A;
 			productRefGroup = 75E0F45114D7AF5E0086171A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7547623F155CE28900655C6B /* Products */;
+					ProjectRef = 7547623E155CE28900655C6B /* LumberJack.xcodeproj */;
+				},
+				{
+					ProductGroup = 75476250155CE47C00655C6B /* Products */;
+					ProjectRef = 7547624F155CE47C00655C6B /* ShortcutRecorder.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				75E0F44F14D7AF5E0086171A /* TapToggle */,
@@ -376,6 +439,58 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		75476247155CE28900655C6B /* LumberJack.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LumberJack.framework;
+			remoteRef = 75476246155CE28900655C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75476249155CE28900655C6B /* libLUMBERJACK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libLUMBERJACK.a;
+			remoteRef = 75476248155CE28900655C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7547625D155CE47D00655C6B /* ShortcutRecorder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ShortcutRecorder.framework;
+			remoteRef = 7547625C155CE47D00655C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7547625F155CE47D00655C6B /* ShortcutRecorder.ibplugin */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ShortcutRecorder.ibplugin;
+			remoteRef = 7547625E155CE47D00655C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75476261155CE47D00655C6B /* ShortcutRecorder.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ShortcutRecorder.app;
+			remoteRef = 75476260155CE47D00655C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75476263155CE47D00655C6B /* ShortcutRecorder.ibplugin */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ShortcutRecorder.ibplugin;
+			remoteRef = 75476262155CE47D00655C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75476265155CE47D00655C6B /* ShortcutRecorder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ShortcutRecorder.framework;
+			remoteRef = 75476264155CE47D00655C6B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		75E0F44E14D7AF5E0086171A /* Resources */ = {
@@ -412,7 +527,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash -x   \nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${SRCROOT}/relaunch/relaunch.plist\"\n";
+			shellScript = "#!/bin/bash\nset -x\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${SRCROOT}/relaunch/relaunch.plist\"\n\ncodesign -f -v -s \"3rd Party Mac Developer Application: polyMicro Systems\" \"${CONFIGURATION_BUILD_DIR}/ShortcutRecorder.framework/Versions/A\"\n\ncodesign -f -v -s \"3rd Party Mac Developer Application: polyMicro Systems\" \"${CONFIGURATION_BUILD_DIR}/Lumberjack.framework/Versions/A\"\n\n#codesign -f -v -s \"3rd Party Mac Developer Application: polyMicro Systems\" \"${CONFIGURATION_BUILD_DIR}/relaunch\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -429,9 +544,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75F9CE1314F32AC6006800EE /* SRKeyCodeTransformer.m in Sources */,
-				75F9CE1114F32A02006800EE /* SRRecorderCell.m in Sources */,
-				75F9CE1214F32A02006800EE /* SRValidator.m in Sources */,
 				75E0F46114D7AF5F0086171A /* main.m in Sources */,
 				75E0F46814D7AF5F0086171A /* AppDelegate.m in Sources */,
 				75E0F48414D7B1840086171A /* Preferences.m in Sources */,
@@ -439,18 +551,22 @@
 				7535D18914DC70C600613F39 /* TapMenuController.m in Sources */,
 				75B79CAF14E08CF200CED163 /* LaunchAtLoginController.m in Sources */,
 				752FA6B114E483A800F782F4 /* HID.m in Sources */,
-				756B987314EDF34400F866E0 /* DDLog.m in Sources */,
-				756B987514EDF34400F866E0 /* DDASLLogger.m in Sources */,
-				756B987714EDF34400F866E0 /* DDTTYLogger.m in Sources */,
-				756B987914EDF34400F866E0 /* DDFileLogger.m in Sources */,
-				75F9CE0714F3284F006800EE /* SRRecorderControl.m in Sources */,
-				75F9CE0B14F3284F006800EE /* SRCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7547624C155CE2B300655C6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LumberJack;
+			targetProxy = 7547624B155CE2B300655C6B /* PBXContainerItemProxy */;
+		};
+		75476267155CE49C00655C6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ShortcutRecorder.framework;
+			targetProxy = 75476266155CE49C00655C6B /* PBXContainerItemProxy */;
+		};
 		75B79CDF14E0B34800CED163 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 75B79CCF14E0B2B800CED163 /* relaunch */;
@@ -489,6 +605,7 @@
 		75B79CDC14E0B2B800CED163 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -500,6 +617,7 @@
 					"$(SRCROOT)/relaunch/relaunch.plist",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -509,6 +627,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -531,7 +650,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/DerivedData/Build/Products/$(CONFIGURATION)\"";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -554,7 +673,7 @@
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../Contributed/ShortcutRecorder/build/$(CONFIGURATION)";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/DerivedData/Build/Products/$(CONFIGURATION)\"";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -569,13 +688,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -585,13 +707,15 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "TapToggle/TapToggle-Prefix.pch";
 				INFOPLIST_FILE = "TapToggle/TapToggle-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
