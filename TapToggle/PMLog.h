@@ -1,4 +1,4 @@
-#import "DDLog.h"
+#import <Lumberjack/DDLog.h>
 
 // We want to use the following log levels:
 // 
