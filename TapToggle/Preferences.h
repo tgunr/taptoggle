@@ -26,7 +26,7 @@
 @property (retain) NSUserDefaults *userDefaults;
 
 // These are set by the Preferences.plist for default values
-@property (nonatomic, assign, setter=setShowStatus:, getter=showStatus, readonly) BOOL _showStatus;
+@property (nonatomic, assign, setter=setShowStatus:, getter=showStatus) BOOL _showStatus;
 @property (nonatomic, assign, setter=setCheckWeekly:, getter=checkWeekly) BOOL         _checkWeekly;
 @property (nonatomic, assign, setter=setAnonInfo:, getter=anonInfo) BOOL               _anonInfo;
 @property (nonatomic, assign, setter=setUseHotKey:, getter=useHotKey) BOOL             _useHotKey;
