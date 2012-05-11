@@ -16,10 +16,11 @@
 @implementation NSApplication (Relaunch)
 
 - (void) relaunch:(id) sender {
-    NSString *daemonPath = [[NSBundle mainBundle] pathForResource:NSApplicationRelaunchDaemon ofType:nil];
+    NSString *daemonPath = [[NSBundle mainBundle] pathForAuxiliaryExecutable:NSApplicationRelaunchDaemon];
     NSString *path       = [[NSBundle mainBundle] bundlePath];
     NSString *pid        = [NSString stringWithFormat:@"%d", [[NSProcessInfo processInfo] processIdentifier]];
     NSArray  *args       = [NSArray arrayWithObjects:path, pid, nil];
+
     [NSTask launchedTaskWithLaunchPath:daemonPath arguments:args];
     [self terminate:sender];
 }
