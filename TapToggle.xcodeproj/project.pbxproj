@@ -12,6 +12,7 @@
 		7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18214DC54FB00613F39 /* SysPref.scpt */; };
 		7535D18914DC70C600613F39 /* TapMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7535D18814DC70C600613F39 /* TapMenuController.m */; };
 		7536433914E1CEFB0005CBDA /* TapToggleOff-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 7536433814E1CEFB0005CBDA /* TapToggleOff-256.png */; };
+		753DE4261577B95B00058948 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F45414D7AF5E0086171A /* Cocoa.framework */; };
 		7547624E155CE2D300655C6B /* LumberJack.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75476247155CE28900655C6B /* LumberJack.framework */; };
 		75476268155CE4AB00655C6B /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75476265155CE47D00655C6B /* ShortcutRecorder.framework */; };
 		75476269155CE4B900655C6B /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75476265155CE47D00655C6B /* ShortcutRecorder.framework */; };
@@ -20,7 +21,6 @@
 		75B79CAF14E08CF200CED163 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B79CAE14E08CF200CED163 /* LaunchAtLoginController.m */; };
 		75B79CD314E0B2B800CED163 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CD214E0B2B800CED163 /* Foundation.framework */; };
 		75B79CD614E0B2B800CED163 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B79CD514E0B2B800CED163 /* main.m */; };
-		75B79CE314E0D44400CED163 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CE214E0D44300CED163 /* Cocoa.framework */; };
 		75B79CE614E127E000CED163 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CE514E127E000CED163 /* Carbon.framework */; };
 		75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F45414D7AF5E0086171A /* Cocoa.framework */; };
 		75E0F45F14D7AF5F0086171A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F45D14D7AF5F0086171A /* InfoPlist.strings */; };
@@ -158,7 +158,6 @@
 		75B79CD514E0B2B800CED163 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75B79CD814E0B2B800CED163 /* relaunch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "relaunch-Prefix.pch"; sourceTree = "<group>"; };
 		75B79CD914E0B2B800CED163 /* relaunch.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = relaunch.1; sourceTree = "<group>"; };
-		75B79CE214E0D44300CED163 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		75B79CE514E127E000CED163 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		75DD458014F06759005867F7 /* PMLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLog.h; sourceTree = "<group>"; };
 		75E0F45014D7AF5E0086171A /* TapToggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapToggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,7 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75B79CE314E0D44400CED163 /* Cocoa.framework in Frameworks */,
+				753DE4261577B95B00058948 /* Cocoa.framework in Frameworks */,
 				75B79CD314E0B2B800CED163 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,7 +254,6 @@
 			isa = PBXGroup;
 			children = (
 				75F9CDF714F302CE006800EE /* relaunch.plist */,
-				75B79CE214E0D44300CED163 /* Cocoa.framework */,
 				75B79CD814E0B2B800CED163 /* relaunch-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -605,7 +603,7 @@
 		75B79CDC14E0B2B800CED163 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -614,11 +612,9 @@
 					"-sectcreate",
 					__TEXT,
 					__info_plist,
-					"$(SRCROOT)/relaunch/relaunch.plist",
+					"\"$(SRCROOT)/relaunch/relaunch.plist\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -626,7 +622,7 @@
 		75B79CDD14E0B2B800CED163 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "relaunch/relaunch-Prefix.pch";
@@ -635,11 +631,9 @@
 					"-sectcreate",
 					__TEXT,
 					__info_plist,
-					"$(SRCROOT)/relaunch/relaunch.plist",
+					"\"$(SRCROOT)/relaunch/relaunch.plist\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -649,6 +643,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/DerivedData/Build/Products/$(CONFIGURATION)\"";
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -656,11 +651,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx10.7;
 			};
 			name = Debug;
@@ -674,7 +669,6 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/DerivedData/Build/Products/$(CONFIGURATION)\"";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

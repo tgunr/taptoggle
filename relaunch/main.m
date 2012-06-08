@@ -14,18 +14,11 @@
     pid_t parentProcessId;
 }
 
-- (void)relaunch __dead2;
+- (void) relaunch;
 
 @end
 
 @implementation TerminationListener
-
-- (void)watchdog:(NSTimer *)timer
-{
-	ProcessSerialNumber psn;
-	if (GetProcessForPID(parentProcessId, &psn) == procNotFound)
-		[self relaunch];
-}
 
 - (id) initWithExecutablePath:(const char *)execPath parentProcessId:(pid_t)ppid
 {
@@ -34,16 +27,13 @@
         executablePath = execPath;
         parentProcessId = ppid;
         
-        NSLog(@"Setting up termination watch");
-
+        // This adds the input source required by the run loop
+        [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(applicationDidTerminate:) name:NSWorkspaceDidTerminateApplicationNotification object:nil];
         if (getppid() == 1) {
             NSLog(@"Parent already terminated");
             // ppid is launchd (1) => parent terminated already
             [self relaunch];
         }
-
-		[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(watchdog:) userInfo:nil repeats:YES];
-
     }
     return self;
 }
@@ -59,8 +49,7 @@
 
 - (void) relaunch
 {
-    BOOL result = [[NSWorkspace sharedWorkspace] launchApplication:[NSString stringWithUTF8String:executablePath]];
-    NSLog(@"relaunching: %s result: %d", executablePath, result);
+    [[NSWorkspace sharedWorkspace] launchApplication:[NSString stringWithUTF8String:executablePath]];
     exit(0);
 }
 
@@ -68,14 +57,22 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc != 3) return EXIT_FAILURE;
-
+    BOOL success;
     @autoreleasepool {
-        NSLog(@"relaunch: %s", argv[1]);
-        [NSApplication sharedApplication];
-        [[[TerminationListener alloc] initWithExecutablePath:argv[1] parentProcessId:atoi(argv[2])] autorelease];
-        [[NSApplication sharedApplication] run];
+        
+        pid_t parentPID = atoi(argv[2]);
+        ProcessSerialNumber psn;
+        while (GetProcessForPID(parentPID, &psn) != procNotFound) {
+            NSLog(@"Waiting for TapToggle to quit");
+            sleep(5);
+        }        
+        NSString *appPath = [NSString stringWithCString:argv[1] encoding:NSUTF8StringEncoding];
+        NSLog(@"Starting relaunch");
+        success = [[NSWorkspace sharedWorkspace] openFile:[appPath stringByExpandingTildeInPath]];
+        
+        if (!success)
+            NSLog(@"Error: could not relaunch application at %@", appPath);
+        
     }
-
-    return EXIT_SUCCESS;
+    return (success) ? 0 : 1;
 }
