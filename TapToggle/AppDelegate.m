@@ -22,7 +22,7 @@
     NSArray  *args       = [NSArray arrayWithObjects:path, pid, nil];
 
     [NSTask launchedTaskWithLaunchPath:daemonPath arguments:args];
-    [self terminate:sender];
+//    [self terminate:sender];
 }
 
 @end
