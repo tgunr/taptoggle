@@ -20,8 +20,6 @@
     NSMenuItem   *menuToggleItem;
     NSMenuItem   *menuPrefItem;
     NSMenuItem   *menuQuitItem;
-    NSMenuItem   *dockClickItem;
-    NSMenuItem   *dockPrefItem;
     NSImage      *menuOnImage;
     NSImage      *menuOffImage;
     NSImage      *dockOnImage;
@@ -43,6 +41,7 @@
 @property (nonatomic, strong) NSImage      *dockOnImage;
 @property (nonatomic, strong) NSImage      *menuOffImage;
 @property (nonatomic, strong) NSImage      *menuOnImage;
+@property (nonatomic, assign) BOOL         haveTrackPad;
 
 
 + (id) instance;
@@ -55,7 +54,6 @@
 - (void) menuPrefClick;
 - (void) menuQuitClick;
 
-void processRemoteEvent(NSEvent *event);
-NSEvent * processLocalEvent(NSEvent *event);
+void processEvent(NSEvent *event);
 - (BOOL)haveTrackPad;
 @end

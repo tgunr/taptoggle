@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import "Prefs.h"
 #import "HID.h"
-#import "PMLog.h"
 
 @interface TapMenuController () {
 }
@@ -69,13 +68,14 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) buildMenuExtra {
+    PMHERE;
     tapMenu = [[NSMenu alloc] init];
 
     // Build the menu items
 //    [tapMenu initWithTitle:@"TapToggle"];
     [tapMenu setAutoenablesItems:NO];
     menuToggleItem = [[NSMenuItem alloc]
-                                  initWithTitle:@"Set Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
+                                  initWithTitle:@"Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
     [menuToggleItem setTarget:self];
     [menuToggleItem setEnabled:YES];
     [tapMenu addItem:menuToggleItem];
@@ -92,13 +92,14 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) buildDockMenu {
+    PMHERE;
     dockMenu = [[NSMenu alloc]
                         initWithTitle:@"TapToggle"];
     [dockMenu setAutoenablesItems:NO];
     NSMenuItem *item;
 
     dockClickItem = [[NSMenuItem alloc]
-                                 initWithTitle:@"Set Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
+                                 initWithTitle:@"Tap Click Off" action:@selector(menuToggleClick) keyEquivalent:@""];
     [dockClickItem setEnabled:YES];
     [dockClickItem setTarget:self];
     [dockMenu addItem:dockClickItem];
@@ -112,18 +113,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (BOOL)haveTrackPad {
-    long count = IOBluetoothFindNumberOfRegistryEntriesOfClassName("AppleUSBTCButtons");
-    if (count)
-        PMLogInfo(@"Trackpad detected with AppleUSBTCButtons");
-    else
-        PMLogWarn(@"No trackpad detected with AppleUSBTCButtons");
-
-    count += IOBluetoothFindNumberOfRegistryEntriesOfClassName("BNBTrackpadDevice");
-    if (count)
-        PMLogInfo(@"Trackpad detected with BNBTrackpadDevice");
-    else
-        PMLogWarn(@"No trackpad detected with BNBTrackpadDevice");
-        
+    long count = IOBluetoothFindNumberOfRegistryEntriesOfClassName("IOHITabletPointer");
     BOOL haveTrackPad = (count != 0) ? YES : NO;
     return haveTrackPad;
 }
@@ -144,6 +134,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) getMenuImages {
+    PMHERE;
     NSBundle *myBundle = [NSBundle mainBundle];
     NSString *onPath   = [myBundle pathForImageResource:@"TapToggleOn-24.png"];
     NSString *offPath  = [myBundle pathForImageResource:@"TapToggleOff-24.png"];
@@ -152,6 +143,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) getDockImages {
+    PMHERE;
     NSBundle *myBundle = [NSBundle mainBundle];
     NSString *onPath   = [myBundle pathForImageResource:@"TapToggleOn-256.png"];
     NSString *offPath  = [myBundle pathForImageResource:@"TapToggleOff-256.png"];
@@ -178,17 +170,19 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) setMenuTitle:(BOOL) state {
+    PMHERE;
     if (state) {
-        [menuToggleItem setTitle:@"Set Tap Click Off"];
-        [dockClickItem setTitle:@"Set Tap Click Off"];
+        [menuToggleItem setTitle:@"Tap Click Off"];
+        [dockClickItem setTitle:@"Tap Click Off"];
     }
     else {
-        [menuToggleItem setTitle:@"Set Tap Click On"];
-        [dockClickItem setTitle:@"Set Tap Click On"];
+        [menuToggleItem setTitle:@"Tap Click On"];
+        [dockClickItem setTitle:@"Tap Click On"];
     }
 }
 
 - (void) setMenuImage:(BOOL) state {
+    PMHERE;
     NSImage *menuImage = [self getMenuImage:state];
     [statusItem setImage:menuImage];
     NSImage *dockImage = [self getDockImage:state];
@@ -197,7 +191,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 
 - (void) setMenus {
     BOOL clickState = [self getTapClickState];
-    PMLogWarn(@"Tap Click is: %@", clickState ? @"ON" : @"OFF");
+    PMLOG(1, @"Tap Click is: %@", clickState ? @"ON" : @"OFF");
     [self setMenuTitle:clickState];
     [self setMenuImage:clickState];
 }
@@ -212,10 +206,12 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) menuToggleClick {
+    PMHERE;
     [self toggleClicking];
 }
 
 - (void) menuPrefClick {
+    PMHERE;
     [[NSApp delegate] tapShowPreferences];
 }
 
@@ -245,7 +241,6 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) checkShowStatusMenu {
-    PMHERE;
     BOOL show = [prefs showStatus];
     BOOL run  = [prefs shouldRun];
     if (run) 
@@ -280,7 +275,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
         [self deactivate];
 }
 
-void processRemoteEvent(NSEvent *event) {
+void processEvent(NSEvent *event) {
     if ([event type] == NSKeyDown) {
         NSUInteger     modifiers = ([event modifierFlags] & NSDeviceIndependentModifierFlagsMask);
         unsigned short keycode   = [event keyCode];
@@ -291,45 +286,16 @@ void processRemoteEvent(NSEvent *event) {
 
         if ([preferences useHotKey]) {
             NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
-            PMLOGC(PM_LEVEL_DEBUG, @"Looking for: %@", lookingFor);
+            PMLOG(2, @"Looking for: %@", lookingFor);
             NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
-            PMLOGC(PM_LEVEL_DEBUG, @"Got: %@", results);
+            PMLOG(2, @"Got: %@", results);
             if (keycode == combo.code) if (modifiers == combo.flags)
                 [menu toggleClicking];
         }
     }
-    
     if ([event type] == NSLeftMouseUp) {
-        NSString *aPoint = NSStringFromPoint([event locationInWindow]);
-        PMLOGC(PM_LEVEL_DEBUG, @"click event: %@", aPoint);
+        PMLOG(3, @"click event: %@", NSStringFromPoint([event locationInWindow]));
     }
-
-}
-
-NSEvent * processLocalEvent(NSEvent *event) {
-    if ([event type] == NSKeyDown) {
-        NSUInteger     modifiers = ([event modifierFlags] & NSDeviceIndependentModifierFlagsMask);
-        unsigned short keycode   = [event keyCode];
-        
-        TapMenuController *menu        = [TapMenuController instance];
-        Preferences       *preferences = [menu prefs];
-        KeyCombo combo = [preferences keyCombo];
-        
-        if ([preferences useHotKey]) {
-            NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
-            PMLOGC(PM_LEVEL_DEBUG, @"Looking for: %@", lookingFor);
-            NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
-            PMLOGC(PM_LEVEL_DEBUG, @"Got: %@", results);
-            if (keycode == combo.code) if (modifiers == combo.flags)
-                [menu toggleClicking];
-        }
-    }
-    
-    if ([event type] == NSLeftMouseUp) {
-        NSString *aPoint = NSStringFromPoint([event locationInWindow]);
-        PMLOGC(PM_LEVEL_DEBUG, @"click event: %@", aPoint);
-    }
-    return event;
 }
 
 @end

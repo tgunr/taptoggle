@@ -34,8 +34,7 @@
     __weak SRRecorderControl *hotKeyControl;
     NSPanel                  *infoPanel;
     NSTimer                  *monitorCheck;
-    NSEvent                  *remoteMonitor;
-    NSEvent                  *localMonitor;
+    NSEvent                  *eventMonitor;
     TapMenuController        *menuExtraController;
 }
 
@@ -62,61 +61,46 @@
 @synthesize useHotkeyCheckbox;
 @synthesize monitorCheck;
 @synthesize prefs;
-@synthesize remoteMonitor;
-@synthesize localMonitor;
+@synthesize eventMonitor;
 @synthesize menuExtraController;
 
 #pragma mark - Startup
 
-- (void)removeMonitors {
-    if (remoteMonitor) {
-        [NSEvent removeMonitor:remoteMonitor];
-        remoteMonitor = nil;
-    }
-    if (localMonitor) {
-        [NSEvent removeMonitor:localMonitor];
-        localMonitor = nil;
-    }
-}
-
 - (void) setState {
-    PMHERE;
     // Action for no trackpad
     if (! [menuExtraController haveTrackPad]) {
         [statusTextField setStringValue:@"No trackpad found"];
         [statusTextField setTextColor:[NSColor orangeColor]];
         [startButton setTitle:@"Start"];
         [startButton setEnabled:NO];
-        [self removeMonitors];
+        if (eventMonitor) {
+            [NSEvent removeMonitor:eventMonitor];
+            eventMonitor = nil;
+        }
         [menuExtraController checkForChanges];
-        PMLogDebug(@"No trackpad found!");
         return;
     }
     
     // Trackpad available, shoe the status
     BOOL status = [prefs shouldRun];
-    PMLogDebug(@"Checking status: %d", status);
     if (status) {
         [statusTextField setStringValue:@"Running"];
-        NSColor *aColor = [NSColor colorWithCalibratedRed:0.000 green:0.502 blue:0.000 alpha:1.000];
-        [statusTextField setTextColor:aColor];
+        [statusTextField setTextColor:[NSColor greenColor]];
         [startButton setTitle:@"Stop"];
-        remoteMonitor = [NSEvent
-                         addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
-                             processRemoteEvent(event);
-                         }];
-        localMonitor = [NSEvent
-                         addLocalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
-                             return processLocalEvent(event);
-                         }];
-        
+        eventMonitor = [NSEvent
+                addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSLeftMouseUpMask) handler:^(NSEvent *event) {
+                    processEvent(event);
+                }];
     }
     else {
         [startButton setTitle:@"Start"];
         [statusTextField setStringValue:@"Not Running"];
         [statusTextField setTextColor:[NSColor redColor]];
 //        [prefs setShouldRun:NO];
-        [self removeMonitors];
+        if (eventMonitor) {
+            [NSEvent removeMonitor:eventMonitor];
+            eventMonitor = nil;
+        }
     }
     [menuExtraController checkForChanges];
 }
@@ -129,7 +113,7 @@
 
     prefState = [prefs showStatus] ? NSOnState : NSOffState;
     [showStatusCheckBox setState:prefState];
-    [showDockCheckBox setEnabled:[prefs showStatus]];
+//    [showDockCheckBox setEnabled:[prefs showStatus]];
 
     prefState = [prefs checkWeekly] ? NSOnState : NSOffState;
     [weeklyCheckBox setState:prefState];
@@ -153,7 +137,7 @@
 
     prefState = [prefs showDock] ? NSOnState : NSOffState;
     [showDockCheckBox setState:prefState];
-    [showStatusCheckBox setEnabled:[prefs showDock]];
+//    [showStatusCheckBox setEnabled:[prefs showDock]];
 
 
     prefState = [prefs loginItem] ? NSOnState : NSOffState;
