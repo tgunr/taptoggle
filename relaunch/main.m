@@ -3,7 +3,7 @@
 //  relaunch
 //
 //  Created by Dave Carlton on 02/06/12.
-//  Copyright (c) 2012 PolyMicro Systems. All rights reserved.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
         ProcessSerialNumber psn;
         while (GetProcessForPID(parentPID, &psn) != procNotFound) {
             NSLog(@"Waiting for TapToggle to quit");
-            sleep(5);
+            sleep(3);
         }        
         NSString *appPath = [NSString stringWithCString:argv[1] encoding:NSUTF8StringEncoding];
         NSLog(@"Starting relaunch");

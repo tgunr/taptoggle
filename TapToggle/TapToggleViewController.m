@@ -61,7 +61,6 @@
 @synthesize useHotkeyCheckbox;
 @synthesize monitorCheck;
 @synthesize prefs;
-@synthesize eventMonitor;
 @synthesize menuExtraController;
 
 #pragma mark - Startup

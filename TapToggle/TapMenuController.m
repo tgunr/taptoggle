@@ -286,15 +286,12 @@ void processEvent(NSEvent *event) {
 
         if ([preferences useHotKey]) {
             NSString *lookingFor = SRReadableStringForCocoaModifierFlagsAndKeyCode(combo.flags, combo.code);
-            PMLOG(2, @"Looking for: %@", lookingFor);
             NSString *results = SRReadableStringForCocoaModifierFlagsAndKeyCode(modifiers, keycode);
-            PMLOG(2, @"Got: %@", results);
             if (keycode == combo.code) if (modifiers == combo.flags)
                 [menu toggleClicking];
         }
     }
     if ([event type] == NSLeftMouseUp) {
-        PMLOG(3, @"click event: %@", NSStringFromPoint([event locationInWindow]));
     }
 }
 

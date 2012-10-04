@@ -11,18 +11,16 @@
 #import "Prefs.h"
 #import "TapMenuController.h"
 #import "LaunchAtLoginController.h"
-#import "PMLog.h"
 
 @implementation NSApplication (Relaunch)
 
 - (void) relaunch:(id) sender {
-    NSString *daemonPath = [[NSBundle mainBundle] pathForAuxiliaryExecutable:NSApplicationRelaunchDaemon];
+    NSString *daemonPath = [[NSBundle mainBundle] pathForResource:NSApplicationRelaunchDaemon ofType:nil];
     NSString *path       = [[NSBundle mainBundle] bundlePath];
     NSString *pid        = [NSString stringWithFormat:@"%d", [[NSProcessInfo processInfo] processIdentifier]];
     NSArray  *args       = [NSArray arrayWithObjects:path, pid, nil];
-
     [NSTask launchedTaskWithLaunchPath:daemonPath arguments:args];
-//    [self terminate:sender];
+    [self terminate:sender];
 }
 
 @end
