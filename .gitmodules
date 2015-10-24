@@ -4,3 +4,6 @@
 [submodule "ShortcutRecorder"]
 	path = ShortcutRecorder
 	url = git@bitbucket.org:tgunr/shortcutrecorder.git
+[submodule "PMUtility"]
+	path = PMUtility
+	url = git@bitbucket.org:tgunr/pmutility.git

@@ -12,6 +12,9 @@
 		7535D18314DC54FB00613F39 /* SysPref.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7535D18214DC54FB00613F39 /* SysPref.scpt */; };
 		7535D18914DC70C600613F39 /* TapMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7535D18814DC70C600613F39 /* TapMenuController.m */; };
 		7536433914E1CEFB0005CBDA /* TapToggleOff-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 7536433814E1CEFB0005CBDA /* TapToggleOff-256.png */; };
+		756B380C16C293E900C5FD9E /* LumberJack.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 756E2B42161D685D0005AB12 /* LumberJack.framework */; };
+		756B380D16C293E900C5FD9E /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 756E2B30161D67D10005AB12 /* ShortcutRecorder.framework */; };
+		756B380F16C293E900C5FD9E /* PMUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 756B380416C2871100C5FD9E /* PMUtility.framework */; };
 		756E2B4A161D68D30005AB12 /* LumberJack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756E2B42161D685D0005AB12 /* LumberJack.framework */; };
 		756E2B4B161D68D30005AB12 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756E2B30161D67D10005AB12 /* ShortcutRecorder.framework */; };
 		756E2B4E161D6B9D0005AB12 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 756E2B4D161D6B9D0005AB12 /* LaunchAtLoginController.m */; };
@@ -20,8 +23,6 @@
 		75B79CE114E0B36300CED163 /* relaunch in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75B79CD014E0B2B800CED163 /* relaunch */; };
 		75B79CE314E0D44400CED163 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CE214E0D44300CED163 /* Cocoa.framework */; };
 		75B79CE614E127E000CED163 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B79CE514E127E000CED163 /* Carbon.framework */; };
-		75D1742314E4579C00F8A2D0 /* PMUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D1740114E4550800F8A2D0 /* PMUtility.framework */; };
-		75D1742514E457BE00F8A2D0 /* PMUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75D1740114E4550800F8A2D0 /* PMUtility.framework */; };
 		75E0F45514D7AF5E0086171A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E0F45414D7AF5E0086171A /* Cocoa.framework */; };
 		75E0F45F14D7AF5F0086171A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 75E0F45D14D7AF5F0086171A /* InfoPlist.strings */; };
 		75E0F46114D7AF5F0086171A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E0F46014D7AF5F0086171A /* main.m */; };
@@ -43,12 +44,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		756E2B13161D66860005AB12 /* PBXContainerItemProxy */ = {
+		756B380316C2871100C5FD9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7535D1CF14DF240C00613F39;
+			remoteInfo = PMUtility;
+		};
+		756B380516C2871100C5FD9E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 754C47EE15DC2DF100316C67;
 			remoteInfo = pmutility;
+		};
+		756B381016C2940900C5FD9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7535D1CE14DF240C00613F39;
+			remoteInfo = PMUtility;
 		};
 		756E2B2F161D67D10005AB12 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -120,20 +135,6 @@
 			remoteGlobalIDString = 75B79CCF14E0B2B800CED163;
 			remoteInfo = relaunch;
 		};
-		75D1740014E4550800F8A2D0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7535D1CF14DF240C00613F39;
-			remoteInfo = PMUtility;
-		};
-		75D1742614E457CD00F8A2D0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7535D1CE14DF240C00613F39;
-			remoteInfo = PMUtility;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -153,7 +154,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				75D1742514E457BE00F8A2D0 /* PMUtility.framework in CopyFiles */,
+				756B380C16C293E900C5FD9E /* LumberJack.framework in CopyFiles */,
+				756B380D16C293E900C5FD9E /* ShortcutRecorder.framework in CopyFiles */,
+				756B380F16C293E900C5FD9E /* PMUtility.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +175,7 @@
 		756E2B45161D68940005AB12 /* PMLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMLog.h; sourceTree = "<group>"; };
 		756E2B4C161D6B9D0005AB12 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		756E2B4D161D6B9D0005AB12 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
-		75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMUtility.xcodeproj; path = ../PMUtility/PMUtility.xcodeproj; sourceTree = SOURCE_ROOT; };
+		75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMUtility.xcodeproj; path = PMUtility/PMUtility.xcodeproj; sourceTree = SOURCE_ROOT; };
 		75B79C8714DF35B200CED163 /* PMUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMUtility.framework; path = ../PMUtility/build/Debug/PMUtility.framework; sourceTree = "<group>"; };
 		75B79CD014E0B2B800CED163 /* relaunch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = relaunch; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B79CD214E0B2B800CED163 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -230,7 +233,6 @@
 				756E2B4A161D68D30005AB12 /* LumberJack.framework in Frameworks */,
 				756E2B4B161D68D30005AB12 /* ShortcutRecorder.framework in Frameworks */,
 				752FA6B514E4852F00F782F4 /* IOKit.framework in Frameworks */,
-				75D1742314E4579C00F8A2D0 /* PMUtility.framework in Frameworks */,
 				75B79CE614E127E000CED163 /* Carbon.framework in Frameworks */,
 				75E0F4B414D7D6050086171A /* PreferencePanes.framework in Frameworks */,
 				75E0F4B214D7D0DA0086171A /* ServiceManagement.framework in Frameworks */,
@@ -241,6 +243,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		756B37FE16C2871100C5FD9E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				756B380416C2871100C5FD9E /* PMUtility.framework */,
+				756B380616C2871100C5FD9E /* libpmutility.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		756E2B27161D67D10005AB12 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,15 +290,6 @@
 				75B79CD814E0B2B800CED163 /* relaunch-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		75D173FD14E4550800F8A2D0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				75D1740114E4550800F8A2D0 /* PMUtility.framework */,
-				756E2B14161D66860005AB12 /* libpmutility.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		75E0F44514D7AF5E0086171A = {
@@ -424,9 +426,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				756B381116C2940900C5FD9E /* PBXTargetDependency */,
 				756E2B47161D68C40005AB12 /* PBXTargetDependency */,
 				756E2B49161D68C40005AB12 /* PBXTargetDependency */,
-				75D1742714E457CD00F8A2D0 /* PBXTargetDependency */,
 				75B79CDF14E0B34800CED163 /* PBXTargetDependency */,
 			);
 			name = TapToggle;
@@ -458,7 +460,7 @@
 					ProjectRef = 756E2B39161D685C0005AB12 /* LumberJack.xcodeproj */;
 				},
 				{
-					ProductGroup = 75D173FD14E4550800F8A2D0 /* Products */;
+					ProductGroup = 756B37FE16C2871100C5FD9E /* Products */;
 					ProjectRef = 75B79C7914DF2E7E00CED163 /* PMUtility.xcodeproj */;
 				},
 				{
@@ -475,11 +477,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		756E2B14161D66860005AB12 /* libpmutility.a */ = {
+		756B380416C2871100C5FD9E /* PMUtility.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PMUtility.framework;
+			remoteRef = 756B380316C2871100C5FD9E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		756B380616C2871100C5FD9E /* libpmutility.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libpmutility.a;
-			remoteRef = 756E2B13161D66860005AB12 /* PBXContainerItemProxy */;
+			remoteRef = 756B380516C2871100C5FD9E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		756E2B30161D67D10005AB12 /* ShortcutRecorder.framework */ = {
@@ -529,13 +538,6 @@
 			fileType = archive.ar;
 			path = libLUMBERJACK.a;
 			remoteRef = 756E2B43161D685D0005AB12 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75D1740114E4550800F8A2D0 /* PMUtility.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PMUtility.framework;
-			remoteRef = 75D1740014E4550800F8A2D0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -589,6 +591,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		756B381116C2940900C5FD9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMUtility;
+			targetProxy = 756B381016C2940900C5FD9E /* PBXContainerItemProxy */;
+		};
 		756E2B47161D68C40005AB12 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LumberJack;
@@ -603,11 +610,6 @@
 			isa = PBXTargetDependency;
 			target = 75B79CCF14E0B2B800CED163 /* relaunch */;
 			targetProxy = 75B79CDE14E0B34800CED163 /* PBXContainerItemProxy */;
-		};
-		75D1742714E457CD00F8A2D0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PMUtility;
-			targetProxy = 75D1742614E457CD00F8A2D0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

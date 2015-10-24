@@ -80,7 +80,7 @@
         return;
     }
     
-    // Trackpad available, shoe the status
+    // Trackpad available, show the status
     BOOL status = [prefs shouldRun];
     if (status) {
         [statusTextField setStringValue:@"Running"];

@@ -115,7 +115,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 - (BOOL)haveTrackPad {
     long count = IOBluetoothFindNumberOfRegistryEntriesOfClassName("IOHITabletPointer");
     BOOL haveTrackPad = (count != 0) ? YES : NO;
-    return haveTrackPad;
+    return YES;
 }
 
 - (BOOL) getTapClickState {
