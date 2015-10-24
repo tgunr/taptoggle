@@ -1,6 +1,0 @@
-[submodule "CocoaLumberJack"]
-	path = CocoaLumberJack
-	url = git@github.com:tgunr/CocoaLumberjack.git
-[submodule "ShortcutRecorder"]
-	path = ShortcutRecorder
-	url = git@bitbucket.org:tgunr/shortcutrecorder.git
