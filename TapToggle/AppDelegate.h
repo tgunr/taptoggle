@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <PTHotKey/PTHotKeyCenter.h>
+#import <ShortcutRecorder/SRRecorderControl.h>
 
 @class Preferences;
 @class TapMenuController;
@@ -29,7 +31,8 @@
     NSImage    *offImage;
     Preferences       *prefs;
     TapMenuController *menuExtraController;
-    
+    PTHotKeyCenter *hotKeyCenter;
+
     LaunchAtLoginController *loginController;
 }
 

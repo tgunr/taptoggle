@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 PolyMicro Systems. All rights reserved.
 //
 
-#import <ShortcutRecorder/ShortcutRecorder.h>
 #import "TapToggleViewController.h"
 #import "Preferences.h"
 #import "TapMenuController.h"
 #import "AppDelegate.h"
+#import <ShortcutRecorder/SRRecorderControl.h>
 
 #define TapToggle_VERSION @"1.0"
 
@@ -125,6 +125,8 @@
     prefState = [prefs anonInfo] ? NSOnState : NSOffState;
     [anonInfoCheckBox setState:prefState];
 
+    PTHotKeyCenter *hotKeyCenter = [PTHotKeyCenter sharedCenter];
+    
     prefState = [prefs useHotKey] ? NSOnState : NSOffState;
     [useHotkeyCheckbox setState:prefState];
     [hotKeyControl setKeyCombo:[prefs keyCombo]];
@@ -175,7 +177,8 @@
 - (IBAction) loginItemClicked:(id) sender {
     BOOL use = [loginItemCheckBox state] == NSOnState ? YES : NO;
     [prefs setLoginItem:use];
-    [[NSApp delegate] setLogin:use];
+    AppDelegate *d = [NSApp delegate];
+//    [[NSApp delegate] setLogin:use];
 }
 
 - (void) notifyQuitNeeded {
@@ -249,11 +252,13 @@
 }
 
 - (IBAction) moreInfoClicked:(id) sender {
-    [NSApp beginSheet:infoPanel
-       modalForWindow:[[NSApp delegate] window]
-        modalDelegate:self
-       didEndSelector:@selector(didEndinfoPanel:returnCode:contextInfo:)
-          contextInfo:nil];
+    AppDelegate *d = [NSApp delegate];
+
+//    [NSApp beginSheet:infoPanel
+//       modalForWindow:[[NSApp delegate] window]
+//        modalDelegate:self
+//       didEndSelector:@selector(didEndinfoPanel:returnCode:contextInfo:)
+//          contextInfo:nil];
 }
 
 #pragma mark - Install

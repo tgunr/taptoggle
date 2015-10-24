@@ -197,6 +197,7 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 }
 
 - (void) toggleClicking {
+    // TODO: Need to handle User Accibility error here, TapToggle needs to be added to list of Apps
     NSDictionary  *dict;
     NSBundle      *myBundle = [NSBundle mainBundle];
     NSURL         *asURL    = [myBundle URLForResource:@"SysPref" withExtension:@"scpt"];
@@ -212,7 +213,9 @@ static TapMenuController *sharedTapMenuContollerInstance = nil;
 
 - (void) menuPrefClick {
     PMHERE;
-    [[NSApp delegate] tapShowPreferences];
+    AppDelegate *d = [NSApp delegate];
+
+//    [[NSApp delegate] tapShowPreferences];
 }
 
 - (void) menuQuitClick {
